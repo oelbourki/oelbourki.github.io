@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 293.84 338.14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #65ffdd;
+        font-family: CascadiaMonoRoman-SemiBold, 'Cascadia Mono';
+        font-size: 160px;
+        font-variation-settings: 'wght' 600;
+        font-weight: 600;
+      }
+
+      .cls-2 {
+        fill: #0a192f;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <polygon class="cls-2" points="1 83.66 147.92 0 293.84 85.4 292.83 254.47 145.91 338.14 0 252.73 1 83.66"/>
+  <text class="cls-1" transform="translate(98.52 223.54)"><tspan x="0" y="0">O</tspan></text>
+</svg>
