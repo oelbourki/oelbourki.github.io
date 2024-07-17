@@ -41,13 +41,14 @@ const IconLogo = () => (
         />
       </g>
     </g>
-    <text textAnchor="middle" alignmentBaseline="middle" fill="currentColor" fontSize="55px" fontFamily="Consolas, serif" x="50%" y="50%">
-
-      O
-    </text>
   </svg>
 );
+{
+  /* <text textAnchor="middle" alignmentBaseline="middle" fill="currentColor" fontSize="55px" fontFamily="Consolas, serif" x="50%" y="50%">
 
+O
+</text> */
+}
 export default IconLogo;
 // import React from "react";
 
