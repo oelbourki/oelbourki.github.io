@@ -1,69 +1,80 @@
-# Otmane El Bourki
+<div align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/main/src/images/logo.png" width="100" />
+</div>
+<h1 align="center">
+  brittanychiang.com - v4
+</h1>
+<p align="center">
+  The fourth iteration of <a href="https://brittanychiang.com" target="_blank">brittanychiang.com</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+</p>
+<p align="center">
+  Previous iterations:
+  <a href="https://github.com/bchiang7/v1" target="_blank">v1</a>,
+  <a href="https://github.com/bchiang7/v2" target="_blank">v2</a>,
+  <a href="https://github.com/bchiang7/bchiang7.github.io" target="_blank">v3</a>
+</p>
+<p align="center">
+  <a href="https://app.netlify.com/sites/brittanychiang/deploys" target="_blank">
+    <img src="https://api.netlify.com/api/v1/badges/1963b488-7b78-48c9-9e2d-6fb5e47ab3af/deploy-status" alt="Netlify Status" />
+  </a>
+</p>
 
-Morocco • +212631142276 • [otmane.elbourki@gmail.com](mailto:otmane.elbourki@gmail.com) • [github.com/oelbourki](https://github.com/oelbourki) • [linkedin.com/in/oelbourki](https://www.linkedin.com/in/oelbourki)
+![demo](https://raw.githubusercontent.com/bchiang7/v4/main/src/images/demo.png)
 
----
 
-## Experience
+### TL;DR
 
-### AI Engineer
-**Tetricks**, Vincennes, France (Remote from Morocco)  
-*Jun 2023 -- Present*
-- Developed and deployed in-house solution for request classification, cutting costs by 47%.
-- Optimized, fine-tuned, Quantized Language Models for enhanced performance, improving inference by up to 3X.
-- Built an email parser API for guest request processing, automating data extraction from emails and reducing processing time by 60%.
-- Created a RAG chat-app for quick and accurate resolution of guest inquiries, reducing response time by 50%.
-- Employed vision LLM for automated hotel room and feature categorization, leading to a 40% increase in efficiency.
+Designed and built by [brittanychiang.com](https://brittanychiang.com), revised by me.
 
-### ML Engineer Intern
-**Ibn Tofaïl CS Department**, Kenitra, Morocco  
-*Mar 2022 -- Jun 2022*
-- Designed a facial expression recognition system using the FER2013 dataset, achieving 85% accuracy.
-- Utilized SOTA computer vision models and achieved an average precision of 90%.
-- Improved model performance by 20% through data augmentation and regularization techniques.
-- Incorporated the model into a desktop app, resulting in a 30% increase in user engagement and satisfaction.
+## 🛠 Installation & Set Up
 
----
+1. Install the Gatsby CLI
 
-## Education
+   ```sh
+   npm install -g gatsby-cli
+   ```
 
-### M.S. in Artificial Intelligence
-**Ibn Tofaïl University**, Kenitra, Morocco  
-*Nov 2022 -- Feb 2024*
-- Relevant Courses: Machine Learning, Deep Learning, Reinforcement Learning, Natural Language Processing, Computer Vision, Image Processing, Mathematics for Artificial Intelligence, Parallel Programming.
+2. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
 
-### B.S. in Mathematics and Computer Science
-**Ibn Tofaïl University**, Kenitra, Morocco  
-*Oct 2020 -- Jul 2022*
-- Relevant Courses: Data Structures, Algorithms, Operating Systems, Computer Architecture, Databases, Compilers, Operation Research, System Programming, Numerical Analysis, Linear Algebra, Networking.
+   ```sh
+   nvm install
+   ```
 
-### Digital Technology Architect
-**Mohammed VI Polytechnic University – Ecole 1337 – 42 Network**, Benguerir, Morocco  
-*Oct 2019 -- Feb 2024*
-- Relevant Skills: Algorithm Design, Problem Solving, Flexibility, Project Management, Teamwork, Optimization.
+3. Install dependencies
 
----
+   ```sh
+   yarn
+   ```
 
-## Projects
+4. Start the development server
 
-### Sadeeq AL-Siha
-- Designed a healthcare chatbot based on RAG style, offering disease identification and drug recommendations for patients and personalized treatment plans. Used Ollama for serving LLM and Qdrant as vector store.
+   ```sh
+   npm start
+   ```
 
-### Ads-LLM
-- Implemented a program for matching articles with ads, utilizing KeyBERT to pinpoint relevant article keywords and a custom LLAVA deployed on Vertex AI to extract ad-descriptive keywords. Ensured sensitivity and disallowed keyword compliance during the matching process while storing keywords efficiently on Supabase.
+## 🚀 Building and Running for Production
 
-### MarketAI
-- Built an AI marketing team with automounts agent using CrewAI.
+1. Generate a full static production build
 
-### DoctorAI
-- Led the end-to-end implementation of kidney disease classification project, utilizing modern software development methodologies and tools including GitHub, MLflow, DVC, Dockerization, and AWS CI/CD for seamless deployment and efficient workflow management.
+   ```sh
+   npm run build
+   ```
 
----
+1. Preview the site as it will appear once deployed
 
-## Skills
+   ```sh
+   npm run serve
+   ```
 
-- **Programming Languages & Frameworks**: Python, Java, C, C++, SQL, TensorFlow, PyTorch, Keras, Scikit-learn, Django, Flask, FastAPI, Streamlit
-- **Libraries & Tools**: NumPy, Pandas, Matplotlib, NLTK, spaCy, OpenCV, Hugging Face, Git, GitHub Actions, Docker, Kubernetes, Kubeflow, MLflow, DVC
-- **Platforms & Big Data Technologies**: AWS (SageMaker), GCP (BigQuery, AI Platform, Vertex AI), Supabase
-- **Other**: Machine Learning, Deep Learning, NLP, Computer Vision, Model Deployment, Data Engineering, A/B Testing, CI/CD, Agile
-- **Spoken Languages**: Arabic (Native), English (Full Professional Proficiency), French (Medium Proficiency)
+## 🎨 Color Reference
+
+| Color          | Hex                                                                |
+| -------------- | ------------------------------------------------------------------ |
+| Navy           | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) `#0a192f` |
+| Light Navy     | ![#112240](https://via.placeholder.com/10/0a192f?text=+) `#112240` |
+| Lightest Navy  | ![#233554](https://via.placeholder.com/10/303C55?text=+) `#233554` |
+| Slate          | ![#8892b0](https://via.placeholder.com/10/8892b0?text=+) `#8892b0` |
+| Light Slate    | ![#a8b2d1](https://via.placeholder.com/10/a8b2d1?text=+) `#a8b2d1` |
+| Lightest Slate | ![#ccd6f6](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6` |
+| White          | ![#e6f1ff](https://via.placeholder.com/10/e6f1ff?text=+) `#e6f1ff` |
+| Green          | ![#64ffda](https://via.placeholder.com/10/64ffda?text=+) `#64ffda` |
