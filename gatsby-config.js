@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Brittany Chiang',
-        short_name: 'Brittany Chiang',
+        name: 'Otmane El Bourki',
+        short_name: 'Otmane El Bourki',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
