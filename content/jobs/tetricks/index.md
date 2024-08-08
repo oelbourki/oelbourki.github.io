@@ -3,7 +3,7 @@ date: '2023-06-01'
 title: 'AI Engineer'
 company: 'Tetricks'
 location: remote
-range: 'Jun 2023 - Present'
+range: 'Jun 2023 - July 2024'
 url: ''
 ---
 
