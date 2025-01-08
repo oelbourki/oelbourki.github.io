@@ -200,30 +200,70 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 
+  // const skills = [
+  //   'Python',
+  //   'TensorFlow',
+  //   'PyTorch',
+  //   'Scikit-learn',
+  //   'NLTK',
+  //   'spaCy',
+  //   'Django',
+  //   'Flask',
+  //   'FastAPI',
+  //   'OpenCV',
+  //   'Git',
+  //   'Docker',
+  //   'Kubernetes',
+  //   'AWS',
+  //   'GCP',
+  //   'SQL',
+  //   'PostgreSQL',
+  //   'PySpark',
+  //   'MLflow',
+  //   'Hugging Face',
+  //   'Langchain',
+  //   'BentoML',
+  // ];
   const skills = [
-    'Python',
-    'TensorFlow',
-    'PyTorch',
-    'Scikit-learn',
-    'NLTK',
-    'spaCy',
-    'Django',
-    'Flask',
-    'FastAPI',
-    'OpenCV',
-    'Git',
-    'Docker',
-    'Kubernetes',
-    'AWS',
-    'GCP',
-    'SQL',
-    'PostgreSQL',
-    'PySpark',
-    'MLflow',
-    'Hugging Face',
-    'Langchain',
-    'BentoML',
-  ];
+    // AI & Machine Learning
+    'Python (Advanced)',                // Primary language for AI development
+    'C++ (Intermediate)',               // Important for performance-critical applications
+    'TensorFlow (Advanced)',           // Popular deep learning framework
+    'PyTorch (Advanced)',              // Popular deep learning framework
+    'Scikit-learn',                    // Essential for machine learning algorithms
+    'Keras',                           // High-level neural networks API
+    'Hugging Face (Transformers, Datasets)', // Leading platform for NLP models
+    'LangChain',                       // Tool for building LLM applications
+    'LlamaIndex',                      // Framework for connecting LLMs with data sources
+    'MLflow',                          // MLOps tool for managing machine learning workflows
+    'Qdrant',                          // Vector database for high-dimensional search
+    'FAISS',                           // Library for efficient similarity search
+    'Chroma',                          // Vector database for embeddings
+    'RAG',                             // Retrieval-Augmented Generation for LLM applications
+    // 'Meditron 7B LLM',                 // Pretrained LLM used in projects
+    'OpenAI API',                      // API for large-scale AI models
+    'Prompt Engineering',              // Crucial skill for optimizing LLM performance
+    'Fine-tuning',                     // Fine-tuning pre-trained models for specific tasks
+    'Embeddings',                      // Techniques for representing data in vector spaces
+    'Text-to-X Models',                // Models that generate text, images, etc.
+    'Machine Learning',                // Broad skill encompassing model building and data analysis
+    'Deep Learning',                   // Specialized in deep learning techniques
+    'Natural Language Processing (NLP)', // Critical for working with text-based data
+    'Computer Vision',                 // Core for image and video-related AI tasks
+    'Reinforcement Learning',          // Important for autonomous decision-making systems
+    'Large Language Models (LLM)',     // Essential for modern NLP applications
+    'Autogen'                          // Automation in LLM workflows
+
+    // Infrastructure & DevOps
+    'AWS (SageMaker)',                 // Cloud platform for AI/ML model deployment
+    'GCP (Vertex AI, Cloud Run)',      // Google Cloud tools for AI/ML
+    'Docker',                          // Containerization for deployment and scalability
+    'Kubernetes',                      // Orchestration for scalable AI systems
+    'Model Deployment (ONNX Runtime)', // Deploying models in an efficient format
+    'Model Monitoring (Weights & Biases, MLflow)', // Tools for monitoring model performance
+    'Model Serving (BentoML, TorchServe)', // Tools for serving AI models in production
+    'A/B Testing',                     // Crucial for model evaluation and optimization
+];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
