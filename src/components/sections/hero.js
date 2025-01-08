@@ -130,7 +130,7 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I specialize in crafting scalable AI solutions across diverse domains, leveraging cutting-edge technologies. Currently, I am focused on optimizing AI-driven applications and leading AI education initiatives.
+      I am passionate about creating scalable AI solutions across various domains, utilizing cutting-edge technologies. I am committed to continuous learning and staying updated with the latest advancements in the AI field.
       </p>
     </>
   );
