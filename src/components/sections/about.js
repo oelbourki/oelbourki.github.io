@@ -252,7 +252,7 @@ const About = () => {
     'Computer Vision',                 // Core for image and video-related AI tasks
     'Reinforcement Learning',          // Important for autonomous decision-making systems
     'Large Language Models (LLM)',     // Essential for modern NLP applications
-    'Autogen'                          // Automation in LLM workflows
+    'Autogen',                         // Automation in LLM workflows
 
     // Infrastructure & DevOps
     'AWS (SageMaker)',                 // Cloud platform for AI/ML model deployment
