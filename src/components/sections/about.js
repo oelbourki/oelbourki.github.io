@@ -200,87 +200,92 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 
-  // Streamlined skills list with redundancies removed
-  const skills = [
-    // GenAI, LLMs & Agents
-    'Large Language Models (LLM)',
-    'Prompt Engineering',
-    'RAG',
-    'Fine-tuning',
-    'LangChain',
-    'LlamaIndex',
-    'Hugging Face (Transformers, Datasets)',
-    'OpenAI API & GPT-4',
-    'Anthropic API & Claude',
-    'Mistral AI',
-    'Llama 2/3/4',
-    'Gemini',
-    
-    // Multiagent Systems
-    'LangGraph',
-    'AutoGen',
-    'CrewAI',
-    'Agent frameworks',
-    'Multi-agent collaboration',
-    'Hierarchical agents',
-    'Distributed AI',
-    'Semantic Kernel',
-    'Groq',
-    'Together AI',
-    
-    // AI & Machine Learning
-    'TensorFlow & PyTorch (Advanced)',
-    'Scikit-learn',
-    'Keras',
-    'MLflow',
-    'Machine Learning & Deep Learning',
-    'Natural Language Processing (NLP)',
-    'Computer Vision',
-    'Reinforcement Learning',
-    'GANs',
-    
-    // Vector Databases & Embeddings
-    'Pinecone',
-    'Weaviate',
-    'Milvus',
-    'Qdrant',
-    'FAISS',
-    'Chroma',
-    'OpenAI Embeddings',
-    'Sentence Transformers',
-    
-    // Infrastructure & DevOps/MLOps
-    'AWS (SageMaker)',
-    'GCP (Vertex AI, Cloud Run)',
-    'Azure ML',
-    'Docker & Kubernetes',
-    'Model Deployment & Serving',
-    'CI/CD & Git',
-    'GitHub Actions',
-    'Terraform',
-    
-    // Evaluation & Monitoring
-    'langfuse',
-    'Weights & Biases',
-    'Prometheus & Grafana',
-    'TruLens',
-    'RAGAS',
-    'DeepEval',
-    'A/B Testing',
-    
-    // Development
-    'Python (Advanced)',
-    'C++ (Intermediate) & C',
-    'SQL & NoSQL',
-    'MongoDB',
-    'PostgreSQL',
-    'Redis',
-    'FastAPI',
-    'Django & Flask',
-    'Streamlit & Gradio',
-    'JavaScript & TypeScript',
-    'React & Next.js',
-  
+  // Skills grouped by categories
+  const aiEngineeringSkillsList = [
+    {
+      category: "Core Languages & Frameworks",
+      skills: [
+        'Python (Advanced)',
+        'C++ (Intermediate)',
+        'JavaScript & TypeScript',
+        'SQL & NoSQL',
+        'TensorFlow & PyTorch (Advanced)',
+        'Scikit‑learn',
+        'Keras',
+        'FastAPI',
+        'Django & Flask',
+        'Streamlit & Gradio',
+        'React & Next.js',
+      ]
+    },
+    {
+      category: "Generative AI, LLMs & Prompting",
+      skills: [
+        'Large Language Models (LLM)',
+        'Prompt Engineering',
+        'Retrieval‑Augmented Generation (RAG)',
+        'Fine‑tuning',
+        'OpenAI API & GPT‑4',
+        'Anthropic API & Claude',
+        'Meta Llama 2/3/4',
+        'Gemini',
+        'Mistral AI',
+        'Hugging Face (Transformers, Datasets)',
+        'OpenAI Embeddings',
+        'Sentence Transformers',
+      ]
+    },
+    {
+      category: "Agentic & Multi‑Agent Systems",
+      skills: [
+        'LangChain',
+        'LlamaIndex',
+        'LangGraph',
+        'AutoGPT',
+        'BabyAGI',
+        'AutoGen',
+        'CrewAI',
+        'Agent Frameworks',
+        'Multi‑agent Collaboration',
+        'Hierarchical Agents',
+        'Distributed AI',
+        'Semantic Kernel',
+        'Groq',
+        'Together AI',
+      ]
+    },
+    {
+      category: "Vector Databases & Embeddings Stores",
+      skills: [
+        'Pinecone',
+        'Weaviate',
+        'Milvus',
+        'Qdrant',
+        'FAISS',
+        'Chroma',
+      ]
+    },
+    {
+      category: "DevOps / MLOps & Infrastructure",
+      skills: [
+        'AWS SageMaker',
+        'GCP Vertex AI & Cloud Run',
+        'Azure ML & Azure OpenAI Service',
+        'Docker & Kubernetes',
+        'Model Deployment & Serving',
+        'CI/CD & GitHub Actions',
+        'Terraform',
+      ]
+    },
+    {
+      category: "Specialty AI Domains",
+      skills: [
+        'Natural Language Processing (NLP)',
+        'Computer Vision',
+        'Reinforcement Learning',
+        'GANs'
+      ]
+    }
   ];
 
   return (
@@ -307,9 +312,16 @@ const About = () => {
             </p>
           </div>
 
-          <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
-          </ul>
+          {aiEngineeringSkillsList.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="skills-section">
+              <h3>{section.category}</h3>
+              <ul className="skills-list">
+                {section.skills.map((skill, i) => (
+                  <li key={i}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </StyledText>
 
         <StyledPic>
