@@ -250,6 +250,7 @@ const About = () => {
         'RAGAS',
         'DeepEval',
         'A/B Testing',
+        'dvc',
       ]
     },
     {
