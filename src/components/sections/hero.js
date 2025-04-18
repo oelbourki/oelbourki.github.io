@@ -120,7 +120,7 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
-  const three = <h3 className="big-heading">AI Engineer | Generative AI & LLM Agents Specialist | MLOps Enthusiast</h3>;
+  const three = <h3 className="big-heading">AI Engineer - Generative AI & LLM Agents Specialist - MLOps Enthusiast</h3>;
   const four = (
     <>
       <p>
