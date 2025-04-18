@@ -287,15 +287,15 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Otmane and I'm passionate about crafting scalable AI solutions across diverse domains. My journey in AI started during my studies, where I explored various technologies and frameworks to enhance my skills.
+              Hello! I'm Otmane, an AI Engineer specializing in Generative AI, LLM Agents, and MLOps. I'm passionate about architecting and deploying scalable AI solutions—from autonomous agents to production-grade inference pipelines.
             </p>
 
             <p>
-              Fast-forward to today, I've had the privilege of working on projects ranging from healthcare chatbots to AI-driven marketing solutions. My focus is on building autonomous LLM agents, implementing end-to-end MLOps pipelines, and deploying low-latency inference systems at scale.
+              My expertise lies in building intelligent systems that can understand, reason, and generate content across various domains. I've worked on projects ranging from healthcare diagnostic assistants to financial analysis tools, focusing on creating AI solutions that deliver real business value.
             </p>
 
             <p>
-              I'm currently exploring advanced retrieval-augmented generation (RAG) techniques and scaling large-language-model fine-tuning with tools like DeepSpeed and bitsandbytes.
+              Currently, I'm focused on developing multi-agent systems with LangGraph and Autogen, implementing advanced RAG architectures, and scaling large language model fine-tuning with DeepSpeed and quantization techniques. I'm particularly interested in the intersection of AI agents, knowledge retrieval, and human-AI collaboration.
             </p>
 
             <p>
