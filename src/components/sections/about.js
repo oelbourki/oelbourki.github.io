@@ -308,7 +308,7 @@ const About = () => {
             </p>
 
             <p>
-              Here are some technologies I've been working with recently:
+              Here is my stack of technologies I've been working with:
             </p>
           </div>
 
