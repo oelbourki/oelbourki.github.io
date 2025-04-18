@@ -280,11 +280,7 @@ const About = () => {
     'Streamlit & Gradio',
     'JavaScript & TypeScript',
     'React & Next.js',
-    
-    // Languages
-    'French (Fluent)',
-    'English (Bilingual)',
-    'Arabic (Native)',
+  
   ];
 
   return (
