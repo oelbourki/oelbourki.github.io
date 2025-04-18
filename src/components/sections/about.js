@@ -239,6 +239,20 @@ const About = () => {
       ]
     },
     {
+      category: "Experimentation, Monitoring & Evaluation",
+      skills: [
+        'MLflow',
+        'Weights & Biases',
+        'Neptune.ai',
+        'Prometheus & Grafana',
+        'Langfuse',
+        'TruLens',
+        'RAGAS',
+        'DeepEval',
+        'A/B Testing',
+      ]
+    },
+    {
       category: "Core Languages & Frameworks",
       skills: [
         'Python (Advanced)',
