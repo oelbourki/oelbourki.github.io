@@ -209,7 +209,7 @@ const Nav = ({ isHome }) => {
   //   <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
   //   Resume
   // </a>
-    <div className="resume-button">
+    // <div className="resume-button">
       <a 
         href="https://linkedin.com/in/oelbourki" 
         target="_blank" 
@@ -217,7 +217,7 @@ const Nav = ({ isHome }) => {
         className="resume-button">
         LinkedIn
       </a>
-    </div>
+    // </div>
   );
 
   return (
