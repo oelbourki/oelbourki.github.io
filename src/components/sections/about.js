@@ -142,7 +142,7 @@ const StyledPic = styled.div`
 //             </p>
 
 //             <p>
-//               Fast-forward to today, and I’ve had the privilege of working at{' '}
+//               Fast-forward to today, and I've had the privilege of working at{' '}
 //               <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
 //               <a href="https://starry.com/">a start-up</a>,{' '}
 //               <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
@@ -161,7 +161,7 @@ const StyledPic = styled.div`
 //               &amp; React.
 //             </p>
 
-//             <p>Here are a few technologies I’ve been working with recently:</p>
+//             <p>Here are a few technologies I've been working with recently:</p>
 //           </div>
 
 //           <ul className="skills-list">
@@ -190,7 +190,7 @@ const StyledPic = styled.div`
 
 const About = () => {
   const revealContainer = useRef(null);
-  const prefersReducedMotion = usePrefersReducedMotion(); // Assuming you have a custom hook for prefersReducedMotion
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -200,70 +200,84 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 
-  // const skills = [
-  //   'Python',
-  //   'TensorFlow',
-  //   'PyTorch',
-  //   'Scikit-learn',
-  //   'NLTK',
-  //   'spaCy',
-  //   'Django',
-  //   'Flask',
-  //   'FastAPI',
-  //   'OpenCV',
-  //   'Git',
-  //   'Docker',
-  //   'Kubernetes',
-  //   'AWS',
-  //   'GCP',
-  //   'SQL',
-  //   'PostgreSQL',
-  //   'PySpark',
-  //   'MLflow',
-  //   'Hugging Face',
-  //   'Langchain',
-  //   'BentoML',
-  // ];
+  // Comprehensive skills list organized by categories
   const skills = [
     // AI & Machine Learning
-    'Python (Advanced)',                // Primary language for AI development
-    'C++ (Intermediate)',               // Important for performance-critical applications
-    'TensorFlow (Advanced)',           // Popular deep learning framework
-    'PyTorch (Advanced)',              // Popular deep learning framework
-    'Scikit-learn',                    // Essential for machine learning algorithms
-    'Keras',                           // High-level neural networks API
-    'Hugging Face (Transformers, Datasets)', // Leading platform for NLP models
-    'LangChain',                       // Tool for building LLM applications
-    'LlamaIndex',                      // Framework for connecting LLMs with data sources
-    'MLflow',                          // MLOps tool for managing machine learning workflows
-    'Qdrant',                          // Vector database for high-dimensional search
-    'FAISS',                           // Library for efficient similarity search
-    'Chroma',                          // Vector database for embeddings
-    'RAG',                             // Retrieval-Augmented Generation for LLM applications
-    // 'Meditron 7B LLM',                 // Pretrained LLM used in projects
-    'OpenAI API',                      // API for large-scale AI models
-    'Prompt Engineering',              // Crucial skill for optimizing LLM performance
-    'Fine-tuning',                     // Fine-tuning pre-trained models for specific tasks
-    'Embeddings',                      // Techniques for representing data in vector spaces
-    'Text-to-X Models',                // Models that generate text, images, etc.
-    'Machine Learning',                // Broad skill encompassing model building and data analysis
-    'Deep Learning',                   // Specialized in deep learning techniques
-    'Natural Language Processing (NLP)', // Critical for working with text-based data
-    'Computer Vision',                 // Core for image and video-related AI tasks
-    'Reinforcement Learning',          // Important for autonomous decision-making systems
-    'Large Language Models (LLM)',     // Essential for modern NLP applications
-    'Autogen',                         // Automation in LLM workflows
-
-    // Infrastructure & DevOps
-    'AWS (SageMaker)',                 // Cloud platform for AI/ML model deployment
-    'GCP (Vertex AI, Cloud Run)',      // Google Cloud tools for AI/ML
-    'Docker',                          // Containerization for deployment and scalability
-    'Kubernetes',                      // Orchestration for scalable AI systems
-    'Model Deployment (ONNX Runtime)', // Deploying models in an efficient format
-    'Model Monitoring (Weights & Biases, MLflow)', // Tools for monitoring model performance
-    'Model Serving (BentoML, TorchServe)', // Tools for serving AI models in production
-    'A/B Testing',                     // Crucial for model evaluation and optimization
-];
+    'Python (Advanced)',
+    'C++ (Intermediate)',
+    'TensorFlow (Advanced)',
+    'PyTorch (Advanced)',
+    'Scikit-learn',
+    'Keras',
+    'Hugging Face (Transformers, Datasets)',
+    'LangChain',
+    'LlamaIndex',
+    'MLflow',
+    'Qdrant',
+    'FAISS',
+    'Chroma',
+    'RAG',
+    'OpenAI API',
+    'Prompt Engineering',
+    'Fine-tuning',
+    'Embeddings',
+    'Text-to-X Models',
+    'Machine Learning',
+    'Deep Learning',
+    'Natural Language Processing (NLP)',
+    'Computer Vision',
+    'Reinforcement Learning',
+    'Large Language Models (LLM)',
+    'GANs',
+    
+    // Multiagent Systems
+    'Autogen',
+    'LangGraph',
+    'Crew AI',
+    'Agent Coordination',
+    'Hierarchical agents',
+    'Distributed AI',
+    
+    // Infrastructure & DevOps/MLOps
+    'AWS (SageMaker)',
+    'GCP (Vertex AI, Cloud Run)',
+    'Docker',
+    'Kubernetes',
+    'Model Deployment (ONNX Runtime)',
+    'Model Monitoring (Weights & Biases, MLflow)',
+    'Model Serving (BentoML, TorchServe)',
+    'A/B Testing',
+    'CI/CD',
+    'Data Pipelines',
+    'Git',
+    'DVC',
+    'Cloud AI Services',
+    
+    // Development
+    'Python',
+    'C',
+    'C++',
+    'APIs',
+    'SQL',
+    'NoSQL',
+    'Vector Databases',
+    'Microservices',
+    'FastAPI',
+    'Django',
+    
+    // Soft Skills
+    'Problem Solving',
+    'Adaptability',
+    'Critical Thinking',
+    'Communication',
+    'Collaboration',
+    'Continuous Learning',
+    
+    // Languages
+    'French (Fluent)',
+    'English (Bilingual)',
+    'Arabic (Native)',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -277,11 +291,15 @@ const About = () => {
             </p>
 
             <p>
-              Fast-forward to today, I've had the privilege of working on projects ranging from healthcare chatbots to AI-driven marketing solutions. My focus is on leveraging cutting-edge technologies to drive innovation and create impactful solutions.
+              Fast-forward to today, I've had the privilege of working on projects ranging from healthcare chatbots to AI-driven marketing solutions. My focus is on building autonomous LLM agents, implementing end-to-end MLOps pipelines, and deploying low-latency inference systems at scale.
             </p>
 
             <p>
-              Here are a few technologies I've been working with recently:
+              I'm currently exploring advanced retrieval-augmented generation (RAG) techniques and scaling large-language-model fine-tuning with tools like DeepSpeed and bitsandbytes.
+            </p>
+
+            <p>
+              Here are some technologies I've been working with recently:
             </p>
           </div>
 
@@ -294,7 +312,7 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg" // Replace with your image path
+              src="../../images/me.jpg"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}

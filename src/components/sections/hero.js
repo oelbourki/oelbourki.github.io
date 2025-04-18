@@ -65,13 +65,7 @@ const StyledHeroSection = styled.section`
 //   const four = (
 //     <>
 //       <p>
-//         I’m a software engineer specializing in building (and occasionally designing) exceptional
-//         digital experiences. Currently, I’m focused on building accessible, human-centered products
-//         at{' '}
-//         <a href="https://upstatement.com/" target="_blank" rel="noreferrer">
-//           Upstatement
-//         </a>
-//         .
+//         I'm an AI Engineer specializing in building autonomous LLM agents, multi-agent workflows, and production-grade inference pipelines. Currently focused on developing scalable AI solutions using LangChain, Langgraph, and implementing end-to-end MLOps pipelines with tools like DVC, MLflow, and Kubernetes.
 //       </p>
 //     </>
 //   );
@@ -126,11 +120,11 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
-  const three = <h3 className="big-heading">Passionate AI Engineer.</h3>;
+  const three = <h3 className="big-heading">AI Engineer | Generative AI & LLM Agents Specialist | MLOps Enthusiast</h3>;
   const four = (
     <>
       <p>
-      I am passionate about creating scalable AI solutions across various domains, utilizing cutting-edge technologies. I am committed to continuous learning and staying updated with the latest advancements in the AI field.
+        I'm an AI Engineer specializing in building autonomous LLM agents, multi-agent workflows, and production-grade inference pipelines. Currently focused on developing scalable AI solutions using LangChain, Langgraph, and implementing end-to-end MLOps pipelines with tools like DVC, MLflow, and Kubernetes.
       </p>
     </>
   );

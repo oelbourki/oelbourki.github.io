@@ -147,11 +147,16 @@ const StyledSidebar = styled.aside`
     }
   }
 
-  .resume-link {
+  .resume-link,
+  .linkedin-link {
     ${({ theme }) => theme.mixins.bigButton};
     padding: 18px 50px;
     margin: 10% auto 0;
     width: max-content;
+  }
+  
+  .linkedin-link {
+    margin-top: 5%;
   }
 `;
 
@@ -266,8 +271,19 @@ const Menu = () => {
               </ol>
             )}
 
+            {/* Resume button commented out
             <a href="/resume.pdf" className="resume-link">
               Resume
+            </a>
+            */}
+            
+            <a 
+              href="https://www.linkedin.com/in/oelbourki/" 
+              className="linkedin-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
             </a>
           </nav>
         </StyledSidebar>
