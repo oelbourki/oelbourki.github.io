@@ -206,9 +206,18 @@ const Nav = ({ isHome }) => {
   );
 
   const ResumeLink = (
-    <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
-    </a>
+  //   <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+  //   Resume
+  // </a>
+    <div className="resume-button">
+      <a 
+        href="https://linkedin.com/in/oelbourki" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="resume-button">
+        LinkedIn
+      </a>
+    </div>
   );
 
   return (

@@ -271,18 +271,11 @@ const Menu = () => {
               </ol>
             )}
 
-            {/* Resume button commented out
-            <a href="/resume.pdf" className="resume-link">
-              Resume
-            </a>
-            */}
-            
             <a 
-              href="https://www.linkedin.com/in/oelbourki/" 
-              className="linkedin-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+              href="https://linkedin.com/in/oelbourki" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="resume-link">
               LinkedIn
             </a>
           </nav>
