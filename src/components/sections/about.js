@@ -203,102 +203,56 @@ const About = () => {
   // Skills grouped by categories
   const aiEngineeringSkillsList = [
     {
-      category: "Agentic & Multi‑Agent Systems",
+      category: "LLMs & Agentic Frameworks",
       skills: [
-        'LangChain',
-        'LlamaIndex',
-        'LangGraph',
-        'AutoGPT',
-        'BabyAGI',
-        'AutoGen',
-        'CrewAI',
-        'Agent Frameworks',
-        'Multi‑agent Collaboration',
-        'Hierarchical Agents',
-        'Distributed AI',
-        'Semantic Kernel',
-        'Groq',
-        'Together AI',
+        'Multi-Agent Systems (LangGraph, CrewAI, Autogen)',
+        'RAG & GraphRAG (LangChain, Neo4j)',
+        'Prompt Engineering (CoT, Few-Shot)',
+        'DSPy',
       ]
     },
     {
-      category: "Generative AI, LLMs & Prompting",
+      category: "Model Optimization & Serving",
       skills: [
-        'Large Language Models (LLM)',
-        'Prompt Engineering',
-        'Retrieval‑Augmented Generation (RAG)',
-        'Fine‑tuning',
-        'OpenAI API & GPT‑4',
-        'Anthropic API & Claude',
-        'Meta Llama 2/3/4',
-        'Gemini',
-        'Mistral AI',
-        'Hugging Face (Transformers, Datasets)',
-        'OpenAI Embeddings',
-        'Sentence Transformers',
+        'Fine-tuning (LoRA/QLoRA)',
+        '4-bit Quantization (AWQ/GPTQ)',
+        'vLLM',
+        'TorchServe',
+        'TensorRT',
+        'ONNX Runtime',
+        'GPU Optimization (CUDA)',
       ]
     },
     {
-      category: "Experimentation, Monitoring & Evaluation",
+      category: "Cloud & MLOps",
       skills: [
-        'MLflow',
-        'Weights & Biases',
-        'Neptune.ai',
-        'Prometheus & Grafana',
-        'Langfuse',
-        'TruLens',
-        'RAGAS',
-        'DeepEval',
-        'A/B Testing',
-        'dvc',
+        'GCP (Vertex AI, Cloud Run)',
+        'AWS (SageMaker, EC2)',
+        'Docker',
+        'Kubernetes',
+        'CI/CD (GitHub Actions)',
+        'Prometheus',
+        'Grafana',
       ]
     },
     {
-      category: "Core Languages & Frameworks",
+      category: "Data & Vector Databases",
       skills: [
-        'Python (Advanced)',
-        'C++ (Intermediate)',
-        'JavaScript & TypeScript',
-        'SQL & NoSQL',
-        'TensorFlow & PyTorch (Advanced)',
-        'Scikit‑learn',
-        'Keras',
-        'FastAPI',
-        'Django & Flask',
-        'Streamlit & Gradio',
-        'React & Next.js',
-      ]
-    },
-    {
-      category: "Vector Databases & Embeddings Stores",
-      skills: [
-        'Pinecone',
-        'Weaviate',
-        'Milvus',
+        'Neo4j (Cypher)',
+        'Redis',
         'Qdrant',
-        'FAISS',
-        'Chroma',
+        'ChromaDB',
+        'Vector Embeddings & Similarity Search',
       ]
     },
     {
-      category: "DevOps / MLOps & Infrastructure",
+      category: "Core Engineering",
       skills: [
-        'AWS SageMaker',
-        'GCP Vertex AI & Cloud Run',
-        'Azure ML & Azure OpenAI Service',
-        'Docker & Kubernetes',
-        'Model Deployment & Serving',
-        'CI/CD & GitHub Actions',
-        'Terraform',
-      ]
-    },
-    {
-      category: "Specialty AI Domains",
-      skills: [
-        'Natural Language Processing (NLP)',
-        'Computer Vision',
-        'Reinforcement Learning',
-        'GANs'
+        'Python',
+        'PyTorch',
+        'Hugging Face',
+        'REST APIs',
+        'Microservices',
       ]
     }
   ];
@@ -311,15 +265,15 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! I'm Otmane, an AI Engineer specializing in Generative AI, LLM Agents, and MLOps. I'm passionate about architecting and deploying scalable AI solutions—from autonomous agents to production-grade inference pipelines.
+              Hello! I'm Otmane, a Generative AI Engineer specializing in LLMs, RAG, Multi-Agent & Cloud AI Systems. I'm passionate about architecting and deploying scalable AI solutions—from autonomous agents to production-grade inference pipelines.
             </p>
 
             <p>
-              My expertise lies in building intelligent systems that can understand, reason, and generate content across various domains. I've worked on projects ranging from healthcare diagnostic assistants to financial analysis tools, focusing on creating AI solutions that deliver real business value.
+              My expertise lies in building intelligent systems that can understand, reason, and generate content across various domains. I've worked on projects ranging from financial document intelligence to multimodal document processing, focusing on creating AI solutions that deliver real business value.
             </p>
 
             <p>
-              Currently, I'm focused on developing multi-agent systems with LangGraph and Autogen, implementing advanced RAG architectures, and scaling large language model fine-tuning with DeepSpeed and quantization techniques. I'm particularly interested in the intersection of AI agents, knowledge retrieval, and human-AI collaboration.
+              Currently, I'm leading the development of specialized AI agent platforms at Impactera, translating C-level needs into scalable architectural roadmaps. I'm particularly focused on multi-agent systems, advanced RAG architectures with GraphRAG, and optimizing LLM inference through quantization and efficient serving.
             </p>
 
             <p>

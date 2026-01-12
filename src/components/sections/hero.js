@@ -120,11 +120,11 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
-  const three = <h3 className="big-heading">AI Engineer - Generative AI, LLMs & Agents Specialist - MLOps & LLMOps</h3>;
+  const three = <h3 className="big-heading">Generative AI Engineer</h3>;
   const four = (
     <>
       <p>
-        I'm an AI Engineer specializing in building autonomous LLM agents, multi-agent workflows, and production-grade inference pipelines. Currently focused on developing scalable AI solutions using LangChain, Langgraph, and implementing end-to-end MLOps pipelines with tools like DVC, MLflow, and Kubernetes.
+        I'm a Generative AI Engineer specializing in LLMs, RAG, Multi-Agent & Cloud AI Systems. I build intelligent systems that understand, reason, and generate content across various domains, focusing on creating AI solutions that deliver real business value.
       </p>
     </>
   );
