@@ -7,6 +7,18 @@
 const path = require('path');
 const _ = require('lodash');
 
+// Define the schema for optional fields in markdown frontmatter
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type MarkdownRemarkFrontmatter {
+      cover: File
+      cta: String
+    }
+  `;
+  createTypes(typeDefs);
+};
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
