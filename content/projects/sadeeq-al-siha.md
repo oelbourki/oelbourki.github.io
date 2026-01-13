@@ -1,7 +1,6 @@
 ---
-date: '3'
+date: '2024-01-01'
 title: 'Sadeeq AL-Siha'
-cover: 'sadeeq.jpg'
 github: 'https://github.com/otmane-elbourki/sadeeq-al-siha'
 external: 'https://sadeeq-al-siha.com'
 tech:
@@ -12,8 +11,6 @@ tech:
   - Chainlit
   - Ollama
   - Qdrant
-
-cta: gfg
 showInProjects: true
 ---
 

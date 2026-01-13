@@ -1,7 +1,6 @@
 ---
-date: '2'
+date: '2024-01-01'
 title: 'End to End Kidney Disease Classification System MLops'
-cover: 'chrome_N1yvLMrUQw.png'
 github: 'https://github.com/oelbourki/End-to-End-Kidney-Disease-Classification-System-MLops'
 external: 'https://github.com/oelbourki/End-to-End-Kidney-Disease-Classification-System-MLops'
 tech:
@@ -10,8 +9,6 @@ tech:
   - DVC
   - AWS
   - Mlops
-
-cta: gfg
 showInProjects: true
 ---
 

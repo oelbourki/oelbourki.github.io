@@ -10,7 +10,6 @@ tech:
   - Redis
   - Vision LLMs
   - Document Processing
-showInProjects: true
 ---
 
 Built multimodal pipeline with Vision LLMs for automated invoice/receipt processing with 96% accuracy. Deployed via FastAPI processing 1K+ documents daily, reducing manual data entry by 75%.
