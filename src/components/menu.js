@@ -281,6 +281,12 @@ const Menu = () => {
                 LinkedIn
               </a>
               <a
+                href="https://github.com/oelbourki"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer">
