@@ -125,7 +125,7 @@ const Hero = () => {
       AI Engineer
     </h3>
   );
-  const four = <h4 className="big-heading">Production LLM Systems & Multi-Agent Architectures | High-Performance Inference | MLOps at Scale</h4>;
+  const four = <h7 className="big-heading">Production LLM Systems & Multi-Agent Architectures | High-Performance Inference | MLOps at Scale</h7>;
   const five = (
     <>
       <p>
