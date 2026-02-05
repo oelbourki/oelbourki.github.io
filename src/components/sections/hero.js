@@ -122,17 +122,18 @@ const Hero = () => {
   const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
   const three = (
     <h3 className="big-heading">
-      AI Engineer | Production LLM Systems & Multi-Agent Architectures | High-Performance Inference | MLOps at Scale
+      AI Engineer
     </h3>
   );
-  const four = (
+  const four = <h4 className="big-heading">Production LLM Systems & Multi-Agent Architectures | High-Performance Inference | MLOps at Scale</h4>;
+  const five = (
     <>
       <p>
         AI Engineer with 2.5+ years of experience specializing in Large Language Models, agentic systems, and MLOps. Proven track record architecting production-grade multi-agent platforms, optimizing LLM inference pipelines, and deploying reliable AI systems in startup and consulting environments.
       </p>
     </>
   );
-  const five = (
+  const six = (
     <a
       className="email-link"
       href="mailto:otmane.elbourki@gmail.com"
@@ -142,7 +143,7 @@ const Hero = () => {
     </a>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, three, four, five, six];
 
   return (
     <StyledHeroSection>
