@@ -313,6 +313,7 @@ const Featured = () => {
         edges {
           node {
             frontmatter {
+              order
               title
               cover {
                 childImageSharp {
@@ -331,7 +332,16 @@ const Featured = () => {
     }
   `);
 
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+  const featuredProjects = data.featured.edges
+    .filter(({ node }) => node)
+    .sort((a, b) => {
+      const orderA = a.node.frontmatter.order ?? 999;
+      const orderB = b.node.frontmatter.order ?? 999;
+      if (orderA !== orderB) return orderA - orderB;
+      const dateA = new Date(a.node.frontmatter.date || 0).getTime();
+      const dateB = new Date(b.node.frontmatter.date || 0).getTime();
+      return dateA - dateB;
+    });
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();

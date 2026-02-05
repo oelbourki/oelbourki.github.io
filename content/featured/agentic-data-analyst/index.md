@@ -1,4 +1,5 @@
 ---
+order: 3
 date: '2025-02-01'
 title: 'Agentic Data Analyst'
 github: 'https://github.com/oelbourki/AgenticDataAnalyst'
