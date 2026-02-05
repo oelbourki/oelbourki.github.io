@@ -133,7 +133,7 @@ const Hero = () => {
   const five = (
     <>
       <p>
-        AI Engineer with 2.5+ years of experience specializing in Large Language Models, agentic systems, and MLOps. Proven track record architecting production-grade multi-agent platforms, optimizing LLM inference pipelines, and deploying reliable AI systems in startup and consulting environments.
+        Experienced AI Engineer specializing in LLMs, agentic systems, and scalable MLOps.
       </p>
     </>
   );
