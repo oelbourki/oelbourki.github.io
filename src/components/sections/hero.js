@@ -126,9 +126,9 @@ const Hero = () => {
     </h3>
   );
   const four = (
-    <p className="sub-heading" style={{ fontSize: '1.05rem', fontWeight: 400, marginTop: '0.25em', color: 'var(--slate)' }}>
+    <h4 className="medium-heading" style={{ fontSize: '1.25rem', fontWeight: 500, marginTop: '0.35em', color: 'var(--slate)' }}>
       Production LLM Systems &amp; Multi-Agent Architectures | High-Performance Inference | MLOps at Scale
-    </p>
+    </h4>
   );
   const five = (
     <>
