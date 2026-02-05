@@ -125,7 +125,11 @@ const Hero = () => {
       AI Engineer
     </h3>
   );
-  const four = <h7 className="big-heading">Production LLM Systems & Multi-Agent Architectures | High-Performance Inference | MLOps at Scale</h7>;
+  const four = (
+    <p className="sub-heading" style={{ fontSize: '1.05rem', fontWeight: 400, marginTop: '0.25em', color: 'var(--slate)' }}>
+      Production LLM Systems &amp; Multi-Agent Architectures | High-Performance Inference | MLOps at Scale
+    </p>
+  );
   const five = (
     <>
       <p>
