@@ -1,5 +1,7 @@
 module.exports = {
   email: 'otmane.elbourki@gmail.com',
+  phone: '+33775735751',
+  location: 'Paris, France',
 
   socialMedia: [
     {
@@ -17,6 +19,10 @@ module.exports = {
     {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/oelbourki',
+    },
+    {
+      name: 'Resume',
+      url: '/resume.pdf',
     },
     // {
     //   name: 'Codepen',

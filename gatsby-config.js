@@ -4,10 +4,10 @@ module.exports = {
   siteMetadata: {
     title: 'Otmane El Bourki',
     description:
-      'Otmane El Bourki is an AI engineer who specializes in building AI apps.',
+      'AI Engineer with 2.5+ years of experience specializing in Production LLM Systems, Multi-Agent Architectures, High-Performance Inference, and MLOps at Scale. Paris, France.',
     siteUrl: 'https://oelbourki.site', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@bchiang7',
+    twitterUsername: '@oelbourki',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

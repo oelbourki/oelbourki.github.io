@@ -147,16 +147,18 @@ const StyledSidebar = styled.aside`
     }
   }
 
-  .resume-link,
-  .linkedin-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 18px 50px;
-    margin: 10% auto 0;
-    width: max-content;
-  }
-  
-  .linkedin-link {
-    margin-top: 5%;
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10%;
+
+    a {
+      ${({ theme }) => theme.mixins.bigButton};
+      padding: 18px 50px;
+      width: max-content;
+    }
   }
 `;
 
@@ -271,13 +273,20 @@ const Menu = () => {
               </ol>
             )}
 
-            <a 
-              href="https://linkedin.com/in/oelbourki" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="resume-link">
-              LinkedIn
-            </a>
+            <div className="sidebar-links">
+              <a
+                href="https://linkedin.com/in/oelbourki"
+                target="_blank"
+                rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                Resume
+              </a>
+            </div>
           </nav>
         </StyledSidebar>
       </div>

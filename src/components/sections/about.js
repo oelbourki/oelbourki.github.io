@@ -200,61 +200,66 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 
-  // Skills grouped by categories
+  // Skills aligned with About narrative
   const aiEngineeringSkillsList = [
     {
-      category: "LLMs & Agentic Frameworks",
+      category: 'Agentic Architectures',
       skills: [
-        'Multi-Agent Systems (LangGraph, CrewAI, Autogen)',
-        'RAG & GraphRAG (LangChain, Neo4j)',
-        'Prompt Engineering (CoT, Few-Shot)',
-        'DSPy',
-      ]
+        'LangGraph',
+        'CrewAI',
+        'AutoGen',
+        'RAG (LangChain)',
+        'Prompt Engineering',
+      ],
     },
     {
-      category: "Model Optimization & Serving",
+      category: 'LLM Optimization & Performance',
       skills: [
-        'Fine-tuning (LoRA/QLoRA)',
-        '4-bit Quantization (AWQ/GPTQ)',
         'vLLM',
-        'TorchServe',
-        'TensorRT',
+        'LoRA / QLoRA',
+        'Quantization (AWQ, GPTQ)',
+        'Triton',
+        'CUDA',
         'ONNX Runtime',
-        'GPU Optimization (CUDA)',
-      ]
+      ],
     },
     {
-      category: "Cloud & MLOps",
+      category: 'AI Infrastructure & MLOps',
       skills: [
-        'GCP (Vertex AI, Cloud Run)',
-        'AWS (SageMaker, EC2)',
+        'FastAPI',
         'Docker',
         'Kubernetes',
-        'CI/CD (GitHub Actions)',
+        'GCP (Vertex AI, Cloud Run)',
+        'AWS (SageMaker, EC2)',
+        'NVIDIA DeepStream',
+        'SLMs on Edge',
+        'CI/CD',
         'Prometheus',
         'Grafana',
-      ]
+      ],
     },
     {
-      category: "Data & Vector Databases",
+      category: 'Data & Vector Systems',
       skills: [
-        'Neo4j (Cypher)',
-        'Redis',
+        'Neo4j',
         'Qdrant',
         'ChromaDB',
-        'Vector Embeddings & Similarity Search',
-      ]
+        'Redis',
+        'Vector Embeddings',
+        'Similarity Search',
+      ],
     },
     {
-      category: "Core Engineering",
+      category: 'Core Engineering',
       skills: [
         'Python',
+        'C/C++',
         'PyTorch',
         'Hugging Face',
         'REST APIs',
         'Microservices',
-      ]
-    }
+      ],
+    },
   ];
 
   return (
@@ -265,15 +270,31 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! I'm Otmane, a Generative AI Engineer specializing in LLMs, RAG, Multi-Agent & Cloud AI Systems. I'm passionate about architecting and deploying scalable AI solutions—from autonomous agents to production-grade inference pipelines.
+              I am an AI Engineer specialized in building production-grade LLM systems that are scalable, cost-efficient, and business-impactful. I bridge the gap between high-level AI orchestration and low-level system performance, with a focus on latency, reliability, and measurable ROI.
             </p>
 
             <p>
-              My expertise lies in building intelligent systems that can understand, reason, and generate content across various domains. I've worked on projects ranging from financial document intelligence to multimodal document processing, focusing on creating AI solutions that deliver real business value.
+              My engineering foundation was built at École 42 Paris (Level 21), where I mastered C/C++ and systems architecture, combined with a Master's in AI. This hybrid background allows me to navigate the full AI stack—from designing autonomous multi-agent workflows in Python to optimizing high-performance inference kernels on the metal.
             </p>
 
             <p>
-              Currently, I'm leading the development of specialized AI agent platforms at Impactera, translating C-level needs into scalable architectural roadmaps. I'm particularly focused on multi-agent systems, advanced RAG architectures with GraphRAG, and optimizing LLM inference through quantization and efficient serving.
+              <strong>Agentic Architectures:</strong> Expertise in designing complex orchestration using LangGraph, CrewAI, and AutoGen for autonomous, real-world workflows.
+            </p>
+
+            <p>
+              <strong>LLM Optimization & Performance:</strong> Proven track record in boosting throughput by 3× using vLLM, LoRA, and quantization. I leverage C/C++ and Triton to push the boundaries of model efficiency and custom kernel performance.
+            </p>
+
+            <p>
+              <strong>AI Infrastructure & MLOps:</strong> Building robust pipelines with FastAPI, Docker, and Kubernetes. Experienced in NVIDIA DeepStream for high-performance video analytics and deploying Small Language Models (SLMs) on edge devices.
+            </p>
+
+            <p>
+              <strong>Technical Leadership:</strong> As the founder of 1337AI, I have mentored 300+ developers through bootcamps and hackathons, fostering a deep culture of open-source AI innovation.
+            </p>
+
+            <p>
+              I am particularly interested in high-performance inference, multimodal AI, and building autonomous agents that solve complex business problems at scale. Open to AI/ML Engineering roles in France, Spain, Germany, or Remote.
             </p>
 
             <p>

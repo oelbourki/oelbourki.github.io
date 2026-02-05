@@ -120,11 +120,15 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
-  const three = <h3 className="big-heading">Generative AI Engineer</h3>;
+  const three = (
+    <h3 className="big-heading">
+      AI Engineer | Production LLM Systems & Multi-Agent Architectures | High-Performance Inference | MLOps at Scale
+    </h3>
+  );
   const four = (
     <>
       <p>
-        I'm a Generative AI Engineer specializing in LLMs, RAG, Multi-Agent & Cloud AI Systems. I build intelligent systems that understand, reason, and generate content across various domains, focusing on creating AI solutions that deliver real business value.
+        AI Engineer with 2.5+ years of experience specializing in Large Language Models, agentic systems, and MLOps. Proven track record architecting production-grade multi-agent platforms, optimizing LLM inference pipelines, and deploying reliable AI systems in startup and consulting environments.
       </p>
     </>
   );
