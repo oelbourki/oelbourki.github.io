@@ -3,11 +3,11 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-import { navLinks } from '@config';
+import { navLinks, socialMedia } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex } from '@components/icons';
+import { IconLogo, IconHex, IconGitHub, IconResume, IconLinkedin } from '@components/icons';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -143,10 +143,18 @@ const StyledLinks = styled.div`
     }
   }
 
-  .resume-button {
+  .nav-button {
     ${({ theme }) => theme.mixins.smallButton};
-    margin-left: 15px;
+    margin-left: 10px;
     font-size: var(--fz-xs);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -205,19 +213,49 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
-  const ResumeLink = (
-  //   <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-  //   Resume
-  // </a>
-    // <div className="resume-button">
-      <a 
-        href="https://linkedin.com/in/oelbourki" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="resume-button">
-        LinkedIn
-      </a>
-    // </div>
+  const githubLink = socialMedia.find(s => s.name === 'GitHub');
+  const resumeLink = socialMedia.find(s => s.name === 'Resume');
+  const linkedinLink = socialMedia.find(s => s.name === 'Linkedin');
+
+  const HeaderButtons = (
+    <>
+      {githubLink && (
+        <a
+          href={githubLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-button"
+          aria-label="GitHub"
+        >
+          <IconGitHub />
+          GitHub
+        </a>
+      )}
+      {resumeLink && (
+        <a
+          href={resumeLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-button"
+          aria-label="Resume"
+        >
+          <IconResume />
+          Resume
+        </a>
+      )}
+      {linkedinLink && (
+        <a
+          href={linkedinLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-button"
+          aria-label="LinkedIn"
+        >
+          <IconLinkedin />
+          LinkedIn
+        </a>
+      )}
+    </>
   );
 
   return (
@@ -236,7 +274,7 @@ const Nav = ({ isHome }) => {
                     </li>
                   ))}
               </ol>
-              <div>{ResumeLink}</div>
+              <div>{HeaderButtons}</div>
             </StyledLinks>
 
             <Menu />
@@ -270,7 +308,7 @@ const Nav = ({ isHome }) => {
                 {isMounted && (
                   <CSSTransition classNames={fadeDownClass} timeout={timeout}>
                     <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
-                      {ResumeLink}
+                      {HeaderButtons}
                     </div>
                   </CSSTransition>
                 )}
