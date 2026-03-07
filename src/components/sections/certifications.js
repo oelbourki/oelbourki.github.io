@@ -89,9 +89,7 @@ const Certifications = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
+    if (prefersReducedMotion || !revealContainer.current) return;
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 

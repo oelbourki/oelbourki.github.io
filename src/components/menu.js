@@ -175,6 +175,7 @@ const Menu = () => {
   let lastFocusableEl;
 
   const setFocusables = () => {
+    if (!buttonRef.current || !navRef.current) return;
     menuFocusables = [buttonRef.current, ...Array.from(navRef.current.querySelectorAll('a'))];
     firstFocusableEl = menuFocusables[0];
     lastFocusableEl = menuFocusables[menuFocusables.length - 1];
