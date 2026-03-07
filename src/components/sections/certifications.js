@@ -105,7 +105,7 @@ const Certifications = () => {
             <span className="cert-title">{cert.title}</span>
             <div className="cert-issuer">
               {cert.url ? (
-                <a href={cert.url} target="_blank" rel="noreferrer">
+                <a href={cert.url} target="_blank" rel="noopener noreferrer">
                   {cert.issuer}
                 </a>
               ) : (
