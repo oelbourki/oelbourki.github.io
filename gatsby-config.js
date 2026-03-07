@@ -4,8 +4,8 @@ module.exports = {
   siteMetadata: {
     title: 'Otmane El Bourki',
     description:
-      'AI Engineer with 2.5+ years of experience specializing in Production LLM Systems, Multi-Agent Architectures, High-Performance Inference, and MLOps at Scale. Paris, France.',
-    siteUrl: 'https://oelbourki.site', // No trailing slash allowed!
+      'AI Engineer specializing in Large Language Models, Multi-Agent Systems, and MLOps. Experienced in designing and deploying AI platforms across finance, real estate, and research. Issy-les-Moulineaux, France.',
+    siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',
   },

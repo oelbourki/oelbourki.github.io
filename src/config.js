@@ -1,24 +1,20 @@
 module.exports = {
   email: 'otmane.elbourki@gmail.com',
-  phone: '+33775735751',
-  location: 'Paris, France',
+  phone: '+33 7 75 73 57 51',
+  location: 'Issy-les-Moulineaux, France',
 
   socialMedia: [
     {
       name: 'GitHub',
       url: 'https://github.com/oelbourki',
     },
-    // {
-    //   name: 'Instagram',
-    //   url: 'https://www.instagram.com/oelbourki',
-    // },
-    // {
-    //   name: 'Twitter',
-    //   url: 'https://twitter.com/oelbourki',
-    // },
     {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/oelbourki',
+    },
+    {
+      name: 'Website',
+      url: 'https://oelbourki.com',
     },
     {
       name: 'Resume',
@@ -38,6 +34,10 @@ module.exports = {
     {
       name: 'Experience',
       url: '/#jobs',
+    },
+    {
+      name: 'Certifications',
+      url: '/#certifications',
     },
     {
       name: 'Work',

@@ -200,64 +200,82 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 
-  // Skills aligned with About narrative
+  // Skills aligned with resume + LinkedIn
   const aiEngineeringSkillsList = [
     {
-      category: 'Agentic Architectures',
+      category: 'Programming & Core Engineering',
       skills: [
-        'LangGraph',
-        'CrewAI',
-        'AutoGen',
-        'RAG (LangChain)',
+        'Python',
+        'C, C++',
+        'TypeScript',
+        'Django',
+        'REST APIs',
+        'Microservices',
+        'Distributed systems',
+        'Linux/Shell',
+        'PDF/OCR processing',
+      ],
+    },
+    {
+      category: 'Deep Learning & Models',
+      skills: [
+        'PyTorch',
+        'Transformers',
+        'LoRA/QLoRA fine-tuning',
+        '4-bit quantization (AWQ/GPTQ)',
+        'vLLM',
+        'ONNX Runtime',
+        'CUDA',
+        'Hugging Face',
+        'Multimodal Document Understanding',
+      ],
+    },
+    {
+      category: 'LLM Orchestration & Retrieval',
+      skills: [
+        'RAG, Hybrid/GraphRAG',
+        'Vector search (Qdrant, ChromaDB, Weaviate)',
+        'Reranking',
+        'LangChain, LangGraph, CrewAI',
+        'Multi-Agent Systems',
+        'Output validation (Pydantic)',
         'Prompt Engineering',
       ],
     },
     {
-      category: 'LLM Optimization & Performance',
+      category: 'Evaluation & Observability',
       skills: [
-        'vLLM',
-        'LoRA / QLoRA',
-        'Quantization (AWQ, GPTQ)',
-        'Triton',
-        'CUDA',
-        'ONNX Runtime',
+        'LangSmith',
+        'Langfuse',
+        'Ragas / DeepEval',
+        'Golden dataset testing',
+        'LLM metrics (faithfulness, relevance)',
       ],
     },
     {
-      category: 'AI Infrastructure & MLOps',
+      category: 'MLOps & Production Engineering',
       skills: [
         'FastAPI',
+        'Ray Serve',
         'Docker',
-        'Kubernetes',
+        'Kubernetes (K3s)',
+        'CI/CD (GitHub Actions, GitOps)',
+        'GPU inference optimization',
         'GCP (Vertex AI, Cloud Run)',
-        'AWS (SageMaker, EC2)',
-        'NVIDIA DeepStream',
-        'SLMs on Edge',
-        'CI/CD',
+        'MLflow, Prefect/Airflow',
+        'AWS, GCP, Azure',
         'Prometheus',
-        'Grafana',
       ],
     },
     {
-      category: 'Data & Vector Systems',
+      category: 'Data Systems',
       skills: [
-        'Neo4j',
-        'Qdrant',
-        'ChromaDB',
+        'SQL',
         'Redis',
-        'Vector Embeddings',
-        'Similarity Search',
-      ],
-    },
-    {
-      category: 'Core Engineering',
-      skills: [
-        'Python',
-        'C/C++',
-        'PyTorch',
-        'Hugging Face',
-        'REST APIs',
-        'Microservices',
+        'Neo4j',
+        'Vector similarity search',
+        'Pandas',
+        'NumPy',
       ],
     },
   ];
@@ -270,31 +288,37 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I am an AI Engineer specialized in building production-grade LLM systems that are scalable, cost-efficient, and business-impactful. I bridge the gap between high-level AI orchestration and low-level system performance, with a focus on latency, reliability, and measurable ROI.
+              I design and deploy production-grade LLM systems and autonomous multi-agent architectures that are scalable, cost-efficient, and business-impactful. My engineering foundation was built at École 42 Paris (Level 21), mastering C/C++ and systems architecture, combined with a Master's in AI—a hybrid background that lets me bridge high-level AI orchestration with low-level system performance, from Python workflows to hardware-optimized inference kernels.
             </p>
 
             <p>
-              My engineering foundation was built at École 42 Paris (Level 21), where I mastered C/C++ and systems architecture, combined with a Master's in AI. This hybrid background allows me to navigate the full AI stack—from designing autonomous multi-agent workflows in Python to optimizing high-performance inference kernels on the metal.
+              <strong>AgentOps &amp; Multi-Agent Systems:</strong> RAG pipelines, LangGraph, CrewAI, AutoGen; orchestrating autonomous agents with traceable reasoning, fine-grained latency monitoring, and real-world workflow execution.
             </p>
 
             <p>
-              <strong>Agentic Architectures:</strong> Expertise in designing complex orchestration using LangGraph, CrewAI, and AutoGen for autonomous, real-world workflows.
+              <strong>Distributed Compute &amp; High-Performance Inference:</strong> Kubernetes + Ray + PyTorch + vLLM; disaggregated serving, tensor vs. data parallelism, quantization (AWQ, GPTQ)—delivering measurable throughput gains in production.
             </p>
 
             <p>
-              <strong>LLM Optimization & Performance:</strong> Proven track record in boosting throughput by 3× using vLLM, LoRA, and quantization. I leverage C/C++ and Triton to push the boundaries of model efficiency and custom kernel performance.
+              <strong>MLOps &amp; Cloud Infrastructure:</strong> Docker, FastAPI, CI/CD, cloud autoscaling, GCP (Vertex AI, Cloud Run), MLflow, Prefect/Airflow, and SLM deployment on edge devices.
             </p>
 
             <p>
-              <strong>AI Infrastructure & MLOps:</strong> Building robust pipelines with FastAPI, Docker, and Kubernetes. Experienced in NVIDIA DeepStream for high-performance video analytics and deploying Small Language Models (SLMs) on edge devices.
+              <strong>Governance &amp; Responsible AI:</strong> Automated guardrails, GDPR-aware pipelines, monitoring hallucinations and bias, and policy-as-code for safe, compliant deployments.
             </p>
 
             <p>
-              <strong>Technical Leadership:</strong> As the founder of 1337AI, I have mentored 300+ developers through bootcamps and hackathons, fostering a deep culture of open-source AI innovation.
+              <strong>Technical Leadership:</strong> Founder of 1337 AI—mentored 300+ developers, delivered enterprise AI solutions with measurable ROI, and fostered open-source innovation.
             </p>
 
             <p>
-              I am particularly interested in high-performance inference, multimodal AI, and building autonomous agents that solve complex business problems at scale. Open to AI/ML Engineering roles in France, Spain, Germany, or Remote.
+              I'm passionate about building next-generation AI systems at the intersection of AI, MLOps, and distributed cloud infrastructure—autonomous agents, multimodal AI, and production-grade workflows that solve complex business problems at scale. <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or Remote.</strong>
+            </p>
+
+            <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--slate)' }}>
+              <strong style={{ color: 'var(--light-slate)' }}>Education:</strong> École 42 Paris — RNCP 7 (Data Architecture, ML/DL, Distributed Systems) · Ibn Tofaïl University — Master's in AI
+              <br />
+              <strong style={{ color: 'var(--light-slate)' }}>Languages:</strong> French (C1) · English (C2) · Arabic (Native)
             </p>
 
             <p>
