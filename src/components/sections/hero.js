@@ -127,13 +127,13 @@ const Hero = () => {
   );
   const four = (
     <h4 className="medium-heading" style={{ fontSize: '1.25rem', fontWeight: 500, marginTop: '0.35em', color: 'var(--slate)' }}>
-      GenAI &amp; LLM Systems · Multi-Agent Architectures · Distributed Inference · MLOps &amp; Cloud
+      LLMs · Multi-Agent Systems · MLOps
     </h4>
   );
   const five = (
     <>
       <p>
-        I design and deploy production-grade LLM systems and autonomous multi-agent architectures—scalable, cost-efficient, and business-impactful. Experienced across finance, real estate, and research; expertise in Python, PyTorch, RAG pipelines, GPU inference optimization, and cloud-native AI infrastructure.
+        AI Engineer with 4+ years of software engineering experience, including 2+ years specialized in production LLM systems, multi-agent platforms, and GPU inference infrastructure on GCP. Delivered measurable impact including 3× inference throughput and 47% infrastructure cost reduction. Specialized at the intersection of inference optimization and multi-agent orchestration.
       </p>
     </>
   );

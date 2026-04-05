@@ -46,41 +46,40 @@ const certifications = [
     date: 'Jan 2026',
   },
   {
-    title: 'Quality and Safety for LLM Applications',
-    issuer: 'WhyLabs',
-    url: 'https://www.whylabs.ai/',
+    title: 'GPU Programming',
+    issuer: 'Johns Hopkins University',
+    url: 'https://www.coursera.org/',
+    date: 'Jan 2026',
+  },
+  {
+    title: 'LangGraph',
+    issuer: 'LangChain',
+    url: 'https://www.langchain.com/',
+    date: 'May 2025',
   },
   {
     title: 'Red Teaming LLM Applications',
-    issuer: 'Giskard',
-    url: 'https://giskard.ai/',
+    issuer: 'DeepLearning.AI',
+    url: 'https://www.deeplearning.ai/',
+    date: 'Jan 2025',
+  },
+  {
+    title: 'Building & Evaluating Advanced RAG',
+    issuer: 'DeepLearning.AI',
+    url: 'https://www.deeplearning.ai/',
+    date: 'Dec 2024',
+  },
+  {
+    title: 'Finetuning LLMs with Lamini',
+    issuer: 'DeepLearning.AI',
+    url: 'https://www.deeplearning.ai/',
+    date: 'Dec 2024',
   },
   {
     title: 'GenAI Winter School',
     issuer: 'École Polytechnique',
     url: 'https://www.polytechnique.edu/',
     date: 'Mar 2024',
-  },
-  {
-    title: 'Mathematics for Machine Learning',
-    issuer: 'Coursera',
-    url: 'https://www.coursera.org/',
-  },
-  {
-    title: 'Finetuning Large Language Models',
-    issuer: 'Lamini',
-    url: 'https://www.lamini.ai/',
-  },
-  {
-    title: 'Deep Learning Specialization',
-    issuer: 'Coursera',
-    url: 'https://www.coursera.org/specializations/deep-learning',
-  },
-  {
-    title: 'Practical Data Science',
-    issuer: 'AWS',
-    url: 'https://aws.amazon.com/',
-    date: 'Apr 2022',
   },
 ];
 

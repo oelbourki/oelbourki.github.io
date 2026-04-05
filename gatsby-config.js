@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Otmane El Bourki',
     description:
-      'AI Engineer specializing in Large Language Models, Multi-Agent Systems, and MLOps. Experienced in designing and deploying AI platforms across finance, real estate, and research. Issy-les-Moulineaux, France.',
+      'AI Engineer with 4+ years in software engineering and 2+ years in production LLM systems, multi-agent platforms, and GPU inference on GCP. Massy, Paris Area, France. Available for hybrid or remote roles.',
     siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',

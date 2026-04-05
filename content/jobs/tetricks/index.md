@@ -2,13 +2,12 @@
 date: '2023-06-01'
 title: 'AI Engineer (Contract)'
 company: 'Tetricks'
-location: 'Palaiseau, France'
+location: 'Sidi Slimane, Morocco (Remote)'
 range: 'Jun 2023 – Jun 2024'
 url: ''
 ---
 
-- Architected and deployed a production-grade multimodal RAG platform on GCP (Vertex AI, Cloud Run), fine-tuning LLaMA for domain-specific hotel guest intent detection and structured response generation; automated retraining pipelines reduced infrastructure costs by 47%.
-- Engineered a high-performance LLM serving stack with AWQ/GPTQ quantization and vLLM-based dynamic batching, achieving 3× inference throughput and lower latency under load through autoscaling and GPU optimization.
-- Designed an enterprise-grade document ingestion pipeline for large, multi-format files with schema-enforced structured extraction (Pydantic) and automated embedding workflows for hybrid (vector + lexical) retrieval with reranking.
-- Implemented end-to-end LLM observability, evaluation, and security: RAG quality metrics (faithfulness, relevance), P50/P95 latency monitoring, prompt-injection mitigation, and safe rollouts via traffic splitting and A/B testing.
-- Spearheaded Vision LLM integration for automated room description; technical lead for PoC that secured Bpifrance funding (Tetricks — supported by École Polytechnique, HEC Digital Entrepreneurship winner).
+- Architected and deployed a production-grade multimodal RAG platform on GCP, fine-tuning LLaMA for domain-specific hotel guest intent detection and structured response generation; built scalable inference endpoints on Vertex AI and containerized APIs on Cloud Run.
+- Engineered a high-performance LLM serving stack using AWQ/GPTQ quantization and vLLM-based dynamic batching, increasing inference throughput 3×, reducing latency under load, and cutting infrastructure costs by 47% through autoscaling and GPU optimization.
+- Designed an enterprise-grade document ingestion pipeline supporting large, multi-format files, implementing schema-enforced structured extraction with Pydantic and automated embedding workflows to power hybrid retrieval (vector + lexical) with reranking.
+- Implemented end-to-end LLM observability, evaluation, and security hardening — including RAG quality metrics (faithfulness, relevance), P50/P95 latency monitoring, prompt-injection mitigation, and safe model rollouts via traffic splitting and A/B testing.

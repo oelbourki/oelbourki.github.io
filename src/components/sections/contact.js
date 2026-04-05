@@ -60,7 +60,7 @@ const Contact = () => {
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        I’m open to new opportunities and always happy to connect. Whether you have a role in mind, a project idea, or just want to say hi—drop me a line and I’ll get back to you.
+        Available immediately for hybrid or remote roles, with national and international mobility. I’m always happy to connect—whether you have a role in mind, a project idea, or just want to say hi.
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>

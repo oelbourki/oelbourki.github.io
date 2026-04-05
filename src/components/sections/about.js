@@ -200,70 +200,66 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, [prefersReducedMotion]);
 
-  // Skills aligned with resume + LinkedIn
   const aiEngineeringSkillsList = [
     {
-      category: 'Programming & Core Engineering',
+      category: 'Programming & Software',
       skills: [
         'Python',
-        'C, C++',
-        'TypeScript',
-        'Django',
+        'C/C++',
+        'FastAPI',
         'REST APIs',
         'Microservices',
-        'Distributed systems',
         'Linux/Shell',
-        'PDF/OCR processing',
       ],
     },
     {
-      category: 'Deep Learning & Models',
+      category: 'Deep Learning & LLMs',
       skills: [
         'PyTorch',
-        'Transformers',
-        'LoRA/QLoRA fine-tuning',
-        '4-bit quantization (AWQ/GPTQ)',
+        'TensorFlow',
+        'Hugging Face',
+        'Fine-tuning (LoRA/QLoRA)',
+        '4-bit Quantization (AWQ/GPTQ)',
         'vLLM',
         'ONNX Runtime',
-        'CUDA',
-        'Hugging Face',
         'Multimodal Document Understanding',
       ],
     },
     {
       category: 'LLM Orchestration & Retrieval',
       skills: [
-        'RAG, Hybrid/GraphRAG',
-        'Vector search (Qdrant, ChromaDB, Weaviate)',
-        'Reranking',
-        'LangChain, LangGraph, CrewAI',
+        'LangChain',
+        'LangGraph',
         'Multi-Agent Systems',
-        'Output validation (Pydantic)',
+        'RAG / GraphRAG / Hybrid Search',
+        'Vector Databases (Qdrant, ChromaDB)',
+        'Reranking',
         'Prompt Engineering',
+        'Pydantic',
+      ],
+    },
+    {
+      category: 'MLOps & LLMOps',
+      skills: [
+        'Docker',
+        'Kubernetes (K3s)',
+        'Ray Serve',
+        'MLflow',
+        'CI/CD (GitHub Actions, GitOps)',
+        'GPU Inference Optimization',
+        'Cloud Deployment & Scalability (AWS, GCP)',
       ],
     },
     {
       category: 'Evaluation & Observability',
       skills: [
+        'Model Testing & Validation',
+        'Ragas / DeepEval',
+        'Golden Dataset Testing',
+        'LLM Metrics (Faithfulness, Relevance)',
+        'Responsible AI & Bias Mitigation',
         'LangSmith',
         'Langfuse',
-        'Ragas / DeepEval',
-        'Golden dataset testing',
-        'LLM metrics (faithfulness, relevance)',
-      ],
-    },
-    {
-      category: 'MLOps & Production Engineering',
-      skills: [
-        'FastAPI',
-        'Ray Serve',
-        'Docker',
-        'Kubernetes (K3s)',
-        'CI/CD (GitHub Actions, GitOps)',
-        'GPU inference optimization',
-        'GCP (Vertex AI, Cloud Run)',
-        'MLflow, Prefect/Airflow',
-        'AWS, GCP, Azure',
         'Prometheus',
       ],
     },
@@ -273,9 +269,9 @@ const About = () => {
         'SQL',
         'Redis',
         'Neo4j',
-        'Vector similarity search',
+        'Vector Similarity Search',
         'Pandas',
-        'NumPy',
+        'Structured Extraction Pipelines (Docling, PDF/OCR)',
       ],
     },
   ];
@@ -288,37 +284,23 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I design and deploy production-grade LLM systems and autonomous multi-agent architectures that are scalable, cost-efficient, and business-impactful. My engineering foundation was built at École 42 Paris (Level 21), mastering C/C++ and systems architecture, combined with a Master's in AI—a hybrid background that lets me bridge high-level AI orchestration with low-level system performance, from Python workflows to hardware-optimized inference kernels.
+              AI Engineer with 4+ years of software engineering experience, including 2+ years specialized in production LLM systems, multi-agent platforms, and GPU inference infrastructure on GCP. I deliver measurable impact—examples include 3× inference throughput and 47% infrastructure cost reduction—and I specialize at the intersection of inference optimization and multi-agent orchestration across finance, real estate, and research.
             </p>
 
             <p>
-              <strong>AgentOps &amp; Multi-Agent Systems:</strong> RAG pipelines, LangGraph, CrewAI, AutoGen; orchestrating autonomous agents with traceable reasoning, fine-grained latency monitoring, and real-world workflow execution.
+              Recent work spans production LangGraph/FastAPI platforms with adaptive RAG and multi-LLM routing, GraphRAG on Neo4j for financial intelligence, secure sandboxed code execution (codibox), and full MLOps: Docker, Kubernetes, CI/CD, and observability with LangSmith, Langfuse, and Prometheus.
             </p>
 
             <p>
-              <strong>Distributed Compute &amp; High-Performance Inference:</strong> Kubernetes + Ray + PyTorch + vLLM; disaggregated serving, tensor vs. data parallelism, quantization (AWQ, GPTQ)—delivering measurable throughput gains in production.
+              <strong>Leadership:</strong> Founder of 1337 AI, where I grew a 300+ member AI engineering community through bootcamps and workshops. <strong>Education:</strong> École 42 Paris — IT Architecture Expert (Data Architecture), RNCP 7, Level 21; ranked 3rd globally in pedagogical innovation (WURI 2025). Ibn Tofaïl University — Specialized Master&apos;s in AI. Mohammed VI Polytechnic University (1337) — Digital Technology Architect.
             </p>
 
             <p>
-              <strong>MLOps &amp; Cloud Infrastructure:</strong> Docker, FastAPI, CI/CD, cloud autoscaling, GCP (Vertex AI, Cloud Run), MLflow, Prefect/Airflow, and SLM deployment on edge devices.
-            </p>
-
-            <p>
-              <strong>Governance &amp; Responsible AI:</strong> Automated guardrails, GDPR-aware pipelines, monitoring hallucinations and bias, and policy-as-code for safe, compliant deployments.
-            </p>
-
-            <p>
-              <strong>Technical Leadership:</strong> Founder of 1337 AI—mentored 300+ developers, delivered enterprise AI solutions with measurable ROI, and fostered open-source innovation.
-            </p>
-
-            <p>
-              I'm passionate about building next-generation AI systems at the intersection of AI, MLOps, and distributed cloud infrastructure—autonomous agents, multimodal AI, and production-grade workflows that solve complex business problems at scale. <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or Remote.</strong>
+              <strong>Available immediately</strong> for hybrid or remote roles; open to national and international mobility. <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or remote.</strong>
             </p>
 
             <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--slate)' }}>
-              <strong style={{ color: 'var(--light-slate)' }}>Education:</strong> École 42 Paris — RNCP 7 (Data Architecture, ML/DL, Distributed Systems) · Ibn Tofaïl University — Master's in AI
-              <br />
-              <strong style={{ color: 'var(--light-slate)' }}>Languages:</strong> French (C1) · English (C2) · Arabic (Native)
+              <strong style={{ color: 'var(--light-slate)' }}>Languages:</strong> French (C1) · English (C2) · Arabic (native)
             </p>
 
             <p>

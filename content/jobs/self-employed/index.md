@@ -1,13 +1,13 @@
 ---
 date: '2025-09-01'
-title: 'AI Engineer'
+title: 'AI Engineer (Freelance & Open Source)'
 company: 'Independent'
 location: 'Paris, France'
 range: 'Sep 2025 – Present'
 url: ''
 ---
 
-- Designing and deploying production-grade LLM and multi-agent AI systems for real-world applications—scalability, low-latency inference, secure execution, and measurable business impact.
-- Developed and maintained a multi-agent real estate platform using FastAPI, LangGraph, and DeepAgents: automated property search, financial analysis, location intelligence, and market trend reporting with integrated LLM-powered subagents.
-- Built an AI platform that converts natural language queries into secure, executable Python code using LangGraph, Google Gemini, and codibox, deployable on Streamlit Cloud.
-- Open-sourced codibox (PyPI), a Docker-based secure execution engine with sandboxing and automated artifact recovery for safe AI-generated code execution.
+- Delivered a multimodal document processing system leveraging OCR, vision-language models, and hybrid pipelines, automating invoice and receipt extraction, reducing manual data entry, and enabling high-throughput, auditable workflows for finance and operations teams.
+- Architected a real estate platform (FastAPI, LangGraph, DeepAgents) orchestrating 6 specialized LLM subagents across property search, financial analysis, location intelligence, and market reporting, eliminating manual coordination across all research domains.
+- Built an open-source sandboxed runtime (codibox) for LLM-generated Python, implementing Docker-level isolation (namespace separation, read-only filesystem, resource caps) to eliminate unsafe execution risks and reliably capture output artifacts in agentic pipelines.
+- Implemented an enterprise GraphRAG platform for financial documents, integrating Neo4j knowledge graphs, hybrid vector/full-text retrieval, and LLM-based reasoning, providing clients with accurate, explainable answers for due diligence, compliance, and risk analysis.
