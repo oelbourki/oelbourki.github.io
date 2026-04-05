@@ -215,6 +215,7 @@ const Nav = ({ isHome }) => {
 
   const githubLink = socialMedia.find(s => s.name === 'GitHub');
   const resumeLink = socialMedia.find(s => s.name === 'Resume');
+  const resumeFrLink = socialMedia.find(s => s.name === 'ResumeFr');
   const linkedinLink = socialMedia.find(s => s.name === 'Linkedin');
 
   const HeaderButtons = (
@@ -237,10 +238,22 @@ const Nav = ({ isHome }) => {
           target="_blank"
           rel="noopener noreferrer"
           className="nav-button"
-          aria-label="Resume"
+          aria-label={resumeLink.ariaLabel || 'Resume'}
         >
           <IconResume />
           Resume
+        </a>
+      )}
+      {resumeFrLink && (
+        <a
+          href={resumeFrLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-button"
+          aria-label={resumeFrLink.ariaLabel || 'French resume'}
+        >
+          <IconResume />
+          FR
         </a>
       )}
       {linkedinLink && (

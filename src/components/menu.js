@@ -291,7 +291,13 @@ const Menu = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer">
-                Resume
+                Resume (EN)
+              </a>
+              <a
+                href="/resume_fr.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                Resume (FR)
               </a>
             </div>
           </nav>

@@ -4,6 +4,22 @@ import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
+const StyledCtaRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 50px;
+
+  .cta-primary {
+    ${({ theme }) => theme.mixins.bigButton};
+  }
+
+  .cta-resume {
+    ${({ theme }) => theme.mixins.smallButton};
+  }
+`;
+
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
@@ -38,11 +54,6 @@ const StyledHeroSection = styled.section`
   p {
     margin: 20px 0 0;
     max-width: 540px;
-  }
-
-  .email-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
   }
 `;
 
@@ -138,13 +149,17 @@ const Hero = () => {
     </>
   );
   const six = (
-    <a
-      className="email-link"
-      href="mailto:otmane.elbourki@gmail.com"
-      target="_blank"
-      rel="noreferrer">
-      Get In Touch
-    </a>
+    <StyledCtaRow>
+      <a className="cta-primary" href="mailto:otmane.elbourki@gmail.com" target="_blank" rel="noreferrer">
+        Get In Touch
+      </a>
+      <a className="cta-resume" href="/resume.pdf" target="_blank" rel="noreferrer">
+        Resume (EN)
+      </a>
+      <a className="cta-resume" href="/resume_fr.pdf" target="_blank" rel="noreferrer">
+        Resume (FR)
+      </a>
+    </StyledCtaRow>
   );
 
   const items = [one, two, three, four, five, six];

@@ -19,6 +19,12 @@ module.exports = {
     {
       name: 'Resume',
       url: '/resume.pdf',
+      ariaLabel: 'Resume in English (PDF)',
+    },
+    {
+      name: 'ResumeFr',
+      url: '/resume_fr.pdf',
+      ariaLabel: 'Resume in French (PDF)',
     },
     // {
     //   name: 'Codepen',

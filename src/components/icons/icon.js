@@ -39,6 +39,7 @@ const Icon = ({ name }) => {
     case 'Linkedin':
       return <IconLinkedin />;
     case 'Resume':
+    case 'ResumeFr':
       return <IconResume />;
     case 'Loader':
       return <IconLoader />;
