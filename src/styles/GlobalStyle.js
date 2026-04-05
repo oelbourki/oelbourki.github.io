@@ -21,8 +21,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: var(--lightest-navy);
-    color: var(--lightest-slate);
+    background-color: rgba(94, 234, 212, 0.22);
+    color: var(--white);
   }
 
   /* Provide basic, default focus styles.*/
@@ -75,10 +75,15 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background-color: var(--navy);
+    background-image: radial-gradient(
+      ellipse 120% 60% at 50% -10%,
+      rgba(94, 234, 212, 0.045) 0%,
+      transparent 55%
+    );
     color: var(--slate);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
-    line-height: 1.3;
+    line-height: 1.58;
 
     @media (max-width: 480px) {
       font-size: var(--fz-lg);
@@ -166,7 +171,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 0 10px 0;
     font-weight: 600;
     color: var(--lightest-slate);
-    line-height: 1.1;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 
   .big-heading {
@@ -213,7 +219,8 @@ const GlobalStyle = createGlobalStyle`
       width: 300px;
       height: 1px;
       margin-left: 20px;
-      background-color: var(--lightest-navy);
+      background: linear-gradient(90deg, var(--green-muted) 0%, var(--lightest-navy) 55%, transparent 100%);
+      opacity: 0.95;
 
       @media (max-width: 1080px) {
         width: 200px;

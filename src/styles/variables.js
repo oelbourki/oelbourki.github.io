@@ -1,21 +1,31 @@
 import { css } from 'styled-components';
 
+/**
+ * Design tokens — “refined navy” refresh (layered surfaces, softer text ramp, same accent family).
+ * Legacy names (--navy, --green, etc.) preserved so components keep working.
+ */
 const variables = css`
   :root {
-    --dark-navy: #020c1b;
-    --navy: #0a192f;
-    --light-navy: #112240;
-    --lightest-navy: #233554;
-    --navy-shadow: rgba(2, 12, 27, 0.7);
-    --dark-slate: #495670;
-    --slate: #8892b0;
-    --light-slate: #a8b2d1;
-    --lightest-slate: #ccd6f6;
-    --white: #e6f1ff;
-    --green: #64ffda;
-    --green-tint: rgba(100, 255, 218, 0.1);
-    --pink: #f57dff;
-    --blue: #57cbff;
+    /* Depth: darkest → page → raised → borders */
+    --dark-navy: #020617;
+    --navy: #0f172a;
+    --light-navy: #1e293b;
+    --lightest-navy: #334155;
+    --navy-shadow: rgba(15, 23, 42, 0.72);
+
+    /* Text ramp (avoid pure white on dark) */
+    --dark-slate: #64748b;
+    --slate: #94a3b8;
+    --light-slate: #cbd5e1;
+    --lightest-slate: #e2e8f0;
+    --white: #f8fafc;
+
+    /* Accents — primary mint + secondary sky (use sky sparingly) */
+    --green: #5eead4;
+    --green-tint: rgba(94, 234, 212, 0.1);
+    --green-muted: rgba(94, 234, 212, 0.35);
+    --pink: #e879f9;
+    --blue: #38bdf8;
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
@@ -30,7 +40,7 @@ const variables = css`
     --fz-xxl: 22px;
     --fz-heading: 32px;
 
-    --border-radius: 4px;
+    --border-radius: 6px;
     --nav-height: 100px;
     --nav-scroll-height: 70px;
 
