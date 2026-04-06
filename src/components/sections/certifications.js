@@ -4,83 +4,78 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
-const StyledCertificationsSection = styled.section`
-  max-width: 700px;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 
-  ul {
-    ${({ theme }) => theme.mixins.fancyList};
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .cert-item {
-    margin-bottom: 15px;
-
-    .cert-title {
-      color: var(--lightest-slate);
-      font-weight: 500;
-    }
-
-    .cert-issuer {
-      color: var(--slate);
-      font-size: var(--fz-md);
-      margin-top: 2px;
-    }
-
-    .cert-date {
-      color: var(--dark-slate);
-      font-family: var(--font-mono);
-      font-size: var(--fz-xs);
-      margin-top: 2px;
-    }
-
-    a {
-      ${({ theme }) => theme.mixins.inlineLink};
-    }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
   }
 `;
 
+const CertCard = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--bg-border);
+  border-radius: 10px;
+  padding: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s;
+  color: inherit;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+`;
+
+const CertLogo = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--bg-primary);
+  border: 0.5px solid var(--bg-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+`;
+
+const CertName = styled.div`
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.35;
+`;
+
+const CertSub = styled.div`
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+`;
+
+const CertMeta = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
 const certifications = [
-  {
-    title: 'GCP AI Infrastructure',
-    issuer: 'Google Cloud',
-    url: 'https://cloud.google.com/',
-    date: 'Jan 2026',
-  },
-  {
-    title: 'GPU Programming',
-    issuer: 'Johns Hopkins University',
-    url: 'https://www.coursera.org/',
-    date: 'Jan 2026',
-  },
-  {
-    title: 'LangGraph',
-    issuer: 'LangChain',
-    url: 'https://www.langchain.com/',
-    date: 'May 2025',
-  },
-  {
-    title: 'Red Teaming LLM Applications',
-    issuer: 'DeepLearning.AI',
-    url: 'https://www.deeplearning.ai/',
-    date: 'Jan 2025',
-  },
-  {
-    title: 'Building & Evaluating Advanced RAG',
-    issuer: 'DeepLearning.AI',
-    url: 'https://www.deeplearning.ai/',
-    date: 'Dec 2024',
-  },
-  {
-    title: 'Finetuning LLMs with Lamini',
-    issuer: 'DeepLearning.AI',
-    url: 'https://www.deeplearning.ai/',
-    date: 'Dec 2024',
-  },
-  {
-    title: 'GenAI Winter School',
-    issuer: 'École Polytechnique',
-    url: 'https://www.polytechnique.edu/',
-    date: 'Mar 2024',
-  },
+  { abbr: 'GCP', title: 'Google Cloud', sub: 'AI Infrastructure · Jan 2026', url: 'https://cloud.google.com/' },
+  { abbr: 'JHU', title: 'Johns Hopkins', sub: 'GPU Programming · Jan 2026', url: 'https://www.coursera.org/' },
+  { abbr: 'LG', title: 'LangChain', sub: 'LangGraph · May 2025', url: 'https://www.langchain.com/' },
+  { abbr: 'RT', title: 'DeepLearning.AI', sub: 'Red Teaming LLMs · Jan 2025', url: 'https://www.deeplearning.ai/' },
+  { abbr: 'RAG', title: 'DeepLearning.AI', sub: 'Advanced RAG · Dec 2024', url: 'https://www.deeplearning.ai/' },
+  { abbr: 'FT', title: 'DeepLearning.AI', sub: 'Finetuning (Lamini) · Dec 2024', url: 'https://www.deeplearning.ai/' },
+  { abbr: 'EP', title: 'École Polytechnique', sub: 'GenAI Winter School · Mar 2024', url: 'https://www.polytechnique.edu/' },
 ];
 
 const Certifications = () => {
@@ -93,27 +88,21 @@ const Certifications = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <StyledCertificationsSection id="certifications" ref={revealContainer}>
+    <section id="certifications" ref={revealContainer} style={{ maxWidth: 900 }}>
       <h2 className="numbered-heading">Certifications</h2>
 
-      <ul>
+      <Grid>
         {certifications.map((cert, i) => (
-          <li key={i} className="cert-item">
-            <span className="cert-title">{cert.title}</span>
-            <div className="cert-issuer">
-              {cert.url ? (
-                <a href={cert.url} target="_blank" rel="noopener noreferrer">
-                  {cert.issuer}
-                </a>
-              ) : (
-                cert.issuer
-              )}
-              {cert.date && <span className="cert-date"> · {cert.date}</span>}
-            </div>
-          </li>
+          <CertCard key={i} href={cert.url} target="_blank" rel="noopener noreferrer">
+            <CertLogo>{cert.abbr}</CertLogo>
+            <CertMeta>
+              <CertName>{cert.title}</CertName>
+              <CertSub>{cert.sub}</CertSub>
+            </CertMeta>
+          </CertCard>
         ))}
-      </ul>
-    </StyledCertificationsSection>
+      </Grid>
+    </section>
   );
 };
 

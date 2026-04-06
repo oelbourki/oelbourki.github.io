@@ -70,10 +70,15 @@ const StyledProject = styled.li`
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    transition: var(--transition);
+    border-radius: 10px;
+    background-color: var(--bg-elevated);
+    border: 0.5px solid var(--bg-border);
+    transition: border-color 0.2s, transform 0.2s;
     overflow: auto;
+
+    &:hover {
+      border-color: var(--accent-border);
+    }
   }
 
   .project-top {

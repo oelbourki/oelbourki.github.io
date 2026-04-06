@@ -16,7 +16,7 @@ const StyledContactSection = styled.section`
   .overline {
     display: block;
     margin-bottom: 20px;
-    color: var(--green);
+    color: var(--accent);
     font-family: var(--font-mono);
     font-size: var(--fz-md);
     font-weight: 400;
@@ -33,11 +33,19 @@ const StyledContactSection = styled.section`
 
   .title {
     font-size: clamp(40px, 5vw, 60px);
+    color: var(--text-primary);
+  }
+
+  .body {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: var(--fz-md);
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    margin-top: 36px;
+    display: inline-block;
   }
 `;
 
@@ -57,14 +65,14 @@ const Contact = () => {
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 className="numbered-heading overline">What’s Next?</h2>
 
-      <h2 className="title">Get In Touch</h2>
+      <h2 className="title">Let&apos;s build something.</h2>
 
-      <p>
-        Available immediately for hybrid or remote roles, with national and international mobility. I’m always happy to connect—whether you have a role in mind, a project idea, or just want to say hi.
+      <p className="body">
+        I&apos;m currently open to full-time and freelance AI engineering roles in France and Germany. If you&apos;re working on LLM systems, multi-agent pipelines, or production ML infrastructure — let&apos;s talk.
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
+        Get in touch
       </a>
     </StyledContactSection>
   );

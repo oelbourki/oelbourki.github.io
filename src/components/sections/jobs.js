@@ -67,7 +67,6 @@ const StyledTabList = styled.div`
 `;
 
 const StyledTabButton = styled.button`
-  ${({ theme }) => theme.mixins.link};
   display: flex;
   align-items: center;
   width: 100%;
@@ -75,11 +74,12 @@ const StyledTabButton = styled.button`
   padding: 0 20px 2px;
   border-left: 2px solid var(--lightest-navy);
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
+  color: ${({ isActive }) => (isActive ? 'var(--accent)' : 'var(--text-secondary)')};
   font-family: var(--font-mono);
   font-size: var(--fz-xs);
   text-align: left;
   white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
 
   @media (max-width: 768px) {
     padding: 0 15px 2px;
@@ -95,7 +95,8 @@ const StyledTabButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: var(--light-navy);
+    background-color: var(--accent-subtle);
+    color: var(--text-primary);
   }
 `;
 
@@ -139,26 +140,52 @@ const StyledTabPanels = styled.div`
 const StyledTabPanel = styled.div`
   width: 100%;
   height: auto;
-  padding: 10px 5px;
+  padding: 18px 20px;
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--bg-border);
+  border-radius: 10px;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
   }
 
   h3 {
-    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
     font-size: var(--fz-xxl);
     font-weight: 500;
-    line-height: 1.3;
+    line-height: 1.25;
 
-    .company {
-      color: var(--green);
+    .company-line {
+      color: var(--text-primary);
+      font-size: var(--fz-xxl);
+      font-weight: 600;
+
+      a {
+        color: var(--text-primary);
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+
+    .job-title {
+      color: var(--accent);
+      font-size: var(--fz-lg);
+      font-weight: 500;
     }
   }
 
   .range {
-    margin-bottom: 25px;
-    color: var(--light-slate);
+    margin-bottom: 20px;
+    color: var(--text-tertiary);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
   }
@@ -285,9 +312,7 @@ const Jobs = () => {
                     aria-hidden={activeTabId !== i}
                     hidden={activeTabId !== i}>
                     <h3>
-                      <span>{title}</span>
-                      <span className="company">
-                        &nbsp;@&nbsp;
+                      <span className="company-line">
                         {url ? (
                           <a href={url} className="inline-link">
                             {company}
@@ -296,6 +321,7 @@ const Jobs = () => {
                           <span>{company}</span>
                         )}
                       </span>
+                      <span className="job-title">{title}</span>
                     </h3>
 
                     <p className="range">{range}</p>

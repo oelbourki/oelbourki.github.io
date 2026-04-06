@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 date: '2025-01-01'
 title: 'Real Estate AI Deep Agents'
 github: 'https://github.com/oelbourki/Real-Estate-AI-Deep-Agents'

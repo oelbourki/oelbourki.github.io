@@ -110,22 +110,51 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--green);
-    background-color: transparent;
-    border: 1px solid var(--green);
+    color: var(--bg-primary);
+    background-color: var(--accent);
+    border: none;
     border-radius: var(--border-radius);
-    padding: 1.25rem 1.75rem;
-    font-size: var(--fz-sm);
-    font-family: var(--font-mono);
+    padding: 10px 22px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
     line-height: 1;
     text-decoration: none;
-    transition: var(--transition);
+    transition: background 0.2s, filter 0.2s;
 
     &:hover,
     &:focus-visible {
       outline: none;
-      box-shadow: 4px 4px 0 0 var(--green);
-      transform: translate(-5px, -5px);
+      filter: brightness(1.08);
+      transform: none;
+      box-shadow: none;
+    }
+    &:after {
+      display: none !important;
+    }
+  `,
+
+  /** Neutral outline (handoff `.btn-outline`) */
+  outlineNeutral: css`
+    background: transparent;
+    color: var(--text-secondary);
+    border: 0.5px solid var(--bg-border);
+    border-radius: var(--border-radius);
+    padding: 10px 22px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      border-color: #555555;
+      color: var(--text-primary);
+      transform: none;
+      box-shadow: none;
     }
     &:after {
       display: none !important;

@@ -16,7 +16,8 @@
   "license": "MIT",
   "overrides": {
     "graphql": "15.8.0",
-    "postcss": "8.4.31"
+    "postcss": "8.4.31",
+    "source-map": "0.6.1"
   },
   "browserslist": "> 0.25%, not dead",
   "scripts": {

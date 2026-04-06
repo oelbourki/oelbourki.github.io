@@ -7,6 +7,6 @@ range: 'Feb 2025 – Aug 2025'
 url: 'https://impactera.com/'
 ---
 
-- Architected and deployed a production-grade multi-agent AI platform using LangGraph and FastAPI, orchestrating six specialized agents (RAG, SQL, Deep Research, Data Analyst) — accelerated financial report generation to 30 minutes for a team of 5+ analysts.
+- Architected and deployed a production-grade multi-agent AI platform using LangGraph and FastAPI, orchestrating six specialized agents (RAG, SQL, Deep Research, Data Analyst) — **report turnaround ~30 minutes** for a team of **5+ analysts** (vs. multi-day manual prep).
 - Designed and implemented an adaptive RAG pipeline with semantic chunking and hallucination grading, integrating Qdrant embeddings and multi-step retrieval validation to deliver high-accuracy document intelligence across hundreds of PDFs and Tagetik financial datasets.
 - Built a scalable multi-LLM orchestration layer supporting OpenAI, Anthropic, Gemini, Groq, and AWS Bedrock — implementing supervisor-based routing, checkpointed state management, OAuth-secured APIs, and Dockerized microservices with CI/CD, designed with the analyst team to ensure reliability and auditability.

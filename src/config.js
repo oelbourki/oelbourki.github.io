@@ -19,12 +19,12 @@ module.exports = {
     {
       name: 'Resume',
       url: '/resume.pdf',
-      ariaLabel: 'Resume in English (PDF)',
+      ariaLabel: 'CV in English (PDF)',
     },
     {
       name: 'ResumeFr',
       url: '/resume_fr.pdf',
-      ariaLabel: 'Resume in French (PDF)',
+      ariaLabel: 'CV in French (PDF)',
     },
     // {
     //   name: 'Codepen',
@@ -56,9 +56,9 @@ module.exports = {
   ],
 
   colors: {
-    green: '#5eead4',
-    navy: '#0f172a',
-    darkNavy: '#020617',
+    green: '#3d9bff',
+    navy: '#0d0d0d',
+    darkNavy: '#0a0a0a',
   },
 
   srConfig: (delay = 200, viewFactor = 0.25) => ({

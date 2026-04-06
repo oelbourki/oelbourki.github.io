@@ -1,40 +1,48 @@
 import { css } from 'styled-components';
 
 /**
- * Design tokens — “refined navy” refresh (layered surfaces, softer text ramp, same accent family).
- * Legacy names (--navy, --green, etc.) preserved so components keep working.
+ * Option B — near-black + electric blue.
+ * Semantic tokens + legacy aliases (--navy, --green, …) for existing components.
  */
 const variables = css`
   :root {
-    /* Depth: darkest → page → raised → borders */
-    --dark-navy: #020617;
-    --navy: #0f172a;
-    --light-navy: #1e293b;
-    --lightest-navy: #334155;
-    --navy-shadow: rgba(15, 23, 42, 0.72);
+    --bg-primary: #0d0d0d;
+    --bg-elevated: #161616;
+    --bg-border: #222222;
+    --accent: #3d9bff;
+    --accent-subtle: rgba(61, 155, 255, 0.08);
+    --accent-border: rgba(61, 155, 255, 0.2);
+    --text-primary: #f0f0f0;
+    --text-secondary: #888888;
+    --text-tertiary: #444444;
 
-    /* Text ramp (avoid pure white on dark) */
-    --dark-slate: #64748b;
-    --slate: #94a3b8;
-    --light-slate: #cbd5e1;
-    --lightest-slate: #e2e8f0;
-    --white: #f8fafc;
+    /* Legacy aliases */
+    --dark-navy: #0a0a0a;
+    --navy: var(--bg-primary);
+    --light-navy: var(--bg-elevated);
+    --lightest-navy: var(--bg-border);
+    --navy-shadow: rgba(0, 0, 0, 0.45);
 
-    /* Accents — primary mint + secondary sky (use sky sparingly) */
-    --green: #5eead4;
-    --green-tint: rgba(94, 234, 212, 0.1);
-    --green-muted: rgba(94, 234, 212, 0.35);
+    --dark-slate: #666666;
+    --slate: var(--text-secondary);
+    --light-slate: #a3a3a3;
+    --lightest-slate: var(--text-primary);
+    --white: var(--text-primary);
+
+    --green: var(--accent);
+    --green-tint: var(--accent-subtle);
+    --green-muted: var(--accent-border);
     --pink: #e879f9;
-    --blue: #38bdf8;
+    --blue: var(--accent);
 
-    --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'SF Pro Text', system-ui,
       sans-serif;
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
-    --fz-md: 16px;
+    --fz-md: 15px;
     --fz-lg: 18px;
     --fz-xl: 20px;
     --fz-xxl: 22px;

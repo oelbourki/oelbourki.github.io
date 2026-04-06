@@ -22,6 +22,13 @@ const StyledProject = styled.li`
   grid-gap: 10px;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
+  transition: transform 0.2s;
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
 
   @media (max-width: 768px) {
     ${({ theme }) => theme.mixins.boxShadow};
@@ -116,11 +123,16 @@ const StyledProject = styled.li`
   }
 
   .project-overline {
+    display: inline-block;
     margin: 10px 0;
-    color: var(--green);
+    color: var(--accent);
     font-family: var(--font-mono);
-    font-size: var(--fz-xs);
+    font-size: 11px;
     font-weight: 400;
+    background: var(--accent-subtle);
+    border: 0.5px solid var(--accent-border);
+    padding: 3px 9px;
+    border-radius: 20px;
   }
 
   .project-title {
@@ -156,15 +168,22 @@ const StyledProject = styled.li`
     position: relative;
     z-index: 2;
     padding: 25px;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
+    border-radius: 10px;
+    background-color: var(--bg-elevated);
+    border: 0.5px solid var(--bg-border);
     color: var(--light-slate);
     font-size: var(--fz-lg);
+    transition: border-color 0.2s, transform 0.2s;
+
+    &:hover {
+      border-color: var(--accent-border);
+    }
 
     @media (max-width: 768px) {
       padding: 20px 0;
       background-color: transparent;
       box-shadow: none;
+      border: none;
 
       &:hover {
         box-shadow: none;
@@ -191,11 +210,15 @@ const StyledProject = styled.li`
     list-style: none;
 
     li {
-      margin: 0 20px 5px 0;
-      color: var(--light-slate);
+      margin: 0 8px 8px 0;
+      color: var(--accent);
       font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+      font-size: 11px;
       white-space: nowrap;
+      background: var(--accent-subtle);
+      border: 0.5px solid var(--accent-border);
+      padding: 3px 9px;
+      border-radius: 20px;
     }
 
     @media (max-width: 768px) {

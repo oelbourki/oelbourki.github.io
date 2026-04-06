@@ -17,11 +17,13 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(15, 23, 42, 0.88);
+  background-color: rgba(13, 13, 13, 0.85);
+  border-bottom: 0.5px solid var(--bg-border);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: var(--transition);
 
   @media (max-width: 1080px) {
@@ -38,7 +40,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(15, 23, 42, 0.88);
+        background-color: rgba(13, 13, 13, 0.92);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -66,39 +68,67 @@ const StyledNav = styled.nav`
     ${({ theme }) => theme.mixins.flexCenter};
 
     a {
-      color: var(--green);
-      width: 42px;
-      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
       position: relative;
       z-index: 1;
+      text-decoration: none;
+      min-height: 42px;
+
+      /* Fixed box so global svg { width/height: 100% } cannot blow up the hex */
+      .logo-mark {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+      }
 
       .hex-container {
         position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
         @media (prefers-reduced-motion: no-preference) {
           transition: var(--transition);
+        }
+
+        svg {
+          width: 100%;
+          height: 100%;
+          display: block;
         }
       }
 
       .logo-container {
         position: relative;
         z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         svg {
+          width: 100%;
+          height: 100%;
+          max-width: 42px;
+          max-height: 42px;
+          display: block;
           fill: none;
           user-select: none;
           @media (prefers-reduced-motion: no-preference) {
             transition: var(--transition);
           }
           polygon {
-            fill: var(--navy);
+            fill: var(--bg-primary);
           }
         }
       }
 
       &:hover,
-      &:focus {
+      &:focus-visible {
         outline: 0;
         transform: translate(-4px, -4px);
         .hex-container {
@@ -144,16 +174,70 @@ const StyledLinks = styled.div`
   }
 
   .nav-button {
-    ${({ theme }) => theme.mixins.smallButton};
     margin-left: 10px;
-    font-size: var(--fz-xs);
+    font-size: 13px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    color: var(--text-secondary);
+    border: 0.5px solid var(--bg-border);
+    background: transparent;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      border-color: #555555;
+      color: var(--text-primary);
+      outline: none;
+    }
 
     svg {
       width: 16px;
       height: 16px;
+    }
+  }
+
+  .btn-resume {
+    margin-left: 10px;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    background: transparent;
+    font-family: var(--font-sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--accent-subtle);
+      outline: none;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .logo-text {
+    margin-left: 12px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+
+    @media (max-width: 480px) {
+      display: none;
     }
   }
 `;
@@ -189,25 +273,28 @@ const Nav = ({ isHome }) => {
   const fadeClass = isHome ? 'fade' : '';
   const fadeDownClass = isHome ? 'fadedown' : '';
 
+  const logoMark = (
+    <div className="logo-mark">
+      <div className="hex-container" aria-hidden>
+        <IconHex />
+      </div>
+      <div className="logo-container">
+        <IconLogo />
+      </div>
+    </div>
+  );
+
   const Logo = (
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
+          {logoMark}
+          <span className="logo-text">OEB</span>
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
+          {logoMark}
+          <span className="logo-text">OEB</span>
         </Link>
       )}
     </div>
@@ -237,11 +324,11 @@ const Nav = ({ isHome }) => {
           href={resumeLink.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="nav-button"
-          aria-label={resumeLink.ariaLabel || 'Resume'}
+          className="btn-resume"
+          aria-label={resumeLink.ariaLabel || 'CV in English (PDF)'}
         >
           <IconResume />
-          Resume
+          CV EN
         </a>
       )}
       {resumeFrLink && (
@@ -249,11 +336,11 @@ const Nav = ({ isHome }) => {
           href={resumeFrLink.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="nav-button"
-          aria-label={resumeFrLink.ariaLabel || 'French resume'}
+          className="btn-resume"
+          aria-label={resumeFrLink.ariaLabel || 'CV in French (PDF)'}
         >
           <IconResume />
-          FR
+          CV FR
         </a>
       )}
       {linkedinLink && (

@@ -1,12 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
-import { srConfig } from '@config';
-import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
+  opacity: 1;
+  visibility: visible;
 
   .inner {
     display: grid;
@@ -18,34 +17,126 @@ const StyledAboutSection = styled.section`
     }
   }
 `;
+
 const StyledText = styled.div`
-  ul.skills-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
-    padding: 0;
-    margin: 20px 0 0 0;
-    overflow: hidden;
-    list-style: none;
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.25rem;
+  }
 
-    li {
-      position: relative;
-      margin-bottom: 10px;
-      padding-left: 20px;
-      font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+  .chip {
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: var(--bg-elevated);
+    border: 0.5px solid var(--bg-border);
+    color: var(--text-tertiary);
+    display: inline-block;
+    font-family: var(--font-sans);
+  }
 
-      &:before {
-        content: '▹';
-        position: absolute;
-        left: 0;
-        color: var(--green);
-        font-size: var(--fz-sm);
-        line-height: 12px;
-      }
+  .chip.active {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-subtle);
+  }
+`;
+
+const SkillsBlock = styled.div`
+  margin-top: 2rem;
+`;
+
+const SkillsHeading = styled.h3`
+  margin: 0 0 14px;
+  font-size: var(--fz-md);
+  font-weight: 600;
+  color: var(--text-primary);
+`;
+
+const TabList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+`;
+
+const TabButton = styled.button`
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 0.5px solid ${({ $active }) => ($active ? 'var(--accent-border)' : 'var(--bg-border)')};
+  background: ${({ $active }) => ($active ? 'var(--accent-subtle)' : 'var(--bg-elevated)')};
+  color: ${({ $active }) => ($active ? 'var(--accent)' : 'var(--text-secondary)')};
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: var(--accent-border);
+    color: ${({ $active }) => ($active ? 'var(--accent)' : 'var(--text-primary)')};
+  }
+
+  &:focus-visible {
+    outline: 2px dashed var(--accent);
+    outline-offset: 2px;
+  }
+`;
+
+const TabPanel = styled.div`
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--bg-border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  min-height: 120px;
+`;
+
+const SkillUl = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+
+    &::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
     }
   }
 `;
+
+const AllGroups = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+`;
+
+const GroupTitle = styled.h4`
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+`;
+
 const StyledPic = styled.div`
   position: relative;
   max-width: 300px;
@@ -61,7 +152,7 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    background-color: var(--green);
+    background-color: var(--accent);
 
     &:hover,
     &:focus {
@@ -74,19 +165,17 @@ const StyledPic = styled.div`
 
       .img {
         filter: none;
-        mix-blend-mode: normal;
       }
     }
 
     .img {
       position: relative;
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1);
+      mix-blend-mode: normal;
+      filter: grayscale(100%) contrast(1.05);
       transition: var(--transition);
     }
 
-    &:before,
     &:after {
       content: '';
       display: block;
@@ -94,190 +183,108 @@ const StyledPic = styled.div`
       width: 100%;
       height: 100%;
       border-radius: var(--border-radius);
-      transition: var(--transition);
-    }
-
-    &:before {
-      top: 0;
-      left: 0;
-      background-color: var(--navy);
-      mix-blend-mode: screen;
-    }
-
-    &:after {
-      border: 2px solid var(--green);
+      border: 2px solid var(--accent);
       top: 14px;
       left: 14px;
       z-index: -1;
+      pointer-events: none;
+      transition: var(--transition);
     }
   }
 `;
 
-// const About = () => {
-//   const revealContainer = useRef(null);
-//   const prefersReducedMotion = usePrefersReducedMotion();
+const chips = [
+  { label: 'Multi-agent systems', active: true },
+  { label: 'GraphRAG', active: true },
+  { label: 'LLM inference optimization', active: true },
+  { label: 'MLOps', active: false },
+  { label: 'Fine-tuning', active: false },
+  { label: 'Quantization', active: false },
+  { label: 'Production deployment', active: false },
+];
 
-//   useEffect(() => {
-//     if (prefersReducedMotion) {
-//       return;
-//     }
-
-//     sr.reveal(revealContainer.current, srConfig());
-//   }, []);
-
-//   const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
-
-//   return (
-//     <StyledAboutSection id="about" ref={revealContainer}>
-//       <h2 className="numbered-heading">About Me</h2>
-
-//       <div className="inner">
-//         <StyledText>
-//           <div>
-//             <p>
-//               Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-//               interest in web development started back in 2012 when I decided to try editing custom
-//               Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-//               about HTML &amp; CSS!
-//             </p>
-
-//             <p>
-//               Fast-forward to today, and I've had the privilege of working at{' '}
-//               <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-//               <a href="https://starry.com/">a start-up</a>,{' '}
-//               <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-//               <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-//               main focus these days is building accessible, inclusive products and digital
-//               experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-//               clients.
-//             </p>
-
-//             <p>
-//               I also recently{' '}
-//               <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-//                 launched a course
-//               </a>{' '}
-//               that covers everything you need to build a web app with the Spotify API using Node
-//               &amp; React.
-//             </p>
-
-//             <p>Here are a few technologies I've been working with recently:</p>
-//           </div>
-
-//           <ul className="skills-list">
-//             {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
-//           </ul>
-//         </StyledText>
-
-//         <StyledPic>
-//           <div className="wrapper">
-//             <StaticImage
-//               className="img"
-//               src="../../images/me.jpg"
-//               width={500}
-//               quality={95}
-//               formats={['AUTO', 'WEBP', 'AVIF']}
-//               alt="Headshot"
-//             />
-//           </div>
-//         </StyledPic>
-//       </div>
-//     </StyledAboutSection>
-//   );
-// };
-
-// export default About;
+const skillCategories = [
+  {
+    id: 'programming',
+    label: 'Programming',
+    skills: ['Python', 'C/C++', 'FastAPI', 'REST APIs', 'Microservices', 'Linux/Shell'],
+  },
+  {
+    id: 'deep-learning',
+    label: 'Deep Learning & LLMs',
+    skills: [
+      'PyTorch',
+      'TensorFlow',
+      'Hugging Face',
+      'Fine-tuning (LoRA/QLoRA)',
+      '4-bit Quantization (AWQ/GPTQ)',
+      'vLLM',
+      'ONNX Runtime',
+      'Multimodal Document Understanding',
+    ],
+  },
+  {
+    id: 'orchestration',
+    label: 'LLM & retrieval',
+    skills: [
+      'LangChain',
+      'LangGraph',
+      'Multi-Agent Systems',
+      'RAG / GraphRAG / Hybrid Search',
+      'Vector DBs (Qdrant, ChromaDB)',
+      'Reranking',
+      'Prompt Engineering',
+      'Pydantic',
+    ],
+  },
+  {
+    id: 'mlops',
+    label: 'MLOps',
+    skills: [
+      'Docker',
+      'Kubernetes (K3s)',
+      'Ray Serve',
+      'MLflow',
+      'CI/CD (GitHub Actions, GitOps)',
+      'GPU Inference Optimization',
+      'Cloud (AWS, GCP)',
+    ],
+  },
+  {
+    id: 'evaluation',
+    label: 'Evaluation',
+    skills: [
+      'Model Testing & Validation',
+      'Ragas / DeepEval',
+      'Golden Dataset Testing',
+      'LLM Metrics (Faithfulness, Relevance)',
+      'Responsible AI & Bias Mitigation',
+      'LangSmith',
+      'Langfuse',
+      'Prometheus',
+    ],
+  },
+  {
+    id: 'data',
+    label: 'Data systems',
+    skills: [
+      'SQL',
+      'Redis',
+      'Neo4j',
+      'Vector Similarity Search',
+      'Pandas',
+      'Structured Extraction (Docling, PDF/OCR)',
+    ],
+  },
+];
 
 const About = () => {
-  const revealContainer = useRef(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
+  const [activeSkillTab, setActiveSkillTab] = useState('all');
 
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    sr.reveal(revealContainer.current, srConfig());
-  }, [prefersReducedMotion]);
-
-  const aiEngineeringSkillsList = [
-    {
-      category: 'Programming & Software',
-      skills: [
-        'Python',
-        'C/C++',
-        'FastAPI',
-        'REST APIs',
-        'Microservices',
-        'Linux/Shell',
-      ],
-    },
-    {
-      category: 'Deep Learning & LLMs',
-      skills: [
-        'PyTorch',
-        'TensorFlow',
-        'Hugging Face',
-        'Fine-tuning (LoRA/QLoRA)',
-        '4-bit Quantization (AWQ/GPTQ)',
-        'vLLM',
-        'ONNX Runtime',
-        'Multimodal Document Understanding',
-      ],
-    },
-    {
-      category: 'LLM Orchestration & Retrieval',
-      skills: [
-        'LangChain',
-        'LangGraph',
-        'Multi-Agent Systems',
-        'RAG / GraphRAG / Hybrid Search',
-        'Vector Databases (Qdrant, ChromaDB)',
-        'Reranking',
-        'Prompt Engineering',
-        'Pydantic',
-      ],
-    },
-    {
-      category: 'MLOps & LLMOps',
-      skills: [
-        'Docker',
-        'Kubernetes (K3s)',
-        'Ray Serve',
-        'MLflow',
-        'CI/CD (GitHub Actions, GitOps)',
-        'GPU Inference Optimization',
-        'Cloud Deployment & Scalability (AWS, GCP)',
-      ],
-    },
-    {
-      category: 'Evaluation & Observability',
-      skills: [
-        'Model Testing & Validation',
-        'Ragas / DeepEval',
-        'Golden Dataset Testing',
-        'LLM Metrics (Faithfulness, Relevance)',
-        'Responsible AI & Bias Mitigation',
-        'LangSmith',
-        'Langfuse',
-        'Prometheus',
-      ],
-    },
-    {
-      category: 'Data Systems',
-      skills: [
-        'SQL',
-        'Redis',
-        'Neo4j',
-        'Vector Similarity Search',
-        'Pandas',
-        'Structured Extraction Pipelines (Docling, PDF/OCR)',
-      ],
-    },
-  ];
+  const tabs = [{ id: 'all', label: 'All' }, ...skillCategories.map(c => ({ id: c.id, label: c.label }))];
 
   return (
-    <StyledAboutSection id="about" ref={revealContainer}>
+    <StyledAboutSection id="about">
       <h2 className="numbered-heading">About Me</h2>
 
       <div className="inner">
@@ -299,25 +306,66 @@ const About = () => {
               <strong>Available immediately</strong> for hybrid or remote roles; open to national and international mobility. <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or remote.</strong>
             </p>
 
-            <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--slate)' }}>
-              <strong style={{ color: 'var(--light-slate)' }}>Languages:</strong> French (C1) · English (C2) · Arabic (native)
+            <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
+              <strong style={{ color: 'var(--text-primary)' }}>Languages:</strong> French (C1) · English (C2) · Arabic (native)
             </p>
 
-            <p>
-              Here is my stack of technologies I've been working with:
-            </p>
-          </div>
-
-          {aiEngineeringSkillsList.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="skills-section">
-              <h3>{section.category}</h3>
-              <ul className="skills-list">
-                {section.skills.map((skill, i) => (
-                  <li key={i}>{skill}</li>
-                ))}
-              </ul>
+            <p style={{ marginTop: '1.5rem', fontWeight: 600, color: 'var(--text-primary)' }}>Core expertise</p>
+            <div className="chip-row">
+              {chips.map(({ label, active }) => (
+                <span key={label} className={`chip${active ? ' active' : ''}`}>
+                  {label}
+                </span>
+              ))}
             </div>
-          ))}
+
+            <SkillsBlock>
+              <SkillsHeading id="skills-tabs-heading">All skills</SkillsHeading>
+              <TabList role="tablist" aria-labelledby="skills-tabs-heading">
+                {tabs.map(tab => (
+                  <TabButton
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    id={`skill-tab-${tab.id}`}
+                    aria-selected={activeSkillTab === tab.id}
+                    aria-controls="skill-panel-main"
+                    $active={activeSkillTab === tab.id}
+                    onClick={() => setActiveSkillTab(tab.id)}>
+                    {tab.label}
+                  </TabButton>
+                ))}
+              </TabList>
+
+              <TabPanel
+                role="tabpanel"
+                id="skill-panel-main"
+                aria-labelledby={`skill-tab-${activeSkillTab}`}>
+                {activeSkillTab === 'all' ? (
+                  <AllGroups>
+                    {skillCategories.map(cat => (
+                      <div key={cat.id}>
+                        <GroupTitle>{cat.label}</GroupTitle>
+                        <SkillUl>
+                          {cat.skills.map(s => (
+                            <li key={s}>{s}</li>
+                          ))}
+                        </SkillUl>
+                      </div>
+                    ))}
+                  </AllGroups>
+                ) : (
+                  <SkillUl>
+                    {skillCategories
+                      .find(c => c.id === activeSkillTab)
+                      ?.skills.map(s => (
+                        <li key={s}>{s}</li>
+                      ))}
+                  </SkillUl>
+                )}
+              </TabPanel>
+            </SkillsBlock>
+          </div>
         </StyledText>
 
         <StyledPic>

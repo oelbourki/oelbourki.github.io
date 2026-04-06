@@ -21,8 +21,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: rgba(94, 234, 212, 0.22);
-    color: var(--white);
+    background-color: rgba(61, 155, 255, 0.25);
+    color: var(--text-primary);
   }
 
   /* Provide basic, default focus styles.*/
@@ -50,21 +50,23 @@ const GlobalStyle = createGlobalStyle`
     outline-offset: 3px;
   }
 
-  /* Scrollbar Styles */
+  /* Scrollbar */
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--dark-slate) var(--navy);
+    scrollbar-color: var(--bg-border) var(--bg-primary);
   }
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--navy);
+    background: var(--bg-primary);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--dark-slate);
-    border: 3px solid var(--navy);
-    border-radius: 10px;
+    background: var(--bg-border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444444;
   }
 
   body {
@@ -74,19 +76,14 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--navy);
-    background-image: radial-gradient(
-      ellipse 120% 60% at 50% -10%,
-      rgba(94, 234, 212, 0.045) 0%,
-      transparent 55%
-    );
-    color: var(--slate);
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
     font-family: var(--font-sans);
-    font-size: var(--fz-xl);
-    line-height: 1.58;
+    font-size: 15px;
+    line-height: 1.7;
 
     @media (max-width: 480px) {
-      font-size: var(--fz-lg);
+      font-size: 14px;
     }
 
     &.hidden {
@@ -217,10 +214,9 @@ const GlobalStyle = createGlobalStyle`
       position: relative;
       top: -5px;
       width: 300px;
-      height: 1px;
+      height: 0.5px;
       margin-left: 20px;
-      background: linear-gradient(90deg, var(--green-muted) 0%, var(--lightest-navy) 55%, transparent 100%);
-      opacity: 0.95;
+      background: var(--bg-border);
 
       @media (max-width: 1080px) {
         width: 200px;
@@ -367,6 +363,14 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--fz-md);
   }
 
+  header nav ol li a {
+    color: var(--text-secondary);
+  }
+  header nav ol li a:hover,
+  header nav ol li a:focus-visible {
+    color: var(--text-primary);
+  }
+
   .skip-to-content {
     ${({ theme }) => theme.mixins.button};
     position: absolute;
@@ -379,8 +383,8 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      background-color: var(--green);
-      color: var(--navy);
+      background-color: var(--accent);
+      color: var(--bg-primary);
       top: 0;
       left: 0;
       width: auto;

@@ -1,159 +1,203 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
-const StyledCtaRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-top: 50px;
-
-  .cta-primary {
-    ${({ theme }) => theme.mixins.bigButton};
-  }
-
-  .cta-resume {
-    ${({ theme }) => theme.mixins.smallButton};
-  }
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 `;
 
 const StyledHeroSection = styled.section`
-  ${({ theme }) => theme.mixins.flexCenter};
-  flex-direction: column;
-  align-items: flex-start;
   position: relative;
   isolation: isolate;
   min-height: 100vh;
-  height: 100vh;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-height) + 24px) 0 80px;
   overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    inset: -40% -20% auto -20%;
-    height: 85%;
-    z-index: -1;
+    top: -100px;
+    left: -80px;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(ellipse, rgba(61, 155, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
     pointer-events: none;
-    background: radial-gradient(
-      ellipse 70% 55% at 50% 0%,
-      rgba(94, 234, 212, 0.14) 0%,
-      rgba(56, 189, 248, 0.06) 42%,
-      transparent 72%
-    );
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: auto -30% -35% -30%;
-    height: 70%;
     z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(ellipse 55% 45% at 70% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 65%);
   }
 
-  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
-    height: auto;
-    padding-top: var(--nav-height);
-  }
-
-  h1 {
-    margin: 0 0 30px 4px;
-    color: var(--green);
-    font-family: var(--font-mono);
-    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
-    font-weight: 400;
-
-    @media (max-width: 480px) {
-      margin: 0 0 20px 2px;
-    }
-  }
-
-  h2.big-heading {
-    color: var(--lightest-slate);
-    letter-spacing: -0.02em;
-  }
-
-  h3 {
-    margin-top: 5px;
-    color: var(--light-slate);
-    line-height: 0.9;
-  }
-
-  p {
-    margin: 20px 0 0;
-    max-width: 540px;
-    line-height: 1.65;
-    color: var(--slate);
+  @media (max-width: 900px) {
+    padding-top: calc(var(--nav-height) + 16px);
   }
 `;
 
-// const Hero = () => {
-//   const [isMounted, setIsMounted] = useState(false);
-//   const prefersReducedMotion = usePrefersReducedMotion();
+const HeroGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 340px);
+  gap: clamp(32px, 5vw, 56px);
+  width: 100%;
+  max-width: 1100px;
+  align-items: start;
 
-//   useEffect(() => {
-//     if (prefersReducedMotion) {
-//       return;
-//     }
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
 
-//     const timeout = setTimeout(() => setIsMounted(true), navDelay);
-//     return () => clearTimeout(timeout);
-//   }, []);
+const HeroTag = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border: 0.5px solid var(--accent-border);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
 
-//   const one = <h1>Hi, my name is</h1>;
-//   const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
-//   const three = <h3 className="big-heading">I build things for the web.</h3>;
-//   const four = (
-//     <>
-//       <p>
-//         I'm an AI Engineer specializing in building autonomous LLM agents, multi-agent workflows, and production-grade inference pipelines. Currently focused on developing scalable AI solutions using LangChain, Langgraph, and implementing end-to-end MLOps pipelines with tools like DVC, MLflow, and Kubernetes.
-//       </p>
-//     </>
-//   );
-//   const five = (
-//     <a
-//       className="email-link"
-//       href="https://www.newline.co/courses/build-a-spotify-connected-app"
-//       target="_blank"
-//       rel="noreferrer">
-//       Check out my course!
-//     </a>
-//   );
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: ${pulse} 2s infinite;
+  }
 
-//   const items = [one, two, three, four, five];
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-dot {
+      animation: none;
+    }
+  }
+`;
 
-//   return (
-//     <StyledHeroSection>
-//       {prefersReducedMotion ? (
-//         <>
-//           {items.map((item, i) => (
-//             <div key={i}>{item}</div>
-//           ))}
-//         </>
-//       ) : (
-//         <TransitionGroup component={null}>
-//           {isMounted &&
-//             items.map((item, i) => (
-//               <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-//                 <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-//               </CSSTransition>
-//             ))}
-//         </TransitionGroup>
-//       )}
-//     </StyledHeroSection>
-//   );
-// };
+const HeroName = styled.h1`
+  margin: 0 0 12px;
+  font-size: clamp(36px, 6vw, 48px);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+`;
 
-// export default Hero;
+const HeroRole = styled.p`
+  margin: 0 0 20px;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.3;
+`;
+
+const HeroDesc = styled.p`
+  margin: 0 0 28px;
+  max-width: 520px;
+  font-size: var(--fz-md);
+  line-height: 1.7;
+  color: var(--text-secondary);
+`;
+
+const CtaRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+`;
+
+const BtnPrimary = styled.a`
+  ${({ theme }) => theme.mixins.bigButton};
+`;
+
+const BtnOutline = styled.a`
+  ${({ theme }) => theme.mixins.outlineNeutral};
+`;
+
+const BtnResume = styled.a`
+  color: var(--accent);
+  border: 0.5px solid var(--accent);
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  background: transparent;
+  font-family: var(--font-sans);
+  transition: background 0.2s;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--accent-subtle);
+    outline: none;
+  }
+`;
+
+const StatColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+  }
+`;
+
+const StatCard = styled.div`
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--bg-border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-width: 0;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+`;
+
+const StatLabel = styled.div`
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+`;
+
+const StatValue = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.45;
+
+  .accent {
+    color: var(--accent);
+  }
+`;
+
+const TechPills = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+`;
+
+const Pill = styled.span`
+  font-size: 11px;
+  color: var(--text-tertiary);
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--bg-border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+`;
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const prefersReducedMotion = usePrefersReducedMotion(); // Assuming you have a custom hook for prefersReducedMotion
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -164,57 +208,69 @@ const Hero = () => {
     }
   }, [prefersReducedMotion]);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Otmane El Bourki.</h2>;
-  const three = (
-    <h3 className="big-heading">
-      AI Engineer
-    </h3>
-  );
-  const four = (
-    <h4 className="medium-heading" style={{ fontSize: '1.25rem', fontWeight: 500, marginTop: '0.35em', color: 'var(--slate)' }}>
-      LLMs · Multi-Agent Systems · MLOps
-    </h4>
-  );
-  const five = (
-    <>
-      <p>
-        AI Engineer with 4+ years of software engineering experience, including 2+ years specialized in production LLM systems, multi-agent platforms, and GPU inference infrastructure on GCP. Delivered measurable impact including 3× inference throughput and 47% infrastructure cost reduction. Specialized at the intersection of inference optimization and multi-agent orchestration.
-      </p>
-    </>
-  );
-  const six = (
-    <StyledCtaRow>
-      <a className="cta-primary" href="mailto:otmane.elbourki@gmail.com" target="_blank" rel="noreferrer">
-        Get In Touch
-      </a>
-      <a className="cta-resume" href="/resume.pdf" target="_blank" rel="noreferrer">
-        Resume (EN)
-      </a>
-      <a className="cta-resume" href="/resume_fr.pdf" target="_blank" rel="noreferrer">
-        Resume (FR)
-      </a>
-    </StyledCtaRow>
-  );
+  const inner = (
+    <HeroGrid>
+      <div>
+        <HeroTag>
+          <span className="pulse-dot" aria-hidden />
+          Open to opportunities · Paris · Hybrid (EU) · Remote (Worldwide)
+        </HeroTag>
+        <HeroName>Otmane El Bourki</HeroName>
+        <HeroRole>AI Engineer · LLMs · Multi-agent systems · MLOps</HeroRole>
+        <HeroDesc>
+          Building production-grade LLM systems — multi-agent orchestration, GraphRAG pipelines, and inference
+          optimization at scale. Focused on real-world AI deployment across GCP &amp; AWS.
+        </HeroDesc>
+        <CtaRow>
+          <BtnPrimary href="#projects">View projects</BtnPrimary>
+          <BtnOutline href="mailto:otmane.elbourki@gmail.com" target="_blank" rel="noreferrer">
+            Get in touch
+          </BtnOutline>
+          <BtnResume href="/resume.pdf" target="_blank" rel="noreferrer">
+            CV EN ↓
+          </BtnResume>
+        </CtaRow>
+      </div>
 
-  const items = [one, two, three, four, five, six];
+      <StatColumn>
+        <StatCard>
+          <StatLabel>Specialization</StatLabel>
+          <StatValue>
+            <span className="accent">LLM</span> · Multi-agent · RAG
+          </StatValue>
+        </StatCard>
+        <StatCard>
+          <StatLabel>Infrastructure</StatLabel>
+          <StatValue>
+            GCP · <span className="accent">AWS</span> · Docker · K8s
+          </StatValue>
+        </StatCard>
+        <StatCard>
+          <StatLabel>Community</StatLabel>
+          <StatValue>
+            Built 1337 AI · <span className="accent">300+</span> member AI community
+          </StatValue>
+        </StatCard>
+        <TechPills>
+          {['LangGraph', 'vLLM', 'Neo4j', 'Qdrant', 'Python', 'MLflow'].map(t => (
+            <Pill key={t}>{t}</Pill>
+          ))}
+        </TechPills>
+      </StatColumn>
+    </HeroGrid>
+  );
 
   return (
     <StyledHeroSection>
       {prefersReducedMotion ? (
-        <>
-          {items.map((item, i) => (
-            <div key={i}>{item}</div>
-          ))}
-        </>
+        inner
       ) : (
         <TransitionGroup component={null}>
-          {isMounted &&
-            items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-              </CSSTransition>
-            ))}
+          {isMounted && (
+            <CSSTransition classNames="fadeup" timeout={loaderDelay}>
+              <div style={{ width: '100%' }}>{inner}</div>
+            </CSSTransition>
+          )}
         </TransitionGroup>
       )}
     </StyledHeroSection>
