@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
+import { useLocation } from '@gatsbyjs/reach-router';
 import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
@@ -138,12 +139,20 @@ const StyledSidebar = styled.aside`
         color: var(--green);
         font-size: var(--fz-sm);
       }
+
+      &.active:before {
+        color: var(--accent-bright);
+      }
     }
 
     a {
       ${({ theme }) => theme.mixins.link};
       width: 100%;
       padding: 3px 20px 20px;
+    }
+
+    li.active a {
+      color: var(--accent);
     }
   }
 
@@ -162,7 +171,16 @@ const StyledSidebar = styled.aside`
   }
 `;
 
+const navLinkIsActive = (location, url) => {
+  if (!url || !url.includes('#')) {
+    return false;
+  }
+  const hash = url.slice(url.indexOf('#'));
+  return location.pathname === '/' && location.hash === hash;
+};
+
 const Menu = () => {
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -265,7 +283,7 @@ const Menu = () => {
             {navLinks && (
               <ol>
                 {navLinks.map(({ url, name }, i) => (
-                  <li key={i}>
+                  <li key={i} className={navLinkIsActive(location, url) ? 'active' : undefined}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
                       {name}
                     </Link>

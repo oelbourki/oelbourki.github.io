@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { keyframes } from 'styled-components';
+import { IconEmail } from '@components/icons';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -25,7 +26,7 @@ const StyledHeroSection = styled.section`
     left: -80px;
     width: 420px;
     height: 420px;
-    background: radial-gradient(ellipse, rgba(61, 155, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(78, 181, 255, 0.07) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: -1;
@@ -81,7 +82,7 @@ const HeroName = styled.h1`
   margin: 0 0 12px;
   font-size: clamp(36px, 6vw, 48px);
   font-weight: 600;
-  color: var(--text-primary);
+  color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1.1;
 `;
@@ -90,12 +91,20 @@ const HeroRole = styled.p`
   margin: 0 0 20px;
   font-size: clamp(18px, 2.5vw, 22px);
   font-weight: 400;
-  color: var(--accent);
   line-height: 1.3;
+
+  .role-highlight {
+    color: var(--accent-bright);
+    font-weight: 500;
+  }
+
+  .role-rest {
+    color: var(--text-secondary);
+  }
 `;
 
 const HeroDesc = styled.p`
-  margin: 0 0 28px;
+  margin: 0 0 40px;
   max-width: 520px;
   font-size: var(--fz-md);
   line-height: 1.7;
@@ -115,6 +124,15 @@ const BtnPrimary = styled.a`
 
 const BtnOutline = styled.a`
   ${({ theme }) => theme.mixins.outlineNeutral};
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
 `;
 
 const BtnResume = styled.a`
@@ -216,7 +234,10 @@ const Hero = () => {
           Open to opportunities · Paris · Hybrid (EU) · Remote (Worldwide)
         </HeroTag>
         <HeroName>Otmane El Bourki</HeroName>
-        <HeroRole>AI Engineer · LLMs · Multi-agent systems · MLOps</HeroRole>
+        <HeroRole>
+          <span className="role-highlight">AI Engineer</span>
+          <span className="role-rest"> · LLMs · Multi-agent systems · MLOps</span>
+        </HeroRole>
         <HeroDesc>
           Building production-grade LLM systems — multi-agent orchestration, GraphRAG pipelines, and inference
           optimization at scale. Focused on real-world AI deployment across GCP &amp; AWS.
@@ -224,7 +245,8 @@ const Hero = () => {
         <CtaRow>
           <BtnPrimary href="#projects">View projects</BtnPrimary>
           <BtnOutline href="mailto:otmane.elbourki@gmail.com" target="_blank" rel="noreferrer">
-            Get in touch
+            <IconEmail />
+            Let&apos;s build something
           </BtnOutline>
           <BtnResume href="/resume.pdf" target="_blank" rel="noreferrer">
             CV EN ↓
@@ -252,7 +274,18 @@ const Hero = () => {
           </StatValue>
         </StatCard>
         <TechPills>
-          {['LangGraph', 'vLLM', 'Neo4j', 'Qdrant', 'Python', 'MLflow'].map(t => (
+          {[
+            'Python',
+            'RAG',
+            'LangGraph',
+            'Multi-agent',
+            'vLLM',
+            'FastAPI',
+            'Docker',
+            'HuggingFace',
+            'AWS',
+            'GCP',
+          ].map(t => (
             <Pill key={t}>{t}</Pill>
           ))}
         </TechPills>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
+import { useLocation } from '@gatsbyjs/reach-router';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
@@ -165,9 +166,17 @@ const StyledLinks = styled.div`
         &:before {
           content: '0' counter(item) '.';
           margin-right: 5px;
-          color: var(--green);
+          color: var(--accent-bright);
           font-size: var(--fz-xxs);
           text-align: right;
+        }
+      }
+
+      &.active a {
+        color: var(--accent);
+
+        &:before {
+          color: var(--accent-bright);
         }
       }
     }
@@ -242,7 +251,16 @@ const StyledLinks = styled.div`
   }
 `;
 
+const navLinkIsActive = (location, url) => {
+  if (!url || !url.includes('#')) {
+    return false;
+  }
+  const hash = url.slice(url.indexOf('#'));
+  return location.pathname === '/' && location.hash === hash;
+};
+
 const Nav = ({ isHome }) => {
+  const location = useLocation();
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
@@ -369,7 +387,7 @@ const Nav = ({ isHome }) => {
               <ol>
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
-                    <li key={i}>
+                    <li key={i} className={navLinkIsActive(location, url) ? 'active' : undefined}>
                       <Link to={url}>{name}</Link>
                     </li>
                   ))}
@@ -396,7 +414,10 @@ const Nav = ({ isHome }) => {
                     navLinks &&
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
-                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                        <li
+                          key={i}
+                          className={navLinkIsActive(location, url) ? 'active' : undefined}
+                          style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
                           <Link to={url}>{name}</Link>
                         </li>
                       </CSSTransition>

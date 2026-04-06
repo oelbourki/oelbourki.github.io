@@ -9,9 +9,11 @@ const variables = css`
     --bg-primary: #0d0d0d;
     --bg-elevated: #161616;
     --bg-border: #222222;
-    --accent: #3d9bff;
-    --accent-subtle: rgba(61, 155, 255, 0.08);
-    --accent-border: rgba(61, 155, 255, 0.2);
+    /* Electric blue — primary accent (CTA, section numbers, nav, links) */
+    --accent: #4eb5ff;
+    --accent-bright: #7dd8ff;
+    --accent-subtle: rgba(78, 181, 255, 0.1);
+    --accent-border: rgba(78, 181, 255, 0.26);
     --text-primary: #f0f0f0;
     --text-secondary: #888888;
     --text-tertiary: #444444;
