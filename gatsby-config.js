@@ -155,5 +155,7 @@ module.exports = {
         trackingId: 'UA-45666519-2',
       },
     },
+    // Must be last: generates `_headers` and `_redirects` for Netlify
+    `gatsby-plugin-netlify`,
   ],
 };
