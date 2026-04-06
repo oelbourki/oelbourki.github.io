@@ -1,3 +1,4 @@
+# If the build ever fails on missing semver files, trigger "Clear cache and deploy" once in Netlify.
 [build]
   command = "npm run build"
   publish = "public"
