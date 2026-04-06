@@ -1,6 +1,7 @@
-# If the build ever fails on missing semver files, trigger "Clear cache and deploy" once in Netlify.
+# Wipe node_modules before install so a bad Netlify dependency cache cannot leave half‑extracted
+# packages (e.g. semver missing index.js). Netlify may still cache other dirs; this is the reliable fix.
 [build]
-  command = "npm run build"
+  command = "rm -rf node_modules && npm ci && npm run build"
   publish = "public"
 
 [build.environment]
