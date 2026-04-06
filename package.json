@@ -27,6 +27,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "deps:reset": "gatsby clean && rm -rf node_modules .cache && npm ci",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },

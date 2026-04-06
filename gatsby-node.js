@@ -102,7 +102,23 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     });
   }
 
+  // Gatsby injects BaseContext into @gatsbyjs/reach-router via a loader; the default
+  // Rule.test uses require.resolve(), which can fail to match hoisted/symlinked paths,
+  // leaving BaseContext undefined → "Cannot read properties of undefined (reading 'Provider')".
+  const reachRouterBaseContextLoader = require.resolve(
+    'gatsby/dist/utils/reach-router-add-basecontext-export-loader'
+  );
+
   actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /[\\/]@gatsbyjs[\\/]reach-router[\\/]es[\\/]index\.js$/,
+          type: 'javascript/auto',
+          use: [{ loader: reachRouterBaseContextLoader }],
+        },
+      ],
+    },
     resolve: {
       alias: {
         '@components': path.resolve(__dirname, 'src/components'),
@@ -113,6 +129,9 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         '@pages': path.resolve(__dirname, 'src/pages'),
         '@styles': path.resolve(__dirname, 'src/styles'),
         '@utils': path.resolve(__dirname, 'src/utils'),
+        // Single React instance (avoids context / hook runtime errors from duplicates)
+        react: path.resolve(__dirname, 'node_modules/react'),
+        'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
       },
     },
   });
