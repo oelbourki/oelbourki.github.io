@@ -3,7 +3,7 @@
 node_modules
 node_modules/
 yarn-error.log
-package-lock.json
+# package-lock.json must be committed for reproducible installs (npm ci on CI/Netlify).
 
 # Build directory
 /public
