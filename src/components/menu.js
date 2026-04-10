@@ -311,12 +311,7 @@ const Menu = () => {
                 rel="noopener noreferrer">
                 CV EN
               </a>
-              <a
-                href="/resume_fr.pdf"
-                target="_blank"
-                rel="noopener noreferrer">
-                CV FR
-              </a>
+              {/* CV FR — restore with config.js ResumeFr */}
             </div>
           </nav>
         </StyledSidebar>
