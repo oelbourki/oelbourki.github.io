@@ -1,9 +1,9 @@
 ---
 date: '2019-10-01'
-title: 'Founder & President (Part-time / Volunteer)'
+title: 'Founder & President'
 company: '1337 AI'
 location: 'Benguerir, Morocco'
-range: 'Oct 2019 – Feb 2022'
+range: 'Oct 2019 – Jan 2022'
 url: ''
 ---
 

@@ -1,13 +1,11 @@
 ---
-date: '2025-09-01'
+date: '2026-02-01'
 title: 'AI Engineer (Freelance & Open Source)'
 company: 'Independent'
 location: 'Paris, France'
-range: 'Sep 2025 – Present'
+range: 'Feb 2026 – Present'
 url: ''
 ---
 
-- Delivered a multimodal document processing system (OCR + VLMs + hybrid pipelines) automating invoice and receipt extraction — **high-throughput, auditable** finance/ops workflows with sharp reduction in manual data entry.
-- Architected a real estate platform (FastAPI, LangGraph, DeepAgents) with **6 specialized LLM subagents** (search, finance, location, reporting) — end-to-end research without manual handoffs between domains.
-- Built an open-source sandboxed runtime (codibox) for LLM-generated Python, implementing Docker-level isolation (namespace separation, read-only filesystem, resource caps) to eliminate unsafe execution risks and reliably capture output artifacts in agentic pipelines.
+- Delivered a multimodal document processing system leveraging OCR, vision-language models, and hybrid pipelines, automating invoice and receipt extraction, reducing manual data entry, and enabling high-throughput, auditable workflows for finance and operations teams.
 - Implemented an enterprise GraphRAG platform for financial documents, integrating Neo4j knowledge graphs, hybrid vector/full-text retrieval, and LLM-based reasoning, providing clients with accurate, explainable answers for due diligence, compliance, and risk analysis.

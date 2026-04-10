@@ -242,7 +242,7 @@ const skillCategories = [
     label: 'MLOps',
     skills: [
       'Docker',
-      'Kubernetes (K3s)',
+      'Kubernetes',
       'Ray Serve',
       'MLflow',
       'CI/CD (GitHub Actions, GitOps)',
@@ -291,23 +291,24 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              AI Engineer with 4+ years of software engineering experience, including 2+ years specialized in production LLM systems, multi-agent platforms, and GPU inference infrastructure on GCP. I deliver measurable impact—examples include 3× inference throughput and 47% infrastructure cost reduction—and I specialize at the intersection of inference optimization and multi-agent orchestration across finance, real estate, and research.
+              AI Engineer with 4+ years building ML and LLM systems in production — from GPU inference optimization (3× throughput,
+              47% cost reduction) to multi-agent orchestration platforms serving real financial clients. Specialized at the intersection
+              of vLLM serving stacks, LangGraph pipelines, and GraphRAG on GCP and AWS. Founder of a 300-member ML engineering community.
             </p>
 
             <p>
-              Recent work spans production LangGraph/FastAPI platforms with adaptive RAG and multi-LLM routing, GraphRAG on Neo4j for financial intelligence, secure sandboxed code execution (codibox), and full MLOps: Docker, Kubernetes, CI/CD, and observability with LangSmith, Langfuse, and Prometheus.
+              <strong>Education:</strong> École 42 Paris — IT Architecture Expert (Data Architecture), RNCP 7, Level 21; ranked 3rd
+              globally in pedagogical innovation (WURI 2025). Ibn Tofaïl University — Specialized Master&apos;s in AI. Mohammed VI
+              Polytechnic University (1337) — Digital Technology Architect.
             </p>
 
             <p>
-              <strong>Leadership:</strong> Founder of 1337 AI, where I grew a 300+ member AI engineering community through bootcamps and workshops. <strong>Education:</strong> École 42 Paris — IT Architecture Expert (Data Architecture), RNCP 7, Level 21; ranked 3rd globally in pedagogical innovation (WURI 2025). Ibn Tofaïl University — Specialized Master&apos;s in AI. Mohammed VI Polytechnic University (1337) — Digital Technology Architect.
-            </p>
-
-            <p>
-              <strong>Available immediately</strong> for hybrid or remote roles; open to national and international mobility. <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or remote.</strong>
+              <strong>Available immediately</strong> for hybrid or remote roles; open to national and international mobility.{' '}
+              <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or remote.</strong>
             </p>
 
             <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Languages:</strong> French (C1) · English (C2) · Arabic (native)
+              <strong style={{ color: 'var(--text-primary)' }}>Languages:</strong> French (B2) · English (C2) · Arabic (native)
             </p>
 
             <p style={{ marginTop: '1.5rem', fontWeight: 600, color: 'var(--text-primary)' }}>Core expertise</p>
