@@ -34,6 +34,13 @@ const StyledHeroSection = styled.section`
 
   @media (max-width: 900px) {
     padding-top: calc(var(--nav-height) + 16px);
+    padding-bottom: 56px;
+    min-height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: calc(var(--nav-height) + 8px);
+    padding-bottom: 40px;
   }
 `;
 
@@ -53,8 +60,11 @@ const HeroGrid = styled.div`
 const HeroTag = styled.div`
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
+  max-width: 100%;
   font-size: 12px;
+  line-height: 1.45;
   color: var(--accent);
   background: var(--accent-subtle);
   border: 0.5px solid var(--accent-border);
@@ -68,7 +78,14 @@ const HeroTag = styled.div`
     height: 6px;
     background: var(--accent);
     border-radius: 50%;
+    flex-shrink: 0;
     animation: ${pulse} 2s infinite;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 11px;
+    padding: 5px 10px;
+    margin-bottom: 16px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -89,26 +106,39 @@ const HeroName = styled.h1`
 
 const HeroRole = styled.p`
   margin: 0 0 20px;
-  font-size: clamp(18px, 2.5vw, 22px);
+  font-size: clamp(16px, 2.5vw, 22px);
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.45;
+  max-width: 34em;
 
   .role-highlight {
+    display: block;
     color: var(--accent-bright);
     font-weight: 500;
+    margin-bottom: 4px;
   }
 
   .role-rest {
+    display: block;
     color: var(--text-secondary);
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 16px;
+    line-height: 1.5;
   }
 `;
 
 const HeroDesc = styled.p`
-  margin: 0 0 40px;
+  margin: 0;
   max-width: 520px;
   font-size: var(--fz-md);
   line-height: 1.7;
   color: var(--text-secondary);
+
+  @media (max-width: 480px) {
+    font-size: var(--fz-sm);
+  }
 `;
 
 const CtaRow = styled.div`
@@ -116,6 +146,11 @@ const CtaRow = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
+  margin-top: 36px;
+
+  @media (max-width: 480px) {
+    margin-top: 28px;
+  }
 `;
 
 const BtnPrimary = styled.a`
@@ -145,6 +180,10 @@ const BtnResume = styled.a`
   font-family: var(--font-sans);
   transition: background 0.2s;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 
   &:hover,
   &:focus-visible {
@@ -196,23 +235,6 @@ const StatValue = styled.div`
   }
 `;
 
-const TechPills = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
-`;
-
-const Pill = styled.span`
-  font-size: 11px;
-  color: var(--text-tertiary);
-  background: var(--bg-elevated);
-  border: 0.5px solid var(--bg-border);
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-family: var(--font-mono);
-`;
-
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -231,16 +253,19 @@ const Hero = () => {
       <div>
         <HeroTag>
           <span className="pulse-dot" aria-hidden />
-          Open to opportunities · Paris · Hybrid (EU) · Remote (Worldwide)
+          Paris, France
         </HeroTag>
         <HeroName>Otmane El Bourki</HeroName>
         <HeroRole>
           <span className="role-highlight">AI Engineer</span>
-          <span className="role-rest"> · LLMs · Multi-agent systems · MLOps</span>
+          <span className="role-rest">
+            Production LLM Systems · Inference Optimisation · Multi-Agent Orchestration
+          </span>
         </HeroRole>
         <HeroDesc>
-          Building production-grade LLM systems — multi-agent orchestration, GraphRAG pipelines, and inference
-          optimization at scale. Focused on real-world AI deployment across GCP &amp; AWS.
+          AI Engineer at Alten (A3) — building production-grade LLM systems, multi-agent
+          orchestration, GraphRAG pipelines, and inference optimisation at scale. Focused on real-world AI
+          deployment across GCP, AWS &amp; Azure.
         </HeroDesc>
         <CtaRow>
           <BtnPrimary href="#projects">View projects</BtnPrimary>
@@ -258,37 +283,21 @@ const Hero = () => {
         <StatCard>
           <StatLabel>Specialization</StatLabel>
           <StatValue>
-            <span className="accent">LLM</span> · Multi-agent · RAG
+            <span className="accent">Multi-agent</span> · GraphRAG · Inference
           </StatValue>
         </StatCard>
         <StatCard>
           <StatLabel>Infrastructure</StatLabel>
           <StatValue>
-            GCP · <span className="accent">AWS</span> · Docker · K8s
+            <span className="accent">Azure</span> · GCP · AWS · K8s
           </StatValue>
         </StatCard>
         <StatCard>
           <StatLabel>Community</StatLabel>
           <StatValue>
-            Built 1337 AI · <span className="accent">300+</span> member AI community
+            Built 1337 AI · <span className="accent">300+</span> · HackAI mentor
           </StatValue>
         </StatCard>
-        <TechPills>
-          {[
-            'Python',
-            'RAG',
-            'LangGraph',
-            'Multi-agent',
-            'vLLM',
-            'FastAPI',
-            'Docker',
-            'HuggingFace',
-            'AWS',
-            'GCP',
-          ].map(t => (
-            <Pill key={t}>{t}</Pill>
-          ))}
-        </TechPills>
       </StatColumn>
     </HeroGrid>
   );

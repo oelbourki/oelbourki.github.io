@@ -1,6 +1,6 @@
 ---
-title: Sadeeq AL-Siha
-description: A healthcare chatbot offering disease identification and drug recommendations
+title: Sadeeq Al-Siha Medical Chatbot
+description: Medical RAG QA with Meditron 7B, Qdrant, and PubMedBERT for evidence-grounded clinical answers
 date: '2024-01-15'
 draft: false
 slug: '/projects/sadeeq-al-siha'
@@ -8,14 +8,18 @@ tags:
   - LLM
   - Chatbot
   - Healthcare
+  - RAG
 ---
 
 ## Overview
 
-Designed a healthcare chatbot based on Retrieval-Augmented Generation (RAG) style, offering disease identification and drug recommendations for patients, as well as personalized treatment plans.
+Medical RAG (Retrieval-Augmented Generation) QA application using the Meditron 7B LLM, Qdrant vector database, and PubMedBERT embeddings — designed for accurate, literature-grounded medical answers through a Chainlit interface.
 
 ## Details
 
-- Utilized Ollama for serving the large language model (LLM).
-- Employed Qdrant as the vector store.
-- Implemented features to handle patient queries and provide accurate medical advice.
+- **Meditron 7B** for medical question answering via Ollama
+- **Qdrant** for scalable vector search over medical embeddings
+- **PubMedBERT** embeddings trained on medical literature
+- **Chainlit** UI for interactive clinical Q&A
+
+Repo: [oelbourki/Sadeeq-Al-Siha-Medical-Chatbot](https://github.com/oelbourki/Sadeeq-Al-Siha-Medical-Chatbot)

@@ -7,4 +7,5 @@ range: 'Oct 2019 – Jan 2022'
 url: ''
 ---
 
-- Founded and led a 300+ member AI engineering community, organizing 2 bootcamps and 6 workshops on ML/GenAI fundamentals.
+- Founded and scaled a 300-member AI/ML community, organizing 2 bootcamps and 6 workshops on Python, ML, and GenAI.
+- Co-mentor at ThinkAI 2023 and HackAI 2024 & 2025, Morocco’s first generative-AI hackathons, alongside mentors from Hugging Face and Mistral AI.

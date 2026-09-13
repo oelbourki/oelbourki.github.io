@@ -14,9 +14,12 @@ const variables = css`
     --accent-bright: #7dd8ff;
     --accent-subtle: rgba(78, 181, 255, 0.1);
     --accent-border: rgba(78, 181, 255, 0.26);
+    /* Warm amber — secondary accent (Featured badge, sparse hovers) */
+    --accent-secondary: #e8a54b;
+    --accent-secondary-subtle: rgba(232, 165, 75, 0.12);
     --text-primary: #f0f0f0;
     --text-secondary: #888888;
-    --text-tertiary: #444444;
+    --text-tertiary: #6e6e6e;
 
     /* Legacy aliases */
     --dark-navy: #0a0a0a;

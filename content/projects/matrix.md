@@ -1,5 +1,6 @@
 ---
 date: '2024-03-01'
+order: 6
 title: 'matrix'
 github: 'https://github.com/oelbourki/matrix'
 external: ''

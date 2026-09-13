@@ -1,13 +1,13 @@
 ---
 date: '2023-06-01'
-title: 'AI Engineer'
+title: 'AI Engineer · CDD'
 company: 'Tetricks'
-location: 'Sidi Slimane, Morocco (Remote)'
+location: 'Remote'
 range: 'Jun 2023 – Jun 2024'
 url: ''
 ---
 
-- Architected and deployed a production-grade multimodal RAG platform on GCP, fine-tuning LLaMA for domain-specific hotel guest intent detection and structured response generation; built scalable inference endpoints on Vertex AI and containerized APIs on Cloud Run.
-- Engineered a high-performance LLM serving stack using AWQ/GPTQ quantization and vLLM-based dynamic batching, increasing inference throughput 3×, reducing latency under load, and cutting infrastructure costs by 47% through autoscaling and GPU optimization.
-- Designed an enterprise-grade document ingestion pipeline supporting large, multi-format files, implementing schema-enforced structured extraction with Pydantic and automated embedding workflows to power hybrid retrieval (vector + lexical) with reranking.
-- Implemented end-to-end LLM observability, evaluation, and security hardening — including RAG quality metrics (faithfulness, relevance), P50/P95 latency monitoring, prompt-injection mitigation, and safe model rollouts via traffic splitting and A/B testing.
+- Led Vision-LLM integration for automated hotel room description generation, working directly with the CEO and Dev team; PoC secured Bpifrance innovation funding.
+- Engineered a vLLM serving stack with AWQ/GPTQ quantization and dynamic batching, achieving 3× throughput and 47% cost reduction vs. baseline serving.
+- Fine-tuned Llama 2 on hospitality domain data for guest intent detection across 12+ intent categories, deployed into production guest-messaging workflows.
+- Built a multimodal RAG chatbot on GCP (Vertex AI + Cloud Run) with a Pydantic-enforced ingestion pipeline and hybrid vector/lexical retrieval with reranking.

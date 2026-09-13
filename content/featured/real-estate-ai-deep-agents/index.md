@@ -2,8 +2,10 @@
 order: 2
 date: '2025-01-01'
 title: 'Real Estate AI Deep Agents'
+cover: './cover.png'
 github: 'https://github.com/oelbourki/Real-Estate-AI-Deep-Agents'
 external: ''
+cta: '/pensieve/multi-agent-orchestration'
 tech:
   - LangGraph
   - DeepAgents

@@ -37,12 +37,16 @@ const StyledProject = styled.li`
   &:not(:last-of-type) {
     margin-bottom: 100px;
 
+    @media (max-width: 1080px) {
+      margin-bottom: 80px;
+    }
+
     @media (max-width: 768px) {
       margin-bottom: 70px;
     }
 
     @media (max-width: 480px) {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
   }
 
@@ -125,12 +129,12 @@ const StyledProject = styled.li`
   .project-overline {
     display: inline-block;
     margin: 10px 0;
-    color: var(--accent);
+    color: var(--accent-secondary);
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 400;
-    background: var(--accent-subtle);
-    border: 0.5px solid var(--accent-border);
+    background: var(--accent-secondary-subtle);
+    border: 0.5px solid rgba(232, 165, 75, 0.35);
     padding: 3px 9px;
     border-radius: 20px;
   }
@@ -138,6 +142,15 @@ const StyledProject = styled.li`
   .project-title {
     color: var(--lightest-slate);
     font-size: clamp(24px, 5vw, 28px);
+
+    a {
+      transition: color 0.2s;
+
+      &:hover,
+      &:focus {
+        color: var(--accent-secondary);
+      }
+    }
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -158,6 +171,11 @@ const StyledProject = styled.li`
           height: 100%;
           top: 0;
           left: 0;
+        }
+
+        &:hover,
+        &:focus {
+          color: var(--accent-secondary);
         }
       }
     }
@@ -269,58 +287,58 @@ const StyledProject = styled.li`
     grid-row: 1 / -1;
     position: relative;
     z-index: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--bg-border);
+    transition: border-color 0.25s;
+    min-height: 280px;
+
+    &:hover {
+      border-color: rgba(232, 165, 75, 0.45);
+    }
+
+    @media (max-width: 1080px) {
+      min-height: 240px;
+    }
 
     @media (max-width: 768px) {
       grid-column: 1 / -1;
       height: 100%;
-      opacity: 0.25;
+      min-height: 200px;
+      opacity: 0.35;
+    }
+
+    @media (max-width: 480px) {
+      min-height: 180px;
     }
 
     a {
       width: 100%;
       height: 100%;
-      background-color: var(--green);
+      min-height: inherit;
       border-radius: var(--border-radius);
       vertical-align: middle;
+      display: block;
+      background-color: var(--bg-elevated);
 
       &:hover,
       &:focus {
-        background: transparent;
         outline: 0;
-
-        &:before,
-        .img {
-          background: transparent;
-          filter: none;
-        }
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 3;
-        transition: var(--transition);
-        background-color: var(--navy);
-        mix-blend-mode: screen;
       }
     }
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
 
       @media (max-width: 768px) {
         object-fit: cover;
-        width: auto;
+        width: 100%;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
+        filter: brightness(40%);
       }
     }
   }
@@ -339,6 +357,7 @@ const Featured = () => {
               order
               title
               cover {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
@@ -390,6 +409,8 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
             const image = cover ? getImage(cover) : null;
+            const coverUrl = cover?.publicURL;
+            const hasCover = Boolean(image || coverUrl);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -416,7 +437,7 @@ const Featured = () => {
 
                     <div className="project-links">
                       {cta && (
-                        <a href={cta} aria-label="Course Link" className="cta">
+                        <a href={cta} aria-label="Learn more" className="cta">
                           Learn More
                         </a>
                       )}
@@ -434,10 +455,14 @@ const Featured = () => {
                   </div>
                 </div>
 
-                {image && (
+                {hasCover && (
                   <div className="project-image">
-                    <a href={external || github || '#'}>
-                      <GatsbyImage image={image} alt={title} className="img" />
+                    <a href={external || github || coverUrl || '#'}>
+                      {image ? (
+                        <GatsbyImage image={image} alt={title} className="img" />
+                      ) : (
+                        <img src={coverUrl} alt={title} className="img" />
+                      )}
                     </a>
                   </div>
                 )}

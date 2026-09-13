@@ -2,8 +2,10 @@
 order: 1
 date: '2026-01-01'
 title: 'GraphRAG Knowledge Engine'
+cover: './cover.svg'
 github: 'https://github.com/oelbourki'
 external: ''
+cta: '/pensieve/graphrag-production'
 tech:
   - Neo4j
   - GraphRAG

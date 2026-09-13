@@ -18,35 +18,7 @@ const StyledAboutSection = styled.section`
   }
 `;
 
-const StyledText = styled.div`
-  .chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 1.25rem;
-  }
-
-  .chip {
-    font-size: 12px;
-    padding: 6px 14px;
-    border-radius: 6px;
-    background: var(--bg-elevated);
-    border: 0.5px solid var(--bg-border);
-    color: var(--text-tertiary);
-    display: inline-block;
-    font-family: var(--font-sans);
-  }
-
-  .chip.active {
-    color: var(--accent);
-    border-color: var(--accent-border);
-    background: var(--accent-subtle);
-  }
-`;
-
-const SkillsBlock = styled.div`
-  margin-top: 2rem;
-`;
+const StyledText = styled.div``;
 
 const SkillsHeading = styled.h3`
   margin: 0 0 14px;
@@ -85,10 +57,10 @@ const TabButton = styled.button`
 `;
 
 const TabPanel = styled.div`
-  background: var(--bg-elevated);
-  border: 0.5px solid var(--bg-border);
-  border-radius: 10px;
-  padding: 16px 18px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   min-height: 120px;
 `;
 
@@ -97,10 +69,14 @@ const SkillUl = styled.ul`
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 20px;
 
-  @media (max-width: 520px) {
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 480px) {
     grid-template-columns: 1fr;
   }
 
@@ -122,19 +98,75 @@ const SkillUl = styled.ul`
 `;
 
 const AllGroups = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SkillGroup = styled.div`
+  border: 0.5px solid var(--bg-border);
+  border-radius: var(--border-radius);
+  padding: 14px 16px;
+  background: var(--bg-elevated);
+  min-width: 0;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
 `;
 
 const GroupTitle = styled.h4`
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-tertiary);
   font-family: var(--font-mono);
+`;
+
+const ExpertiseBlock = styled.div`
+  margin-top: 2.5rem;
+  width: 100%;
+
+  .expertise-heading {
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: var(--bg-elevated);
+    border: 0.5px solid var(--bg-border);
+    color: var(--text-secondary);
+    display: inline-block;
+    font-family: var(--font-sans);
+  }
+
+  .chip.active {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-subtle);
+  }
+`;
+
+const SkillsBlock = styled.div`
+  margin-top: 1.75rem;
+  width: 100%;
 `;
 
 const StyledPic = styled.div`
@@ -196,85 +228,99 @@ const StyledPic = styled.div`
 const chips = [
   { label: 'Multi-agent systems', active: true },
   { label: 'GraphRAG', active: true },
-  { label: 'LLM inference optimization', active: true },
-  { label: 'MLOps', active: false },
-  { label: 'Fine-tuning', active: false },
-  { label: 'Quantization', active: false },
+  { label: 'Inference optimization', active: true },
+  { label: 'Fine-tuning (LoRA/QLoRA)', active: false },
+  { label: 'Evaluation & observability', active: false },
   { label: 'Production deployment', active: false },
 ];
 
 const skillCategories = [
   {
-    id: 'programming',
-    label: 'Programming',
-    skills: ['Python', 'C/C++', 'FastAPI', 'REST APIs', 'Microservices', 'Linux/Shell'],
+    id: 'orchestration',
+    label: 'LLM Orchestration & Agentic Systems',
+    skills: [
+      'LangGraph',
+      'LangChain',
+      'CrewAI',
+      'Multi-Agent Systems',
+      'ReAct / Plan-Execute',
+      'Tool Calling',
+      'MCP',
+      'Structured Outputs',
+    ],
   },
   {
-    id: 'deep-learning',
-    label: 'Deep Learning & LLMs',
+    id: 'retrieval',
+    label: 'Retrieval & Knowledge Systems',
     skills: [
-      'PyTorch',
-      'TensorFlow',
-      'Hugging Face',
-      'Fine-tuning (LoRA/QLoRA)',
-      '4-bit Quantization (AWQ/GPTQ)',
-      'vLLM',
-      'ONNX Runtime',
+      'RAG',
+      'GraphRAG',
+      'Hybrid Search',
+      'Reranking',
+      'Semantic Chunking',
+      'Qdrant',
+      'Neo4j',
+      'OCR',
       'Multimodal Document Understanding',
     ],
   },
   {
-    id: 'orchestration',
-    label: 'LLM & retrieval',
+    id: 'providers',
+    label: 'LLM Providers & Model Integration',
     skills: [
-      'LangChain',
-      'LangGraph',
-      'Multi-Agent Systems',
-      'RAG / GraphRAG / Hybrid Search',
-      'Vector DBs (Qdrant, ChromaDB)',
-      'Reranking',
-      'Prompt Engineering',
-      'Pydantic',
-    ],
-  },
-  {
-    id: 'mlops',
-    label: 'MLOps',
-    skills: [
-      'Docker',
-      'Kubernetes',
-      'Ray Serve',
-      'MLflow',
-      'CI/CD (GitHub Actions, GitOps)',
-      'GPU Inference Optimization',
-      'Cloud (AWS, GCP)',
+      'OpenAI',
+      'Anthropic',
+      'Gemini',
+      'Mistral',
+      'Hugging Face',
+      'Multi-LLM Routing',
     ],
   },
   {
     id: 'evaluation',
-    label: 'Evaluation',
+    label: 'Evaluation, Observability & Responsible AI',
     skills: [
-      'Model Testing & Validation',
-      'Ragas / DeepEval',
-      'Golden Dataset Testing',
-      'LLM Metrics (Faithfulness, Relevance)',
-      'Responsible AI & Bias Mitigation',
+      'RAGAS',
       'LangSmith',
-      'Langfuse',
-      'Prometheus',
+      'LLM-as-Judge',
+      'Hallucination Detection',
+      'EU AI Act & Risk Assessment',
+      'Bias & Safety Evaluation',
     ],
   },
   {
-    id: 'data',
-    label: 'Data systems',
+    id: 'inference',
+    label: 'Inference & Production Engineering',
     skills: [
-      'SQL',
-      'Redis',
-      'Neo4j',
-      'Vector Similarity Search',
-      'Pandas',
-      'Structured Extraction (Docling, PDF/OCR)',
+      'vLLM',
+      'Quantization (AWQ/GPTQ)',
+      'Fine-Tuning (LoRA/QLoRA)',
+      'Rate Limiting & Fallback',
+      'Cost & Latency Optimization',
     ],
+  },
+  {
+    id: 'architecture',
+    label: 'AI Architecture & Deployment',
+    skills: [
+      'End-to-End AI System Design',
+      'Vertex AI',
+      'Amazon Bedrock',
+      'Azure AI',
+      'Docker',
+      'Kubernetes',
+      'Terraform',
+      'CI/CD',
+      'MLflow',
+      'AWS',
+      'GCP',
+      'Azure',
+    ],
+  },
+  {
+    id: 'programming',
+    label: 'Programming & APIs',
+    skills: ['Python', 'FastAPI', 'Pydantic', 'SQL'],
   },
 ];
 
@@ -291,9 +337,10 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              AI Engineer with 4+ years building ML and LLM systems in production — from GPU inference optimization (3× throughput,
-              47% cost reduction) to multi-agent orchestration platforms serving real financial clients. Specialized at the intersection
-              of vLLM serving stacks, LangGraph pipelines, and GraphRAG on GCP and AWS. Founder of a 300-member ML engineering community.
+              AI Engineer with ~5 years of experience in AI — including ~3 years of professional experience —
+              from GPU inference optimisation (3× throughput, 47% cost reduction) to multi-agent orchestration platforms
+              serving real financial clients. Specialized at the intersection of vLLM serving stacks, LangGraph pipelines,
+              and GraphRAG on GCP and AWS. Founder of a 300-member ML engineering community.
             </p>
 
             <p>
@@ -303,69 +350,13 @@ const About = () => {
             </p>
 
             <p>
-              <strong>Available immediately</strong> for hybrid or remote roles; open to national and international mobility.{' '}
+              Open to hybrid or remote roles, with national and international mobility.{' '}
               <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or remote.</strong>
             </p>
 
             <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
               <strong style={{ color: 'var(--text-primary)' }}>Languages:</strong> French (B2) · English (C2) · Arabic (native)
             </p>
-
-            <p style={{ marginTop: '1.5rem', fontWeight: 600, color: 'var(--text-primary)' }}>Core expertise</p>
-            <div className="chip-row">
-              {chips.map(({ label, active }) => (
-                <span key={label} className={`chip${active ? ' active' : ''}`}>
-                  {label}
-                </span>
-              ))}
-            </div>
-
-            <SkillsBlock>
-              <SkillsHeading id="skills-tabs-heading">All skills</SkillsHeading>
-              <TabList role="tablist" aria-labelledby="skills-tabs-heading">
-                {tabs.map(tab => (
-                  <TabButton
-                    key={tab.id}
-                    type="button"
-                    role="tab"
-                    id={`skill-tab-${tab.id}`}
-                    aria-selected={activeSkillTab === tab.id}
-                    aria-controls="skill-panel-main"
-                    $active={activeSkillTab === tab.id}
-                    onClick={() => setActiveSkillTab(tab.id)}>
-                    {tab.label}
-                  </TabButton>
-                ))}
-              </TabList>
-
-              <TabPanel
-                role="tabpanel"
-                id="skill-panel-main"
-                aria-labelledby={`skill-tab-${activeSkillTab}`}>
-                {activeSkillTab === 'all' ? (
-                  <AllGroups>
-                    {skillCategories.map(cat => (
-                      <div key={cat.id}>
-                        <GroupTitle>{cat.label}</GroupTitle>
-                        <SkillUl>
-                          {cat.skills.map(s => (
-                            <li key={s}>{s}</li>
-                          ))}
-                        </SkillUl>
-                      </div>
-                    ))}
-                  </AllGroups>
-                ) : (
-                  <SkillUl>
-                    {skillCategories
-                      .find(c => c.id === activeSkillTab)
-                      ?.skills.map(s => (
-                        <li key={s}>{s}</li>
-                      ))}
-                  </SkillUl>
-                )}
-              </TabPanel>
-            </SkillsBlock>
           </div>
         </StyledText>
 
@@ -382,6 +373,69 @@ const About = () => {
           </div>
         </StyledPic>
       </div>
+
+      <ExpertiseBlock>
+        <p className="expertise-heading">Core expertise</p>
+        <div className="chip-row">
+          {chips.map(({ label, active }) => (
+            <span key={label} className={`chip${active ? ' active' : ''}`}>
+              {label}
+            </span>
+          ))}
+        </div>
+      </ExpertiseBlock>
+
+      <SkillsBlock>
+        <SkillsHeading id="skills-tabs-heading">All skills</SkillsHeading>
+        <TabList role="tablist" aria-labelledby="skills-tabs-heading">
+          {tabs.map(tab => (
+            <TabButton
+              key={tab.id}
+              type="button"
+              role="tab"
+              id={`skill-tab-${tab.id}`}
+              aria-selected={activeSkillTab === tab.id}
+              aria-controls="skill-panel-main"
+              $active={activeSkillTab === tab.id}
+              onClick={() => setActiveSkillTab(tab.id)}>
+              {tab.label}
+            </TabButton>
+          ))}
+        </TabList>
+
+        <TabPanel
+          role="tabpanel"
+          id="skill-panel-main"
+          aria-labelledby={`skill-tab-${activeSkillTab}`}>
+          {activeSkillTab === 'all' ? (
+            <AllGroups>
+              {skillCategories.map(cat => (
+                <SkillGroup key={cat.id}>
+                  <GroupTitle>{cat.label}</GroupTitle>
+                  <SkillUl>
+                    {cat.skills.map(s => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </SkillUl>
+                </SkillGroup>
+              ))}
+            </AllGroups>
+          ) : (
+            <SkillGroup>
+              <GroupTitle>
+                {skillCategories.find(c => c.id === activeSkillTab)?.label}
+              </GroupTitle>
+              <SkillUl>
+                {skillCategories
+                  .find(c => c.id === activeSkillTab)
+                  ?.skills.map(s => (
+                    <li key={s}>{s}</li>
+                  ))}
+              </SkillUl>
+            </SkillGroup>
+          )}
+        </TabPanel>
+      </SkillsBlock>
     </StyledAboutSection>
   );
 };

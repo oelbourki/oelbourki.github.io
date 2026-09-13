@@ -1,7 +1,7 @@
 module.exports = {
   email: 'otmane.elbourki@gmail.com',
   phone: '+33 7 75 73 57 51',
-  location: 'Massy, Paris Area, France',
+  location: 'Paris, France',
 
   socialMedia: [
     {
@@ -49,6 +49,10 @@ module.exports = {
     {
       name: 'Work',
       url: '/#projects',
+    },
+    {
+      name: 'Writing',
+      url: '/pensieve',
     },
     {
       name: 'Contact',
