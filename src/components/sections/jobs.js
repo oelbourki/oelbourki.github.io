@@ -8,7 +8,7 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
-  max-width: 700px;
+  max-width: 900px;
 
   .inner {
     display: flex;
@@ -86,10 +86,12 @@ const StyledTabButton = styled.button`
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
-    padding: 0 15px;
+    min-width: max-content;
+    width: auto;
+    padding: 0 18px;
     border-left: 0;
-    border-bottom: 2px solid var(--lightest-navy);
+    border-bottom: 2px solid
+      ${({ isActive }) => (isActive ? 'var(--accent)' : 'var(--lightest-navy)')};
     text-align: center;
   }
 
@@ -114,16 +116,7 @@ const StyledHighlight = styled.div`
   transition-delay: 0.1s;
 
   @media (max-width: 600px) {
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
-    height: 2px;
-    margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
-  }
-  @media (max-width: 480px) {
-    margin-left: 25px;
+    display: none;
   }
 `;
 
@@ -140,11 +133,15 @@ const StyledTabPanels = styled.div`
 const StyledTabPanel = styled.div`
   width: 100%;
   height: auto;
-  padding: 18px 20px;
+  padding: 22px 28px;
   background: var(--bg-elevated);
   border: 0.5px solid var(--bg-border);
   border-radius: 10px;
   transition: border-color 0.2s;
+
+  @media (max-width: 480px) {
+    padding: 18px 18px;
+  }
 
   &:hover {
     border-color: var(--accent-border);
@@ -152,6 +149,10 @@ const StyledTabPanel = styled.div`
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
+  }
+
+  li {
+    max-width: none;
   }
 
   h3 {

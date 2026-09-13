@@ -143,8 +143,11 @@ const StyledNav = styled.nav`
 const StyledLinks = styled.div`
   display: flex;
   align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
 
-  @media (max-width: 768px) {
+  /* With 6 links + CTAs, desktop row needs more than 768px */
+  @media (max-width: 1080px) {
     display: none;
   }
 
@@ -153,12 +156,14 @@ const StyledLinks = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
+    flex-shrink: 1;
 
     li {
       margin: 0 5px;
       position: relative;
       counter-increment: item 1;
       font-size: var(--fz-xs);
+      white-space: nowrap;
 
       a {
         padding: 10px;
@@ -180,10 +185,29 @@ const StyledLinks = styled.div`
         }
       }
     }
+
+    @media (max-width: 1280px) {
+      li {
+        margin: 0 2px;
+
+        a {
+          padding: 10px 6px;
+        }
+      }
+    }
+  }
+
+  .nav-cta-group {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 8px;
+    margin-left: 8px;
   }
 
   .nav-button {
-    margin-left: 10px;
+    margin-left: 0;
     font-size: 13px;
     display: inline-flex;
     align-items: center;
@@ -195,6 +219,7 @@ const StyledLinks = styled.div`
     border-radius: 6px;
     font-family: var(--font-sans);
     text-decoration: none;
+    white-space: nowrap;
     transition: border-color 0.2s, color 0.2s;
 
     &:hover,
@@ -207,11 +232,20 @@ const StyledLinks = styled.div`
     svg {
       width: 16px;
       height: 16px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1280px) {
+      padding: 7px 10px;
+
+      .nav-cta-label {
+        display: none;
+      }
     }
   }
 
   .btn-resume {
-    margin-left: 10px;
+    margin-left: 0;
     color: var(--accent);
     border: 0.5px solid var(--accent);
     padding: 7px 16px;
@@ -223,6 +257,7 @@ const StyledLinks = styled.div`
     align-items: center;
     gap: 6px;
     text-decoration: none;
+    white-space: nowrap;
     transition: background 0.2s;
 
     &:hover,
@@ -234,20 +269,25 @@ const StyledLinks = styled.div`
     svg {
       width: 16px;
       height: 16px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1280px) {
+      padding: 7px 12px;
     }
   }
+`;
 
-  .logo-text {
-    margin-left: 12px;
-    font-family: var(--font-mono);
-    font-size: var(--fz-sm);
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: 0.08em;
+const StyledLogoText = styled.span`
+  margin-left: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
 
-    @media (max-width: 480px) {
-      display: none;
-    }
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -307,12 +347,12 @@ const Nav = ({ isHome }) => {
       {isHome ? (
         <a href="/" aria-label="home">
           {logoMark}
-          <span className="logo-text">OEB</span>
+          <StyledLogoText>OEB</StyledLogoText>
         </a>
       ) : (
         <Link to="/" aria-label="home">
           {logoMark}
-          <span className="logo-text">OEB</span>
+          <StyledLogoText>OEB</StyledLogoText>
         </Link>
       )}
     </div>
@@ -324,7 +364,7 @@ const Nav = ({ isHome }) => {
   const linkedinLink = socialMedia.find(s => s.name === 'Linkedin');
 
   const HeaderButtons = (
-    <>
+    <div className="nav-cta-group">
       {githubLink && (
         <a
           href={githubLink.url}
@@ -334,7 +374,7 @@ const Nav = ({ isHome }) => {
           aria-label="GitHub"
         >
           <IconGitHub />
-          GitHub
+          <span className="nav-cta-label">GitHub</span>
         </a>
       )}
       {resumeLink && (
@@ -370,10 +410,10 @@ const Nav = ({ isHome }) => {
           aria-label="LinkedIn"
         >
           <IconLinkedin />
-          LinkedIn
+          <span className="nav-cta-label">LinkedIn</span>
         </a>
       )}
-    </>
+    </div>
   );
 
   return (
@@ -392,7 +432,7 @@ const Nav = ({ isHome }) => {
                     </li>
                   ))}
               </ol>
-              <div>{HeaderButtons}</div>
+              {HeaderButtons}
             </StyledLinks>
 
             <Menu />

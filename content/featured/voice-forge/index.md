@@ -2,6 +2,7 @@
 order: 5
 date: '2024-09-01'
 title: 'VoiceForge'
+cover: './cover.png'
 github: 'https://github.com/oelbourki/VoiceForge'
 external: ''
 tech:

@@ -2,9 +2,9 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Otmane El Bourki',
+    title: 'Otmane El Bourki — AI Engineer, LLM Systems & Multi-Agent Orchestration',
     description:
-      'AI Engineer with 4+ years in software engineering and 2+ years in production LLM systems, multi-agent platforms, and GPU inference on GCP. Massy, Paris Area, France. Available for hybrid or remote roles.',
+      'AI Engineer building production LLM systems, GraphRAG pipelines, inference optimisation, and multi-agent orchestration. Based in Paris, France. Open to hybrid and remote roles.',
     siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',

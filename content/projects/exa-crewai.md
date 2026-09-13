@@ -1,5 +1,6 @@
 ---
 date: '2024-01-01'
+order: 3
 title: 'Automated Newsletter Generator with CrewAI and Exa'
 github: 'https://github.com/oelbourki/Automated-Newsletter-Generator-with-CrewAI-and-Exa'
 external: 'https://github.com/oelbourki/Automated-Newsletter-Generator-with-CrewAI-and-Exa'

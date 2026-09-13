@@ -31,9 +31,15 @@ const StyledProjectsSection = styled.section`
     grid-gap: 15px;
     position: relative;
     margin-top: 50px;
+    width: 100%;
 
     @media (max-width: 1080px) {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      margin-top: 36px;
     }
   }
 
@@ -178,7 +184,7 @@ const Projects = () => {
           fileAbsolutePath: { regex: "/content/projects/" }
           frontmatter: { showInProjects: { ne: false } }
         }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { fields: [frontmatter___order, frontmatter___date], order: [ASC, DESC] }
       ) {
         edges {
           node {
@@ -187,6 +193,8 @@ const Projects = () => {
               tech
               github
               external
+              order
+              date
             }
             html
           }
@@ -212,7 +220,16 @@ const Projects = () => {
   }, []);
 
   const GRID_LIMIT = 6;
-  const projects = data.projects.edges.filter(({ node }) => node);
+  const projects = data.projects.edges
+    .filter(({ node }) => node)
+    .sort((a, b) => {
+      const orderA = a.node.frontmatter.order ?? 999;
+      const orderB = b.node.frontmatter.order ?? 999;
+      if (orderA !== orderB) return orderA - orderB;
+      const dateA = new Date(a.node.frontmatter.date || 0).getTime();
+      const dateB = new Date(b.node.frontmatter.date || 0).getTime();
+      return dateB - dateA;
+    });
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 

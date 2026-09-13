@@ -1,12 +1,13 @@
 ---
 date: '2025-02-01'
-title: 'AI Engineer'
+title: 'AI Engineer · CDD'
 company: 'Impactera'
-location: 'Paris, France'
+location: 'Paris, France (Remote)'
 range: 'Feb 2025 – Feb 2026'
 url: 'https://impactera.com/'
 ---
 
-- Architected and deployed a production-grade multi-agent AI platform using LangGraph and FastAPI, orchestrating six specialized agents (RAG, SQL, Deep Research, Data Analyst, API, Web Searcher) — accelerated financial report generation to 30 minutes from half a day.
-- Designed and implemented an adaptive RAG pipeline with semantic chunking and hallucination grading, integrating Qdrant embeddings and multi-step retrieval validation to deliver high-accuracy document intelligence across hundreds of PDFs and Tagetik financial datasets.
-- Built a scalable multi-LLM orchestration layer supporting OpenAI, Anthropic, Gemini, Groq, and AWS Bedrock — implementing supervisor-based routing, checkpointed state management, OAuth-secured APIs, and Dockerized microservices with CI/CD, designed with the analyst team to ensure reliability and auditability.
+- Architected a supervisor-based multi-agent platform (LangGraph, 6 subagents) spanning document RAG, live API/SQL access, web research, and report generation, cutting report generation from half a day to 30 minutes.
+- Built a self-correcting RAG pipeline (Qdrant) with relevance-graded retrieval and hallucination-checked answers that auto-fallback on failed validation, shaped by CEO and finance-consultant requirements.
+- Engineered multi-LLM routing (OpenAI, Anthropic, Gemini, Bedrock) with fallback and async checkpointing, cutting rate-limit failures to near zero.
+- Built a nested API-orchestration agent that constructs tool-calling agents at runtime from OpenAPI specs (Tagetik and client systems).

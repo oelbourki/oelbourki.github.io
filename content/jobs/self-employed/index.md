@@ -1,11 +1,12 @@
 ---
 date: '2026-02-01'
-title: 'AI Engineer (Freelance & Open Source)'
+title: 'AI Engineer'
 company: 'Independent'
 location: 'Paris, France'
-range: 'Feb 2026 – Present'
+range: 'Feb 2026 – May 2026'
 url: ''
 ---
 
-- Delivered a multimodal document processing system leveraging OCR, vision-language models, and hybrid pipelines, automating invoice and receipt extraction, reducing manual data entry, and enabling high-throughput, auditable workflows for finance and operations teams.
-- Implemented an enterprise GraphRAG platform for financial documents, integrating Neo4j knowledge graphs, hybrid vector/full-text retrieval, and LLM-based reasoning, providing clients with accurate, explainable answers for due diligence, compliance, and risk analysis.
+- Open-sourced codibox (PyPI), a Docker-sandboxed Python execution engine enabling safe AI-generated code execution for LangGraph and CrewAI.
+- Designed a multi-agent real estate platform with LangChain deepagents for valuation, ROI, and market research, cutting research time from ∼3 hours to 15 minutes.
+- Built a GraphRAG platform on Neo4j with hybrid vector/full-text retrieval for LLM-powered due diligence and compliance Q&A.

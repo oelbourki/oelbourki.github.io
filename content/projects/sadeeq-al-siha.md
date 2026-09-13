@@ -1,17 +1,17 @@
 ---
 date: '2024-01-01'
-title: 'Sadeeq AL-Siha'
-github: 'https://github.com/otmane-elbourki/sadeeq-al-siha'
-external: 'https://sadeeq-al-siha.com'
+order: 1
+title: 'Sadeeq Al-Siha Medical Chatbot'
+github: 'https://github.com/oelbourki/Sadeeq-Al-Siha-Medical-Chatbot'
+external: ''
 tech:
-  - LLM
-  - UI
-  - ChatApp
-  - Meditron
+  - Meditron 7B
+  - RAG
+  - Qdrant
+  - PubMedBERT
   - Chainlit
   - Ollama
-  - Qdrant
 showInProjects: true
 ---
 
-Designed a healthcare chatbot based on RAG style, offering disease identification and drug recommendations for patients and personalized treatment plans. Used Ollama for serving LLM and Qdrant as a vector store.
+Medical RAG QA app using Meditron 7B, Qdrant, and PubMedBERT embeddings — evidence-grounded clinical Q&A over medical literature via a Chainlit interface.

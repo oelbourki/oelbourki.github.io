@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import config from '@config';
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
@@ -40,8 +41,33 @@ const Head = ({ title, description, image }) => {
     url: `${siteUrl}${pathname}`,
   };
 
+  const sameAs = (config.socialMedia || [])
+    .filter(s => s.name === 'GitHub' || s.name === 'Linkedin')
+    .map(s => s.url);
+
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Otmane El Bourki',
+    jobTitle: 'AI Engineer',
+    url: siteUrl,
+    email: config.email,
+    sameAs,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Alten',
+    },
+    homeLocation: {
+      '@type': 'Place',
+      name: 'Paris, France',
+    },
+  };
+
   return (
-    <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
+    <Helmet
+      title={seo.title}
+      defaultTitle={defaultTitle}
+      titleTemplate={title ? `%s | oelbourki.com` : null}>
       <html lang="en" />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,6 +93,8 @@ const Head = ({ title, description, image }) => {
       <meta name="twitter:image" content={seo.image} />
 
       <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
+
+      <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
     </Helmet>
   );
 };
@@ -77,10 +105,4 @@ Head.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-};
-
-Head.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
 };

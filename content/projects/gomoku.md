@@ -1,5 +1,6 @@
 ---
 date: '2023-01-01'
+order: 91
 title: 'Gomoku'
 github: 'https://github.com/oelbourki/gomoku'
 external: ''
@@ -10,7 +11,7 @@ tech:
   - Pygame
   - CLI
   - Game AI
-showInProjects: true
+showInProjects: false
 ---
 
 Gomoku (Five in a Row) with AI opponent using Minimax and alpha-beta pruning, featuring Pygame GUI and CLI interfaces.
