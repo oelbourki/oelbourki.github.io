@@ -19,9 +19,9 @@
 
   <text x="72" y="214" fill="#f0f0f0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="58" font-weight="700">Otmane El Bourki</text>
 
-  <text x="72" y="277" fill="#7dd8ff" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="500">AI Engineer, LLM Systems &amp; Multi-Agent Orchestration</text>
+  <text x="72" y="277" fill="#7dd8ff" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="500">AI Engineer, Production LLM &amp; RAG, Agentic AI &amp; Inference Optimization</text>
 
-  <text x="72" y="365" fill="#a3a3a3" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22"><tspan x="72" dy="0">AI Engineer building production LLM systems, GraphRAG</tspan><tspan x="72" dy="32">pipelines, inference optimisation, and multi-agent</tspan><tspan x="72" dy="32">orchestration.</tspan></text>
+  <text x="72" y="365" fill="#a3a3a3" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22"><tspan x="72" dy="0">AI Engineer specializing in production LLM, RAG, and</tspan><tspan x="72" dy="32">agentic AI — inference optimization, cloud/MLOps, and</tspan><tspan x="72" dy="32">evaluation.</tspan></text>
 
-  <text x="72" y="558" fill="#6e6e6e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">Paris, France</text>
+  <text x="72" y="558" fill="#6e6e6e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">Carrières-sous-Poissy, Île-de-France, France</text>
 </svg>

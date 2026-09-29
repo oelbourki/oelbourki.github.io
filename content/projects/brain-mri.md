@@ -2,7 +2,7 @@
 date: '2021-05-18'
 order: 5
 title: 'Brain MRI Segmentation with U-Net'
-github: 'https://github.com/otmane-elbourki/brain-mri-segmentation'
+github: 'https://github.com/oelbourki/brain-mri-segmentation'
 external: 'https://brain-mri-segmentation.com'
 tech:
   - CNN

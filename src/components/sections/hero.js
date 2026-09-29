@@ -253,7 +253,7 @@ const Hero = () => {
       <div>
         <HeroTag>
           <span className="pulse-dot" aria-hidden />
-          Paris, France
+          Carrières-sous-Poissy, France · 1-month notice
         </HeroTag>
         <HeroName>Otmane El Bourki</HeroName>
         <HeroRole>

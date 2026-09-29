@@ -336,8 +336,8 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              AI Engineer with ~5 years of experience in AI — including ~3 years of professional experience
-              building production systems. Specialized in production LLM, RAG, and agentic AI, spanning retrieval,
+              AI Engineer with 4+ years of AI/ML experience — including 3+ years building production
+              systems. Specialized in production LLM, RAG, and agentic AI, spanning retrieval,
               model serving, inference optimization, orchestration, cloud deployment, and evaluation. Delivered 3×
               LLM inference throughput at 47% lower cost, built multi-agent systems for finance, and currently
               develop AI accelerators within ALTEN&apos;s A3. Founder of a 300-member AI engineering community.

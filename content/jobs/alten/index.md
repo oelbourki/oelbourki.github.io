@@ -1,7 +1,7 @@
 ---
 date: '2026-06-01'
 title: 'AI Engineer · A3 (AI at ALTEN)'
-company: 'Alten'
+company: 'ALTEN'
 location: 'Rabat, Morocco'
 range: 'Jun 2026 – Present'
 url: 'https://www.alten.com/'
