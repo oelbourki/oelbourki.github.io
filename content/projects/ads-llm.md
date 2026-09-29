@@ -2,7 +2,7 @@
 date: '2024-01-01'
 order: 2
 title: 'Ads-LLM'
-github: 'https://github.com/otmane-elbourki/ads-llm'
+github: 'https://github.com/oelbourki/ads-llm'
 external: 'https://ads-llm.com'
 tech:
   - LLM

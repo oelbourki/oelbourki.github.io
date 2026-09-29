@@ -2,9 +2,10 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Otmane El Bourki — AI Engineer, LLM Systems & Multi-Agent Orchestration',
+    title:
+      'Otmane El Bourki — AI Engineer, Production LLM & RAG, Agentic AI & Inference Optimization',
     description:
-      'AI Engineer building production LLM systems, GraphRAG pipelines, inference optimisation, and multi-agent orchestration. Based in Paris, France. Open to hybrid and remote roles.',
+      'AI Engineer specializing in production LLM, RAG, and agentic AI — inference optimization, cloud/MLOps, and evaluation. Based in Carrières-sous-Poissy, Île-de-France, France. Open to hybrid and remote roles · 1-month notice.',
     siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',
@@ -149,12 +150,7 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-45666519-2',
-      },
-    },
+    // Analytics: Universal Analytics (UA-) is shut down. Add GA4 later with gatsby-plugin-google-gtag + a G-XXXXXXXX ID.
     // Must be last: generates `_headers` and `_redirects` for Netlify
     `gatsby-plugin-netlify`,
   ],

@@ -55,11 +55,11 @@ const Head = ({ title, description, image }) => {
     sameAs,
     worksFor: {
       '@type': 'Organization',
-      name: 'Alten',
+      name: 'ALTEN',
     },
     homeLocation: {
       '@type': 'Place',
-      name: 'Paris, France',
+      name: 'Carrières-sous-Poissy, Île-de-France, France',
     },
   };
 

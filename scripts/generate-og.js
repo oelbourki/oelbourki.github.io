@@ -20,7 +20,7 @@ const roleLine = emDash ? title.split(emDash).slice(1).join(emDash).trim() : 'AI
 
 // Dedicated short blurb (location is drawn in the footer — don't repeat it)
 const blurb =
-  'AI Engineer building production LLM systems, GraphRAG pipelines, inference optimisation, and multi-agent orchestration.';
+  'AI Engineer specializing in production LLM, RAG, and agentic AI — inference optimization, cloud/MLOps, and evaluation.';
 
 const escapeXml = s =>
   String(s)
@@ -88,7 +88,7 @@ function buildSvg(width, height) {
 
   <text x="${pad}" y="${blurbStartY}" fill="#a3a3a3" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="${bodySize}">${blurbTspans}</text>
 
-  <text x="${pad}" y="${height - pad}" fill="#6e6e6e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="${labelSize}">Paris, France</text>
+  <text x="${pad}" y="${height - pad}" fill="#6e6e6e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="${labelSize}">Carrières-sous-Poissy, Île-de-France, France</text>
 </svg>`;
 }
 
