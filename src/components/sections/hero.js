@@ -259,13 +259,14 @@ const Hero = () => {
         <HeroRole>
           <span className="role-highlight">AI Engineer</span>
           <span className="role-rest">
-            Production LLM Systems · Inference Optimisation · Multi-Agent Orchestration
+            Production LLM &amp; RAG · Agentic AI · Inference Optimization · Cloud &amp; MLOps ·
+            Evaluation
           </span>
         </HeroRole>
         <HeroDesc>
-          AI Engineer at Alten (A3) — building production-grade LLM systems, multi-agent
-          orchestration, GraphRAG pipelines, and inference optimisation at scale. Focused on real-world AI
-          deployment across GCP, AWS &amp; Azure.
+          AI Engineer at ALTEN (A3) — shipping across the full LLM stack: retrieval and agentic
+          orchestration, inference optimization, and production deployment. Currently building AI
+          accelerators group-wide after production delivery in finance and hospitality.
         </HeroDesc>
         <CtaRow>
           <BtnPrimary href="#projects">View projects</BtnPrimary>
@@ -283,13 +284,13 @@ const Hero = () => {
         <StatCard>
           <StatLabel>Specialization</StatLabel>
           <StatValue>
-            <span className="accent">Multi-agent</span> · GraphRAG · Inference
+            <span className="accent">Agentic AI</span> · RAG · Inference
           </StatValue>
         </StatCard>
         <StatCard>
           <StatLabel>Infrastructure</StatLabel>
           <StatValue>
-            <span className="accent">Azure</span> · GCP · AWS · K8s
+            <span className="accent">Azure</span> · GCP · AWS · MLOps
           </StatValue>
         </StatCard>
         <StatCard>

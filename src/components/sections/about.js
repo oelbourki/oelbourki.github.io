@@ -226,101 +226,100 @@ const StyledPic = styled.div`
 `;
 
 const chips = [
-  { label: 'Multi-agent systems', active: true },
-  { label: 'GraphRAG', active: true },
+  { label: 'Agentic AI', active: true },
+  { label: 'RAG & GraphRAG', active: true },
   { label: 'Inference optimization', active: true },
-  { label: 'Fine-tuning (LoRA/QLoRA)', active: false },
-  { label: 'Evaluation & observability', active: false },
-  { label: 'Production deployment', active: false },
+  { label: 'Evaluation', active: true },
+  { label: 'Cloud & MLOps', active: false },
+  { label: 'Security & governance', active: false },
 ];
 
 const skillCategories = [
   {
-    id: 'orchestration',
-    label: 'LLM Orchestration & Agentic Systems',
+    id: 'agentic',
+    label: 'Agentic AI',
     skills: [
       'LangGraph',
       'LangChain',
       'CrewAI',
-      'Multi-Agent Systems',
-      'ReAct / Plan-Execute',
-      'Tool Calling',
+      'Google ADK',
+      'DSPy',
       'MCP',
-      'Structured Outputs',
+      'Agentic RAG',
     ],
   },
   {
-    id: 'retrieval',
-    label: 'Retrieval & Knowledge Systems',
+    id: 'rag',
+    label: 'RAG & Document Intelligence',
     skills: [
       'RAG',
       'GraphRAG',
       'Hybrid Search',
       'Reranking',
-      'Semantic Chunking',
       'Qdrant',
       'Neo4j',
-      'OCR',
-      'Multimodal Document Understanding',
+      'pgvector',
+      'Document AI / OCR',
+      'VLMs',
+      'Multimodal Retrieval',
     ],
   },
   {
-    id: 'providers',
-    label: 'LLM Providers & Model Integration',
+    id: 'llm-eng',
+    label: 'LLM Engineering',
     skills: [
-      'OpenAI',
-      'Anthropic',
-      'Gemini',
-      'Mistral',
-      'Hugging Face',
+      'vLLM',
+      'AWQ/GPTQ',
+      'LoRA/QLoRA',
+      'Inference Optimization',
       'Multi-LLM Routing',
+      'Structured Generation',
+      'Fine-Tuning',
     ],
   },
   {
     id: 'evaluation',
-    label: 'Evaluation, Observability & Responsible AI',
+    label: 'Evaluation & Observability',
     skills: [
       'RAGAS',
       'LangSmith',
+      'Arize Phoenix',
       'LLM-as-Judge',
-      'Hallucination Detection',
-      'EU AI Act & Risk Assessment',
-      'Bias & Safety Evaluation',
+      'Agent Evaluation',
+      'OpenTelemetry',
+      'Prometheus',
+      'Grafana',
     ],
   },
   {
-    id: 'inference',
-    label: 'Inference & Production Engineering',
+    id: 'mlops',
+    label: 'AI Systems, Cloud & MLOps',
     skills: [
-      'vLLM',
-      'Quantization (AWQ/GPTQ)',
-      'Fine-Tuning (LoRA/QLoRA)',
-      'Rate Limiting & Fallback',
-      'Cost & Latency Optimization',
-    ],
-  },
-  {
-    id: 'architecture',
-    label: 'AI Architecture & Deployment',
-    skills: [
-      'End-to-End AI System Design',
-      'Vertex AI',
-      'Amazon Bedrock',
-      'Azure AI',
+      'Azure',
+      'GCP',
+      'AWS',
       'Docker',
       'Kubernetes',
       'Terraform',
       'CI/CD',
+      'Azure DevOps',
       'MLflow',
-      'AWS',
-      'GCP',
-      'Azure',
+      'GitOps',
+    ],
+  },
+  {
+    id: 'security',
+    label: 'Security & Governance',
+    skills: [
+      'LLM Red-Teaming',
+      'Guardrails',
+      'Prompt-Injection Defense',
     ],
   },
   {
     id: 'programming',
-    label: 'Programming & APIs',
-    skills: ['Python', 'FastAPI', 'Pydantic', 'SQL'],
+    label: 'Programming',
+    skills: ['Python', 'FastAPI', 'Pydantic', 'SQL', 'C++', 'CUDA', 'PyTorch'],
   },
 ];
 
@@ -337,21 +336,22 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              AI Engineer with ~5 years of experience in AI — including ~3 years of professional experience —
-              from GPU inference optimisation (3× throughput, 47% cost reduction) to multi-agent orchestration platforms
-              serving real financial clients. Specialized at the intersection of vLLM serving stacks, LangGraph pipelines,
-              and GraphRAG on GCP and AWS. Founder of a 300-member ML engineering community.
+              AI Engineer with ~5 years of experience in AI — including ~3 years of professional experience
+              building production systems. Specialized in production LLM, RAG, and agentic AI, spanning retrieval,
+              model serving, inference optimization, orchestration, cloud deployment, and evaluation. Delivered 3×
+              LLM inference throughput at 47% lower cost, built multi-agent systems for finance, and currently
+              develop AI accelerators within ALTEN&apos;s A3. Founder of a 300-member AI engineering community.
             </p>
 
             <p>
-              <strong>Education:</strong> École 42 Paris — IT Architecture Expert (Data Architecture), RNCP 7, Level 21; ranked 3rd
-              globally in pedagogical innovation (WURI 2025). Ibn Tofaïl University — Specialized Master&apos;s in AI. Mohammed VI
-              Polytechnic University (1337) — Digital Technology Architect.
+              <strong>Education:</strong> École 42 Paris — IT Architecture Expert (Data Architecture), RNCP Level 7.
+              Ibn Tofaïl University — Master&apos;s in Artificial Intelligence and BSc in Computer Science. École 1337
+              (UM6P) — Digital Technology Architect (Common Core).
             </p>
 
             <p>
               Open to hybrid or remote roles, with national and international mobility.{' '}
-              <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles in France, Spain, Germany, or remote.</strong>
+              <strong>Open to AI/ML Engineering, MLOps, or Cloud AI roles · 1-month notice.</strong>
             </p>
 
             <p className="about-meta" style={{ marginTop: '1.5rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>

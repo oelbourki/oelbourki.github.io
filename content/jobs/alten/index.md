@@ -1,13 +1,12 @@
 ---
 date: '2026-06-01'
-title: 'AI Engineer · A3 (AI at Alten)'
+title: 'AI Engineer · A3 (AI at ALTEN)'
 company: 'Alten'
 location: 'Rabat, Morocco'
 range: 'Jun 2026 – Present'
 url: 'https://www.alten.com/'
 ---
 
-- Member of AI Management System & Accelerators, a core team within A3 (AI at Alten), the group-wide AI program run by Alten’s Chief AI Office; building reusable AI components and solutions for deployment across Alten client projects.
-- Shipped a production reference-project search platform now used by sales teams and Directeurs Techniques across the Alten group, reaching 81 active users since launch with ∼600 ms average response time; deployed on Azure App Service with CI/CD via Azure DevOps.
-- Built an end-to-end LLM ingestion pipeline using Mistral OCR and structured-output generation to transform unstructured PPTX project decks into schema-conformant JSON, populating a searchable project-reference database.
-- Designed the retrieval and generation layer using Mistral embeddings for semantic search and LLM-generated natural-language summaries, with OpenAI as a fallback for generation reliability.
+- Built and productionized an AI references-discovery platform in 3 months (React, FastAPI, PostgreSQL/pgvector, Azure) for ALTEN’s sales teams and directors; 101 active users and 1,103 searches in early rollout.
+- Built the RAG pipeline (Mistral OCR and embeddings, OpenAI fallback) with an LLM reranker that selects the best client references and explains each choice; 80% R@1, 90% R@5, 0.85 MRR on a 100-question internal evaluation.
+- Built the platform’s evaluation harness (retrieval metrics, LLM-reranker checks) and championed eval-driven development across A3, surfacing the need for AI governance to the Chief AI Office.
