@@ -1,55 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled, { keyframes } from 'styled-components';
-import { IconEmail } from '@components/icons';
-import { navDelay, loaderDelay } from '@utils';
+import styled from 'styled-components';
+import { IconEmail, IconResume } from '@components/icons';
+import { loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
-
-const pulse = keyframes`
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-`;
 
 const StyledHeroSection = styled.section`
   position: relative;
   isolation: isolate;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-height) + 24px) 0 80px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 40px) 0 40px;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: -80px;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(ellipse, rgba(78, 181, 255, 0.07) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1;
-  }
+  background: radial-gradient(
+    ellipse 70% 55% at 78% 0%,
+    rgba(2, 151, 222, 0.09) 0%,
+    transparent 58%
+  );
 
   @media (max-width: 900px) {
-    padding-top: calc(var(--nav-height) + 16px);
-    padding-bottom: 56px;
-    min-height: auto;
+    padding-top: calc(var(--nav-height) + 28px);
+    padding-bottom: 32px;
   }
 
   @media (max-width: 480px) {
-    padding-top: calc(var(--nav-height) + 8px);
-    padding-bottom: 40px;
+    padding-top: calc(var(--nav-height) + 20px);
+    padding-bottom: 24px;
   }
 `;
 
 const HeroGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr minmax(260px, 340px);
-  gap: clamp(32px, 5vw, 56px);
+  grid-template-columns: 1fr minmax(240px, 300px);
+  gap: clamp(28px, 4vw, 48px);
   width: 100%;
-  max-width: 1100px;
   align-items: start;
 
   @media (max-width: 900px) {
@@ -57,84 +45,61 @@ const HeroGrid = styled.div`
   }
 `;
 
-const HeroTag = styled.div`
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  max-width: 100%;
-  font-size: 12px;
-  line-height: 1.45;
-  color: var(--accent);
-  background: var(--accent-subtle);
-  border: 0.5px solid var(--accent-border);
-  padding: 5px 12px;
-  border-radius: 20px;
-  margin-bottom: 20px;
+const HeroCopy = styled.div`
+  min-width: 0;
+`;
+
+const HeroMeta = styled.p`
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-secondary);
   font-family: var(--font-mono);
-
-  .pulse-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-    animation: ${pulse} 2s infinite;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 11px;
-    padding: 5px 10px;
-    margin-bottom: 16px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .pulse-dot {
-      animation: none;
-    }
-  }
 `;
 
 const HeroName = styled.h1`
-  margin: 0 0 12px;
-  font-size: clamp(36px, 6vw, 48px);
+  margin: 0 0 10px;
+  font-size: clamp(34px, 5.5vw, 46px);
   font-weight: 600;
   color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  text-wrap: balance;
 `;
 
 const HeroRole = styled.p`
-  margin: 0 0 20px;
-  font-size: clamp(16px, 2.5vw, 22px);
-  font-weight: 400;
-  line-height: 1.45;
-  max-width: 34em;
+  margin: 0 0 8px;
+  font-size: clamp(17px, 2.2vw, 21px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--accent-bright);
+`;
 
-  .role-highlight {
-    display: block;
-    color: var(--accent-bright);
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
+const HeroFocus = styled.p`
+  margin: 0 0 18px;
+  max-width: 40em;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
 
-  .role-rest {
-    display: block;
-    color: var(--text-secondary);
-  }
-
-  @media (max-width: 480px) {
-    margin-bottom: 16px;
-    line-height: 1.5;
+  .sep {
+    color: var(--text-tertiary);
+    margin: 0 0.35em;
   }
 `;
 
 const HeroDesc = styled.p`
   margin: 0;
-  max-width: 520px;
+  max-width: 38em;
   font-size: var(--fz-md);
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--text-secondary);
+
+  strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
 
   @media (max-width: 480px) {
     font-size: var(--fz-sm);
@@ -146,19 +111,38 @@ const CtaRow = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  margin-top: 36px;
+  margin-top: 28px;
 
   @media (max-width: 480px) {
-    margin-top: 28px;
+    margin-top: 24px;
   }
 `;
 
 const BtnPrimary = styled.a`
   ${({ theme }) => theme.mixins.bigButton};
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  color: #02070a !important;
+  background-color: #fc734d;
+  opacity: 1;
+  font-weight: 600;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: #02070a !important;
+    background-color: #fc734d;
+    opacity: 1;
+    filter: none;
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 3px;
+  }
 `;
 
 const BtnOutline = styled.a`
   ${({ theme }) => theme.mixins.outlineNeutral};
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -168,54 +152,34 @@ const BtnOutline = styled.a`
     height: 16px;
     flex-shrink: 0;
   }
-`;
 
-const BtnResume = styled.a`
-  color: var(--accent);
-  border: 0.5px solid var(--accent);
-  padding: 7px 16px;
-  border-radius: 6px;
-  font-size: 13px;
-  background: transparent;
-  font-family: var(--font-sans);
-  transition: background 0.2s;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-
-  &:hover,
   &:focus-visible {
-    background: var(--accent-subtle);
-    outline: none;
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 3px;
   }
 `;
 
-const StatColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  @media (max-width: 900px) {
-    max-width: 100%;
-  }
-`;
-
-const StatCard = styled.div`
+const FactCard = styled.aside`
   background: var(--bg-elevated);
   border: 0.5px solid var(--bg-border);
   border-radius: 10px;
-  padding: 14px 18px;
+  padding: 18px 20px;
   min-width: 0;
-  transition: border-color 0.2s;
 
-  &:hover {
-    border-color: var(--accent-border);
+  @media (max-width: 900px) {
+    max-width: 360px;
   }
 `;
 
-const StatLabel = styled.div`
+const FactRow = styled.div`
+  & + & {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--bg-border);
+  }
+`;
+
+const FactLabel = styled.div`
   font-size: 11px;
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -224,14 +188,15 @@ const StatLabel = styled.div`
   font-family: var(--font-mono);
 `;
 
-const StatValue = styled.div`
+const FactValue = styled.div`
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary);
-  line-height: 1.45;
+  color: var(--text-primary);
+  line-height: 1.4;
 
-  .accent {
-    color: var(--accent);
+  .proof {
+    color: var(--accent-secondary);
+    font-weight: 600;
   }
 `;
 
@@ -240,66 +205,73 @@ const Hero = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      setIsMounted(true);
-    } else {
-      const timeout = setTimeout(() => setIsMounted(true), navDelay);
-      return () => clearTimeout(timeout);
-    }
-  }, [prefersReducedMotion]);
+    setIsMounted(true);
+  }, []);
 
   const inner = (
     <HeroGrid>
-      <div>
-        <HeroTag>
-          <span className="pulse-dot" aria-hidden />
-          Carrières-sous-Poissy, France · 1-month notice
-        </HeroTag>
+      <HeroCopy>
+        <HeroMeta>
+          Carrières-sous-Poissy, Île-de-France · Authorized to work in France · Open to hybrid /
+          remote
+        </HeroMeta>
         <HeroName>Otmane El Bourki</HeroName>
-        <HeroRole>
-          <span className="role-highlight">AI Engineer</span>
-          <span className="role-rest">
-            Production LLM &amp; RAG · Agentic AI · Inference Optimization · Cloud &amp; MLOps ·
-            Evaluation
+        <HeroRole>AI Engineer · 3+ years in production</HeroRole>
+        <HeroFocus>
+          Production LLM & RAG
+          <span className="sep" aria-hidden>
+            ·
           </span>
-        </HeroRole>
+          Agentic AI
+          <span className="sep" aria-hidden>
+            ·
+          </span>
+          Inference Optimization
+          <span className="sep" aria-hidden>
+            ·
+          </span>
+          Cloud & MLOps
+          <span className="sep" aria-hidden>
+            ·
+          </span>
+          Evaluation
+        </HeroFocus>
         <HeroDesc>
-          AI Engineer at ALTEN (A3) — shipping across the full LLM stack: retrieval and agentic
-          orchestration, inference optimization, and production deployment. Currently building AI
-          accelerators group-wide after production delivery in finance and hospitality.
+          Production LLM, RAG, and agentic systems — delivered{' '}
+          <strong>3× inference throughput at 47% lower cost</strong>; building AI accelerators in
+          ALTEN&apos;s A3 after shipping in finance and hospitality.
         </HeroDesc>
         <CtaRow>
           <BtnPrimary href="#projects">View projects</BtnPrimary>
-          <BtnOutline href="mailto:otmane.elbourki@gmail.com" target="_blank" rel="noreferrer">
+          <BtnOutline href="mailto:otmane.elbourki@gmail.com">
             <IconEmail />
-            Let&apos;s build something
+            Email
           </BtnOutline>
-          <BtnResume href="/resume.pdf" target="_blank" rel="noreferrer">
-            CV EN ↓
-          </BtnResume>
+          <BtnOutline href="/resume.pdf" target="_blank" rel="noreferrer">
+            <span aria-hidden="true">
+              <IconResume />
+            </span>
+            Resume
+          </BtnOutline>
         </CtaRow>
-      </div>
+      </HeroCopy>
 
-      <StatColumn>
-        <StatCard>
-          <StatLabel>Specialization</StatLabel>
-          <StatValue>
-            <span className="accent">Agentic AI</span> · RAG · Inference
-          </StatValue>
-        </StatCard>
-        <StatCard>
-          <StatLabel>Infrastructure</StatLabel>
-          <StatValue>
-            <span className="accent">Azure</span> · GCP · AWS · MLOps
-          </StatValue>
-        </StatCard>
-        <StatCard>
-          <StatLabel>Community</StatLabel>
-          <StatValue>
-            Built 1337 AI · <span className="accent">300+</span> · HackAI mentor
-          </StatValue>
-        </StatCard>
-      </StatColumn>
+      <FactCard aria-label="Profile facts">
+        <FactRow>
+          <FactLabel>Now</FactLabel>
+          <FactValue>AI Engineer · ALTEN (A3)</FactValue>
+        </FactRow>
+        <FactRow>
+          <FactLabel>Stack</FactLabel>
+          <FactValue>Azure · GCP · AWS · MLOps</FactValue>
+        </FactRow>
+        <FactRow>
+          <FactLabel>Community</FactLabel>
+          <FactValue>
+            <span className="proof">300+</span> members · 1337 AI
+          </FactValue>
+        </FactRow>
+      </FactCard>
     </HeroGrid>
   );
 

@@ -1,7 +1,7 @@
 ---
 date: '2021-05-18'
 order: 5
-title: 'Brain MRI Segmentation with U-Net'
+title: 'Brain MRI Segmentation'
 github: 'https://github.com/oelbourki/brain-mri-segmentation'
 external: 'https://brain-mri-segmentation.com'
 tech:
@@ -13,7 +13,8 @@ tech:
 ios: fff
 android: fff
 company: '1337'
+label: 'Independent R&D'
 showInProjects: true
 ---
 
-Designed and implemented a U-Net model for brain MRI segmentation with IOU of ~0.99 and Dice Coefficient of ~0.80, leveraging data augmentation and normalization techniques to optimize model performance.
+Trained a U-Net for brain MRI segmentation (~0.99 IoU, ~0.80 Dice) with augmentation and normalization for stable medical imaging performance.

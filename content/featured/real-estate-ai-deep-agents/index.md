@@ -1,11 +1,12 @@
 ---
-order: 2
+order: 3
 date: '2025-01-01'
 title: 'Real Estate AI Deep Agents'
 cover: './cover.png'
 github: 'https://github.com/oelbourki/Real-Estate-AI-Deep-Agents'
 external: ''
 cta: '/pensieve/multi-agent-orchestration'
+label: 'Independent R&D'
 tech:
   - LangGraph
   - DeepAgents
@@ -15,4 +16,4 @@ tech:
   - RAG
 ---
 
-Multi-agent AI platform built with DeepAgents and LangGraph that helps users search, analyze, and evaluate properties. Combines intelligent orchestration with financial analysis and market research for real estate decision-making.
+Multi-agent AI platform built with DeepAgents and LangGraph that helps users search, analyze, and evaluate properties. Combines intelligent orchestration with financial analysis and market research — cutting research from ~3 hours to ~15 minutes.

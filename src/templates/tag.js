@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
 
@@ -50,9 +49,10 @@ const TagTemplate = ({ pageContext, data, location }) => {
   const { edges } = data.allMarkdownRemark;
 
   return (
-    <Layout location={location}>
-      <Helmet title={`Tagged: #${tag}`} />
-
+    <Layout
+      location={location}
+      title={`Tagged: #${tag}`}
+      description={`Pensieve posts tagged #${tag} — notes on AI engineering, LLM systems, and production ML from Otmane El Bourki.`}>
       <StyledTagsContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>

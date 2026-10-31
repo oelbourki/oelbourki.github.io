@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
 
@@ -52,12 +51,10 @@ const StyledPostContent = styled.div`
 
 const PostTemplate = ({ data, location }) => {
   const { frontmatter, html } = data.markdownRemark;
-  const { title, date, tags } = frontmatter;
+  const { title, description, date, tags } = frontmatter;
 
   return (
-    <Layout location={location}>
-      <Helmet title={title} />
-
+    <Layout location={location} title={title} description={description}>
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>

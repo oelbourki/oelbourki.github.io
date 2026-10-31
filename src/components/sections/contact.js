@@ -75,15 +75,18 @@ const Contact = () => {
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 className="numbered-heading overline">What’s Next?</h2>
 
-      <h2 className="title">Let&apos;s build something.</h2>
+      <h2 className="title">Let&apos;s build something meaningful</h2>
 
       <p className="body">
-        I&apos;m currently open to full-time and freelance AI engineering roles in France and Germany. If you&apos;re working on LLM systems, multi-agent pipelines, or production ML infrastructure — let&apos;s talk.
+        I&apos;m open to full-time and freelance AI engineering roles in France (hybrid / remote).
+        Based in Rabat, authorized to work in France, and available to start there in about one
+        month (one week if needed). If you&apos;re building LLM systems, multi-agent pipelines, or
+        production ML infrastructure — let&apos;s talk.
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
         <IconEmail />
-        Let&apos;s build something
+        Get in touch
       </a>
     </StyledContactSection>
   );

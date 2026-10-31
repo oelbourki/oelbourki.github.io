@@ -1,7 +1,7 @@
 module.exports = {
   email: 'otmane.elbourki@gmail.com',
   phone: '+33 7 75 73 57 51',
-  location: 'Carrières-sous-Poissy, Île-de-France, France',
+  location: 'Based in Rabat · Available to start in France',
 
   socialMedia: [
     {
@@ -43,16 +43,12 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Certifications',
-      url: '/#certifications',
+      name: 'Community',
+      url: '/#community',
     },
     {
       name: 'Work',
       url: '/#projects',
-    },
-    {
-      name: 'Writing',
-      url: '/pensieve',
     },
     {
       name: 'Contact',
@@ -61,9 +57,9 @@ module.exports = {
   ],
 
   colors: {
-    green: '#4eb5ff',
-    navy: '#0d0d0d',
-    darkNavy: '#0a0a0a',
+    green: '#0297de',
+    navy: '#02070a',
+    darkNavy: '#010508',
   },
 
   srConfig: (delay = 200, viewFactor = 0.25) => ({

@@ -10,3 +10,12 @@ yarn-error.log
 .DS_Store
 .save/
 .vscode/
+
+# Local agent/tool caches
+.impeccable-cache/
+.venv-heif/
+
+# Raw photo dumps (site media lives in static/community/)
+/photos/
+*.HEIC
+/me.webp

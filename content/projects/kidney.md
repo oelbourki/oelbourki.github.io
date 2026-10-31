@@ -1,7 +1,7 @@
 ---
 date: '2024-01-01'
 order: 4
-title: 'End to End Kidney Disease Classification System MLops'
+title: 'Kidney Disease Classification MLOps'
 github: 'https://github.com/oelbourki/End-to-End-Kidney-Disease-Classification-System-MLops'
 external: 'https://github.com/oelbourki/End-to-End-Kidney-Disease-Classification-System-MLops'
 tech:
@@ -10,7 +10,8 @@ tech:
   - DVC
   - AWS
   - Mlops
+label: 'Independent R&D'
 showInProjects: true
 ---
 
-Led the end-to-end implementation of a kidney disease classification project, utilizing modern software development methodologies and tools including GitHub, MLflow, DVC, Dockerization, and AWS CI/CD for seamless deployment and efficient workflow management.
+Shipped an end-to-end kidney disease classifier with DVC, MLflow tracking, Docker packaging, and AWS CI/CD for reproducible training and deployment.

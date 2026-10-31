@@ -1,28 +1,30 @@
 import { css } from 'styled-components';
 
 /**
- * Option B — near-black + electric blue.
- * Semantic tokens + legacy aliases (--navy, --green, …) for existing components.
+ * Midnight Black / Electric Blue / Cantaloupe Orange.
+ * Blue = everyday accent (links, role, nav). Orange = rare (primary CTA + one proof).
+ * Legacy aliases (--navy, --green, …) keep existing components working.
  */
 const variables = css`
   :root {
-    --bg-primary: #0d0d0d;
-    --bg-elevated: #161616;
-    --bg-border: #222222;
-    /* Electric blue — primary accent (CTA, section numbers, nav, links) */
-    --accent: #4eb5ff;
-    --accent-bright: #7dd8ff;
-    --accent-subtle: rgba(78, 181, 255, 0.1);
-    --accent-border: rgba(78, 181, 255, 0.26);
-    /* Warm amber — secondary accent (Featured badge, sparse hovers) */
-    --accent-secondary: #e8a54b;
-    --accent-secondary-subtle: rgba(232, 165, 75, 0.12);
+    --bg-primary: #02070a;
+    --bg-elevated: #0b1116;
+    --bg-border: #1a2229;
+    /* Electric blue — secondary accent (role, links, nav numbers, tags) */
+    --accent: #0297de;
+    --accent-bright: #3db4f0;
+    --accent-subtle: rgba(2, 151, 222, 0.12);
+    --accent-border: rgba(2, 151, 222, 0.32);
+    /* Cantaloupe orange — primary accent (CTA + one proof point only) */
+    --accent-secondary: #fc734d;
+    --accent-secondary-subtle: rgba(252, 115, 77, 0.14);
+    --on-accent-secondary: #02070a;
     --text-primary: #f0f0f0;
     --text-secondary: #888888;
-    --text-tertiary: #6e6e6e;
+    --text-tertiary: #8a8a8a;
 
     /* Legacy aliases */
-    --dark-navy: #0a0a0a;
+    --dark-navy: #010508;
     --navy: var(--bg-primary);
     --light-navy: var(--bg-elevated);
     --lightest-navy: var(--bg-border);

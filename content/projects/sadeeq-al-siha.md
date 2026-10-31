@@ -11,7 +11,8 @@ tech:
   - PubMedBERT
   - Chainlit
   - Ollama
+label: 'Open Source'
 showInProjects: true
 ---
 
-Medical RAG QA app using Meditron 7B, Qdrant, and PubMedBERT embeddings — evidence-grounded clinical Q&A over medical literature via a Chainlit interface.
+Built a medical RAG stack (Meditron 7B, Qdrant, PubMedBERT) that grounds clinical answers in literature and serves them through a Chainlit UI on Ollama.

@@ -1,7 +1,7 @@
 ---
 date: '2024-01-01'
 order: 3
-title: 'Automated Newsletter Generator with CrewAI and Exa'
+title: 'Automated Newsletter Generator'
 github: 'https://github.com/oelbourki/Automated-Newsletter-Generator-with-CrewAI-and-Exa'
 external: 'https://github.com/oelbourki/Automated-Newsletter-Generator-with-CrewAI-and-Exa'
 tech:
@@ -10,7 +10,8 @@ tech:
   - CrewAI
   - LangChain
   - Streamlit
+label: 'Independent R&D'
 showInProjects: true
 ---
 
-Developed an AI-driven system using CrewAI to manage research agents for news fetching and summarization. Integrated Exa for data aggregation and employed LangChain and ChatGPT for generating concise summaries. Designed a Streamlit GUI for easy interaction and automation of the newsletter process.
+Orchestrated CrewAI research agents with Exa retrieval and LangChain summarization, then exposed the pipeline through a Streamlit UI for automated newsletters.

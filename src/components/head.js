@@ -41,9 +41,12 @@ const Head = ({ title, description, image }) => {
     url: `${siteUrl}${pathname}`,
   };
 
-  const sameAs = (config.socialMedia || [])
-    .filter(s => s.name === 'GitHub' || s.name === 'Linkedin')
-    .map(s => s.url);
+  const sameAs = [
+    ...((config.socialMedia || [])
+      .filter(s => s.name === 'GitHub' || s.name === 'Linkedin' || s.name === 'Website')
+      .map(s => s.url)),
+    'https://huggingface.co/oelbourki',
+  ].filter((url, i, arr) => url && arr.indexOf(url) === i);
 
   const personSchema = {
     '@context': 'https://schema.org',
@@ -53,6 +56,15 @@ const Head = ({ title, description, image }) => {
     url: siteUrl,
     email: config.email,
     sameAs,
+    knowsAbout: [
+      'Large Language Models',
+      'RAG',
+      'GraphRAG',
+      'Agentic AI',
+      'LangGraph',
+      'Inference Optimization',
+      'MLOps',
+    ],
     worksFor: {
       '@type': 'Organization',
       name: 'ALTEN',
@@ -63,12 +75,27 @@ const Head = ({ title, description, image }) => {
     },
   };
 
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Otmane El Bourki',
+    url: siteUrl,
+    description: defaultDescription,
+    author: {
+      '@type': 'Person',
+      name: 'Otmane El Bourki',
+    },
+  };
+
   return (
     <Helmet
       title={seo.title}
       defaultTitle={defaultTitle}
       titleTemplate={title ? `%s | oelbourki.com` : null}>
       <html lang="en" />
+      <meta charSet="utf-8" />
+
+      <link rel="canonical" href={seo.url} />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -95,6 +122,7 @@ const Head = ({ title, description, image }) => {
       <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
 
       <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
     </Helmet>
   );
 };

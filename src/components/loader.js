@@ -20,7 +20,7 @@ const StyledLoader = styled.div`
   .logo-wrapper {
     width: max-content;
     max-width: 100px;
-    transition: var(--transition);
+    transition: opacity 0.2s ease, transform 0.2s ease;
     opacity: ${props => (props.isMounted ? 1 : 0)};
     svg {
       display: block;
@@ -39,47 +39,72 @@ const StyledLoader = styled.div`
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
-  const animate = () => {
+  useEffect(() => {
+    let done = false;
+    const doneOnce = () => {
+      if (done) {
+        return;
+      }
+      done = true;
+      finishLoading();
+    };
+
+    const reduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced) {
+      doneOnce();
+      return undefined;
+    }
+
+    const mountTimeout = setTimeout(() => setIsMounted(true), 10);
+    // Never leave the home route stuck behind the splash if anime stalls (HMR / missing targets).
+    const failSafe = setTimeout(doneOnce, 1600);
+
     const loader = anime.timeline({
-      complete: () => finishLoading(),
+      complete: doneOnce,
     });
 
     loader
       .add({
         targets: '#logo path',
-        delay: 300,
-        duration: 1500,
+        delay: 40,
+        duration: 480,
         easing: 'easeInOutQuart',
         strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
         targets: '#logo #B',
-        duration: 700,
+        duration: 200,
         easing: 'easeInOutQuart',
         opacity: 1,
       })
       .add({
         targets: '#logo',
-        delay: 500,
-        duration: 300,
+        delay: 60,
+        duration: 180,
         easing: 'easeInOutQuart',
         opacity: 0,
         scale: 0.1,
       })
       .add({
         targets: '.loader',
-        duration: 200,
+        duration: 140,
         easing: 'easeInOutQuart',
         opacity: 0,
         zIndex: -1,
       });
-  };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 10);
-    animate();
-    return () => clearTimeout(timeout);
-  }, []);
+    return () => {
+      clearTimeout(mountTimeout);
+      clearTimeout(failSafe);
+      anime.remove('#logo path');
+      anime.remove('#logo #B');
+      anime.remove('#logo');
+      anime.remove('.loader');
+    };
+  }, [finishLoading]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>

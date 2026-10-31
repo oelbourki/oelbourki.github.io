@@ -7,3 +7,10 @@
 [build.environment]
   NODE_VERSION = "18.20.4"
   NODE_OPTIONS = "--openssl-legacy-provider"
+
+# Crawlers and Search Console often request /sitemap.xml; Gatsby v4 emits sitemap-index.xml
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+  force = true

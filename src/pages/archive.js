@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
@@ -147,9 +146,10 @@ const ArchivePage = ({ location, data }) => {
   }, []);
 
   return (
-    <Layout location={location}>
-      <Helmet title="Archive" />
-
+    <Layout
+      location={location}
+      title="Archive"
+      description="Project archive — LLM, RAG, agentic AI, MLOps, and systems work by Otmane El Bourki.">
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">Archive</h1>

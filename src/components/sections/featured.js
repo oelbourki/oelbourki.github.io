@@ -35,66 +35,51 @@ const StyledProject = styled.li`
   }
 
   &:not(:last-of-type) {
-    margin-bottom: 100px;
+    margin-bottom: 72px;
 
     @media (max-width: 1080px) {
-      margin-bottom: 80px;
+      margin-bottom: 56px;
     }
 
     @media (max-width: 768px) {
-      margin-bottom: 70px;
+      margin-bottom: 48px;
     }
 
     @media (max-width: 480px) {
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
   }
 
   &:nth-of-type(odd) {
     .project-content {
-      grid-column: 7 / -1;
-      text-align: right;
+      grid-column: 8 / -1;
+      text-align: left;
 
       @media (max-width: 1080px) {
-        grid-column: 5 / -1;
+        grid-column: 6 / -1;
       }
       @media (max-width: 768px) {
         grid-column: 1 / -1;
         padding: 40px 40px 30px;
-        text-align: left;
       }
       @media (max-width: 480px) {
         padding: 25px 25px 20px;
       }
     }
     .project-tech-list {
-      justify-content: flex-end;
-
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-      }
+      justify-content: flex-start;
 
       li {
-        margin: 0 0 5px 20px;
-
-        @media (max-width: 768px) {
-          margin: 0 10px 5px 0;
-        }
+        margin: 0 8px 8px 0;
       }
     }
     .project-links {
-      justify-content: flex-end;
-      margin-left: 0;
-      margin-right: -10px;
-
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-        margin-left: -10px;
-        margin-right: 0;
-      }
+      justify-content: flex-start;
+      margin-left: -10px;
+      margin-right: 0;
     }
     .project-image {
-      grid-column: 1 / 8;
+      grid-column: 1 / 7;
 
       @media (max-width: 768px) {
         grid-column: 1 / -1;
@@ -104,11 +89,12 @@ const StyledProject = styled.li`
 
   .project-content {
     position: relative;
-    grid-column: 1 / 7;
+    grid-column: 1 / 6;
     grid-row: 1 / -1;
+    text-align: left;
 
     @media (max-width: 1080px) {
-      grid-column: 1 / 9;
+      grid-column: 1 / 7;
     }
 
     @media (max-width: 768px) {
@@ -126,15 +112,35 @@ const StyledProject = styled.li`
     }
   }
 
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+  }
+
   .project-overline {
     display: inline-block;
-    margin: 10px 0;
-    color: var(--accent-secondary);
+    margin: 0;
+    color: var(--accent-bright);
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
-    background: var(--accent-secondary-subtle);
-    border: 0.5px solid rgba(232, 165, 75, 0.35);
+    background: var(--accent-subtle);
+    border: 0.5px solid var(--accent-border);
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .project-kind {
+    display: inline-block;
+    margin: 0;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    border: 0.5px solid var(--bg-border);
     padding: 3px 9px;
     border-radius: 20px;
   }
@@ -148,7 +154,7 @@ const StyledProject = styled.li`
 
       &:hover,
       &:focus {
-        color: var(--accent-secondary);
+        color: var(--accent);
       }
     }
 
@@ -175,7 +181,7 @@ const StyledProject = styled.li`
 
         &:hover,
         &:focus {
-          color: var(--accent-secondary);
+          color: var(--accent);
         }
       }
     }
@@ -185,13 +191,15 @@ const StyledProject = styled.li`
     ${({ theme }) => theme.mixins.boxShadow};
     position: relative;
     z-index: 2;
-    padding: 25px;
-    border-radius: 10px;
+    padding: 16px 18px;
+    border-radius: 8px;
     background-color: var(--bg-elevated);
     border: 0.5px solid var(--bg-border);
     color: var(--light-slate);
-    font-size: var(--fz-lg);
-    transition: border-color 0.2s, transform 0.2s;
+    font-size: var(--fz-sm);
+    line-height: 1.55;
+    text-align: left;
+    transition: border-color 0.2s;
 
     &:hover {
       border-color: var(--accent-border);
@@ -223,19 +231,19 @@ const StyledProject = styled.li`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    margin: 25px 0 10px;
+    margin: 16px 0 8px;
     padding: 0;
     list-style: none;
 
     li {
       margin: 0 8px 8px 0;
-      color: var(--accent);
+      color: var(--accent-bright);
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       white-space: nowrap;
       background: var(--accent-subtle);
       border: 0.5px solid var(--accent-border);
-      padding: 3px 9px;
+      padding: 4px 10px;
       border-radius: 20px;
     }
 
@@ -283,18 +291,27 @@ const StyledProject = styled.li`
 
   .project-image {
     ${({ theme }) => theme.mixins.boxShadow};
-    grid-column: 6 / -1;
+    grid-column: 7 / -1;
     grid-row: 1 / -1;
     position: relative;
     z-index: 1;
     border-radius: var(--border-radius);
     overflow: hidden;
-    border: 1px solid var(--bg-border);
+    border: 1.5px solid var(--bg-border);
+    box-shadow: inset 0 0 0 1px rgba(26, 34, 41, 0.8);
     transition: border-color 0.25s;
     min-height: 280px;
 
     &:hover {
-      border-color: rgba(232, 165, 75, 0.45);
+      border-color: var(--accent-border);
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
     }
 
     @media (max-width: 1080px) {
@@ -358,6 +375,7 @@ const Featured = () => {
               title
               cover {
                 publicURL
+                extension
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP])
                 }
@@ -366,6 +384,7 @@ const Featured = () => {
               github
               external
               cta
+              label
             }
             html
           }
@@ -407,8 +426,9 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = cover ? getImage(cover) : null;
+            const { external, title, tech, github, cover, cta, label } = frontmatter;
+            const isSvgCover = cover?.extension === 'svg';
+            const image = !isSvgCover && cover ? getImage(cover) : null;
             const coverUrl = cover?.publicURL;
             const hasCover = Boolean(image || coverUrl);
 
@@ -416,7 +436,10 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <div className="project-meta">
+                      <p className="project-overline">Featured Project</p>
+                      {label && <p className="project-kind">{label}</p>}
+                    </div>
 
                     <h3 className="project-title">
                       <a href={external || github || '#'}>{title}</a>

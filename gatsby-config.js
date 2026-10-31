@@ -5,7 +5,7 @@ module.exports = {
     title:
       'Otmane El Bourki — AI Engineer, Production LLM & RAG, Agentic AI & Inference Optimization',
     description:
-      'AI Engineer specializing in production LLM, RAG, and agentic AI — inference optimization, cloud/MLOps, and evaluation. Based in Carrières-sous-Poissy, Île-de-France, France. Open to hybrid and remote roles · 1-month notice.',
+      'AI Engineer in France (Île-de-France) specializing in production LLM systems, RAG/GraphRAG, agentic AI, inference optimization, and cloud MLOps. Open to hybrid and remote roles.',
     siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',
@@ -16,8 +16,28 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        // Emit at site root: /sitemap-index.xml + /sitemap-0.xml (v4 default is /sitemap/)
+        output: `/`,
+        createLinkInHead: true,
+        excludes: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          `/offline-plugin-app-shell-fallback`,
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://oelbourki.com',
+        sitemap: 'https://oelbourki.com/sitemap-index.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
