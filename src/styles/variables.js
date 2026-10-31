@@ -21,7 +21,7 @@ const variables = css`
     --on-accent-secondary: #02070a;
     --text-primary: #f0f0f0;
     --text-secondary: #888888;
-    --text-tertiary: #6e6e6e;
+    --text-tertiary: #8a8a8a;
 
     /* Legacy aliases */
     --dark-navy: #010508;

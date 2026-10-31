@@ -16,4 +16,4 @@ tech:
   - Financial NLP
 ---
 
-Enterprise GraphRAG platform for financial and compliance documents: Neo4j knowledge graphs, hybrid vector and full-text retrieval, and LLM-based reasoning for explainable answers during due diligence and risk analysis. *Ships when client deployment is public.*
+Enterprise GraphRAG platform for financial and compliance documents: Neo4j knowledge graphs, hybrid vector and full-text retrieval, and LLM-based reasoning for explainable answers during due diligence and risk analysis. *Client deployment pending public release.*

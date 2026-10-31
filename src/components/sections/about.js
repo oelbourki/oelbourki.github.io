@@ -254,7 +254,7 @@ const About = () => (
         <StyledText>
           <div>
             <p>
-              AI Engineer (confirmé) with <strong>3 years</strong> of professional/independent
+              Experienced AI Engineer with <strong>3 years</strong> of professional/independent
               experience and <strong>4.5+ years</strong> in AI/ML including research — production
               systems across retrieval, serving, orchestration, and evaluation. Built multi-agent
               systems for finance; currently shipping AI accelerators in ALTEN&apos;s A3. Founder of
@@ -269,12 +269,12 @@ const About = () => (
 
             <p className="about-meta" style={{ marginTop: '1.25rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
               <strong style={{ color: 'var(--text-primary)' }}>Open to</strong> hybrid / remote
-              AI/ML, MLOps, or Cloud AI
+              AI/ML, MLOps, or Cloud AI roles in France
             </p>
 
             <p className="about-meta" style={{ marginTop: '0.65rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Availability:</strong> Authorized to
-              work in France · ~1 month notice (1 week if needed)
+              <strong style={{ color: 'var(--text-primary)' }}>Availability:</strong> Based in Rabat
+              · available to start in France · ~1 month notice (1 week if needed)
             </p>
 
             <p className="about-meta" style={{ marginTop: '0.65rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>

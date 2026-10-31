@@ -40,19 +40,30 @@ const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    let done = false;
+    const doneOnce = () => {
+      if (done) {
+        return;
+      }
+      done = true;
+      finishLoading();
+    };
+
     const reduced =
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (reduced) {
-      finishLoading();
+      doneOnce();
       return undefined;
     }
 
     const mountTimeout = setTimeout(() => setIsMounted(true), 10);
+    // Never leave the home route stuck behind the splash if anime stalls (HMR / missing targets).
+    const failSafe = setTimeout(doneOnce, 1600);
 
     const loader = anime.timeline({
-      complete: () => finishLoading(),
+      complete: doneOnce,
     });
 
     loader
@@ -87,6 +98,7 @@ const Loader = ({ finishLoading }) => {
 
     return () => {
       clearTimeout(mountTimeout);
+      clearTimeout(failSafe);
       anime.remove('#logo path');
       anime.remove('#logo #B');
       anime.remove('#logo');

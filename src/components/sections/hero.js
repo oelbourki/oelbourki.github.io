@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-import { IconEmail } from '@components/icons';
+import { IconEmail, IconResume } from '@components/icons';
 import { loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -159,33 +159,6 @@ const BtnOutline = styled.a`
   }
 `;
 
-const BtnGhost = styled.a`
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 4px;
-  font-size: 13px;
-  font-family: var(--font-sans);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--text-tertiary);
-  text-decoration: none;
-  background: transparent;
-  border: none;
-
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    color: var(--text-primary);
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-bright);
-    outline-offset: 3px;
-  }
-`;
-
 const FactCard = styled.aside`
   background: var(--bg-elevated);
   border: 0.5px solid var(--bg-border);
@@ -243,7 +216,7 @@ const Hero = () => {
           remote
         </HeroMeta>
         <HeroName>Otmane El Bourki</HeroName>
-        <HeroRole>AI Engineer</HeroRole>
+        <HeroRole>AI Engineer · 3+ years in production</HeroRole>
         <HeroFocus>
           Production LLM & RAG
           <span className="sep" aria-hidden>
@@ -264,11 +237,9 @@ const Hero = () => {
           Evaluation
         </HeroFocus>
         <HeroDesc>
-          AI Engineer (confirmé) — production LLM, RAG, and agentic systems across retrieval,
-          inference optimization, and cloud. 3 years professional/independent (
-          <strong>4.5+ years AI/ML</strong> incl. research). Delivered{' '}
-          <strong>3× throughput at 47% lower cost</strong>; building AI accelerators in ALTEN&apos;s
-          A3 after shipping in finance and hospitality.
+          Production LLM, RAG, and agentic systems — delivered{' '}
+          <strong>3× inference throughput at 47% lower cost</strong>; building AI accelerators in
+          ALTEN&apos;s A3 after shipping in finance and hospitality.
         </HeroDesc>
         <CtaRow>
           <BtnPrimary href="#projects">View projects</BtnPrimary>
@@ -276,9 +247,12 @@ const Hero = () => {
             <IconEmail />
             Email
           </BtnOutline>
-          <BtnGhost href="/resume.pdf" target="_blank" rel="noreferrer">
+          <BtnOutline href="/resume.pdf" target="_blank" rel="noreferrer">
+            <span aria-hidden="true">
+              <IconResume />
+            </span>
             Resume
-          </BtnGhost>
+          </BtnOutline>
         </CtaRow>
       </HeroCopy>
 
@@ -294,7 +268,7 @@ const Hero = () => {
         <FactRow>
           <FactLabel>Community</FactLabel>
           <FactValue>
-            <span className="proof">300+</span> · Built 1337 AI
+            <span className="proof">300+</span> members · 1337 AI
           </FactValue>
         </FactRow>
       </FactCard>

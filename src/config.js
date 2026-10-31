@@ -1,7 +1,7 @@
 module.exports = {
   email: 'otmane.elbourki@gmail.com',
   phone: '+33 7 75 73 57 51',
-  location: 'Carrières-sous-Poissy, Île-de-France, France',
+  location: 'Based in Rabat · Available to start in France',
 
   socialMedia: [
     {

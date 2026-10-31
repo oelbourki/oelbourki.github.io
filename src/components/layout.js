@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
@@ -13,6 +13,7 @@ const StyledContent = styled.div`
 const Layout = ({ children, location, title, description }) => {
   const isHome = location.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
+  const finishLoading = useCallback(() => setIsLoading(false), []);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
@@ -59,7 +60,7 @@ const Layout = ({ children, location, title, description }) => {
           </a>
 
           {isLoading && isHome ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
+            <Loader finishLoading={finishLoading} />
           ) : (
             <StyledContent>
               <Nav isHome={isHome} />
