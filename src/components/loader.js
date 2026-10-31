@@ -20,7 +20,7 @@ const StyledLoader = styled.div`
   .logo-wrapper {
     width: max-content;
     max-width: 100px;
-    transition: var(--transition);
+    transition: opacity 0.2s ease, transform 0.2s ease;
     opacity: ${props => (props.isMounted ? 1 : 0)};
     svg {
       display: block;
@@ -39,7 +39,18 @@ const StyledLoader = styled.div`
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
-  const animate = () => {
+  useEffect(() => {
+    const reduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced) {
+      finishLoading();
+      return undefined;
+    }
+
+    const mountTimeout = setTimeout(() => setIsMounted(true), 10);
+
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
@@ -47,39 +58,41 @@ const Loader = ({ finishLoading }) => {
     loader
       .add({
         targets: '#logo path',
-        delay: 300,
-        duration: 1500,
+        delay: 40,
+        duration: 480,
         easing: 'easeInOutQuart',
         strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
         targets: '#logo #B',
-        duration: 700,
+        duration: 200,
         easing: 'easeInOutQuart',
         opacity: 1,
       })
       .add({
         targets: '#logo',
-        delay: 500,
-        duration: 300,
+        delay: 60,
+        duration: 180,
         easing: 'easeInOutQuart',
         opacity: 0,
         scale: 0.1,
       })
       .add({
         targets: '.loader',
-        duration: 200,
+        duration: 140,
         easing: 'easeInOutQuart',
         opacity: 0,
         zIndex: -1,
       });
-  };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 10);
-    animate();
-    return () => clearTimeout(timeout);
-  }, []);
+    return () => {
+      clearTimeout(mountTimeout);
+      anime.remove('#logo path');
+      anime.remove('#logo #B');
+      anime.remove('#logo');
+      anime.remove('.loader');
+    };
+  }, [finishLoading]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>

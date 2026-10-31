@@ -11,7 +11,8 @@ tech:
   - NumPy
   - High-Performance
   - AI
+label: 'Open Source'
 showInProjects: true
 ---
 
-High-performance Python & CUDA library for vector and matrix operations, optimized for AI and numerical computing.
+Built a Python/CUDA linear-algebra library for high-throughput vector and matrix ops aimed at AI and numerical workloads.

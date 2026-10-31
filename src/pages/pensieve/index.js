@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
 import { IconBookmark } from '@components/icons';
@@ -146,9 +145,10 @@ const PensievePage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={location}>
-      <Helmet title="Pensieve" />
-
+    <Layout
+      location={location}
+      title="Pensieve"
+      description="Technical notes on GraphRAG, multi-agent systems, RAG, and production LLM engineering by Otmane El Bourki.">
       <StyledMainContainer>
         <header>
           <h1 className="big-heading">Pensieve</h1>

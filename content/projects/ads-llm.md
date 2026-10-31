@@ -10,7 +10,8 @@ tech:
   - Supabase
   - Keybert
   - Vertex AI
+label: 'Independent R&D'
 showInProjects: true
 ---
 
-Implemented a program for matching articles with ads, utilizing KeyBERT to pinpoint relevant article keywords and a custom LLAVA deployed on Vertex AI to extract ad-descriptive keywords. Ensured sensitivity and disallowed keyword compliance during the matching process while storing keywords efficiently on Supabase.
+Matched articles to ads with KeyBERT + a custom LLaVA model on Vertex AI, enforcing disallowed-keyword rules and storing descriptors in Supabase.

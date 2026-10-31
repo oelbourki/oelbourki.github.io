@@ -10,3 +10,6 @@ yarn-error.log
 .DS_Store
 .save/
 .vscode/
+
+# Local agent/tool caches
+.impeccable-cache/

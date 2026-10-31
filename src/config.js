@@ -43,16 +43,8 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Certifications',
-      url: '/#certifications',
-    },
-    {
       name: 'Work',
       url: '/#projects',
-    },
-    {
-      name: 'Writing',
-      url: '/pensieve',
     },
     {
       name: 'Contact',
@@ -61,9 +53,9 @@ module.exports = {
   ],
 
   colors: {
-    green: '#4eb5ff',
-    navy: '#0d0d0d',
-    darkNavy: '#0a0a0a',
+    green: '#0297de',
+    navy: '#02070a',
+    darkNavy: '#010508',
   },
 
   srConfig: (delay = 200, viewFactor = 0.25) => ({

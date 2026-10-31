@@ -125,10 +125,23 @@ const StyledProject = styled.li`
     }
   }
 
+  .project-kind {
+    margin: 0 0 10px;
+    display: inline-block;
+    color: var(--accent-bright);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    border: 0.5px solid var(--accent-border);
+    background: var(--accent-subtle);
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
   .project-title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: clamp(18px, 2.5vw, 22px);
+    line-height: 1.3;
 
     a {
       position: static;
@@ -148,7 +161,8 @@ const StyledProject = styled.li`
 
   .project-description {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: var(--fz-sm);
+    line-height: 1.55;
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -166,8 +180,9 @@ const StyledProject = styled.li`
 
     li {
       font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
+      font-size: 12px;
       line-height: 1.75;
+      color: var(--accent-bright);
 
       &:not(:last-of-type) {
         margin-right: 15px;
@@ -195,6 +210,7 @@ const Projects = () => {
               external
               order
               date
+              label
             }
             html
           }
@@ -235,7 +251,7 @@ const Projects = () => {
 
   const projectInner = node => {
     const { frontmatter, html } = node;
-    const { github, external, title, tech } = frontmatter;
+    const { github, external, title, tech, label } = frontmatter;
 
     return (
       <div className="project-inner">
@@ -263,8 +279,10 @@ const Projects = () => {
             </div>
           </div>
 
+          {label && <p className="project-kind">{label}</p>}
+
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
+            <a href={external || github || '#'} target="_blank" rel="noreferrer">
               {title}
             </a>
           </h3>

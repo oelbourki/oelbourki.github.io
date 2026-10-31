@@ -12,7 +12,8 @@ tech:
   - GitOps
   - GitLab
   - CI/CD
+label: 'Independent R&D'
 showInProjects: true
 ---
 
-Kubernetes & GitOps learning project with K3s/K3D clusters, ArgoCD workflows, and GitLab integration for CI/CD practice.
+Stood up K3s/K3D clusters with Argo CD GitOps and GitLab CI/CD to practice production-style Kubernetes delivery workflows.

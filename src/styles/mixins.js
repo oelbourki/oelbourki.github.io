@@ -110,22 +110,27 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--bg-primary);
-    background-color: var(--accent);
+    color: #02070a;
+    background-color: #fc734d;
+    opacity: 1;
     border: none;
     border-radius: var(--border-radius);
     padding: 10px 22px;
     font-size: 13px;
     font-family: var(--font-sans);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1;
     text-decoration: none;
-    transition: background 0.2s, filter 0.2s;
+    transition: background 0.2s, color 0.2s;
 
     &:hover,
+    &:focus,
     &:focus-visible {
       outline: none;
-      filter: brightness(1.08);
+      color: #02070a;
+      background-color: #fc734d;
+      opacity: 1;
+      filter: none;
       transform: none;
       box-shadow: none;
     }

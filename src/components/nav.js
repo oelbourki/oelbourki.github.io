@@ -8,7 +8,7 @@ import { navLinks, socialMedia } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex, IconGitHub, IconResume, IconLinkedin } from '@components/icons';
+import { IconLogo, IconHex, IconResume, IconGitHub, IconLinkedin } from '@components/icons';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -17,8 +17,10 @@ const StyledHeader = styled.header`
   z-index: 11;
   padding: 0px 50px;
   width: 100%;
+  max-width: 100vw;
   height: var(--nav-height);
-  background-color: rgba(13, 13, 13, 0.85);
+  box-sizing: border-box;
+  background-color: rgba(2, 7, 10, 0.88);
   border-bottom: 0.5px solid var(--bg-border);
   filter: none !important;
   pointer-events: auto !important;
@@ -41,7 +43,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(13, 13, 13, 0.92);
+        background-color: rgba(2, 7, 10, 0.94);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -61,8 +63,7 @@ const StyledNav = styled.nav`
   position: relative;
   width: 100%;
   color: var(--lightest-slate);
-  font-family: var(--font-mono);
-  counter-reset: item 0;
+  font-family: var(--font-sans);
   z-index: 12;
 
   .logo {
@@ -146,8 +147,7 @@ const StyledLinks = styled.div`
   flex-shrink: 1;
   min-width: 0;
 
-  /* With 6 links + CTAs, desktop row needs more than 768px */
-  @media (max-width: 1080px) {
+  @media (max-width: 900px) {
     display: none;
   }
 
@@ -157,42 +157,42 @@ const StyledLinks = styled.div`
     margin: 0;
     list-style: none;
     flex-shrink: 1;
+    gap: 4px;
+
+    @media (max-width: 1100px) {
+      gap: 0;
+    }
 
     li {
-      margin: 0 5px;
+      margin: 0;
       position: relative;
-      counter-increment: item 1;
-      font-size: var(--fz-xs);
+      font-size: 14px;
       white-space: nowrap;
 
       a {
-        padding: 10px;
+        padding: 10px 12px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
 
-        &:before {
-          content: '0' counter(item) '.';
-          margin-right: 5px;
-          color: var(--accent-bright);
-          font-size: var(--fz-xxs);
-          text-align: right;
+        @media (max-width: 1100px) {
+          padding: 10px 8px;
+          font-size: 13px;
+        }
+
+        &:hover {
+          color: var(--text-primary);
+        }
+
+        &:focus-visible {
+          color: var(--text-primary);
+          outline: 2px dashed var(--accent-bright);
+          outline-offset: 3px;
         }
       }
 
       &.active a {
-        color: var(--accent);
-
-        &:before {
-          color: var(--accent-bright);
-        }
-      }
-    }
-
-    @media (max-width: 1280px) {
-      li {
-        margin: 0 2px;
-
-        a {
-          padding: 10px 6px;
-        }
+        color: var(--accent-bright);
       }
     }
   }
@@ -203,10 +203,16 @@ const StyledLinks = styled.div`
     align-items: center;
     flex-shrink: 0;
     gap: 8px;
-    margin-left: 8px;
+    margin-left: 12px;
+
+    @media (max-width: 1100px) {
+      gap: 6px;
+      margin-left: 8px;
+    }
   }
 
-  .nav-button {
+  .nav-button,
+  .btn-resume {
     margin-left: 0;
     font-size: 13px;
     display: inline-flex;
@@ -222,11 +228,16 @@ const StyledLinks = styled.div`
     white-space: nowrap;
     transition: border-color 0.2s, color 0.2s;
 
-    &:hover,
-    &:focus-visible {
+    &:hover {
       border-color: #555555;
       color: var(--text-primary);
-      outline: none;
+    }
+
+    &:focus-visible {
+      border-color: var(--accent);
+      color: var(--text-primary);
+      outline: 2px solid var(--accent-bright);
+      outline-offset: 3px;
     }
 
     svg {
@@ -235,45 +246,13 @@ const StyledLinks = styled.div`
       flex-shrink: 0;
     }
 
-    @media (max-width: 1280px) {
+    /* At mild zoom / mid widths, keep icons and drop labels so the bar fits */
+    @media (max-width: 1100px) {
       padding: 7px 10px;
 
-      .nav-cta-label {
+      .nav-label {
         display: none;
       }
-    }
-  }
-
-  .btn-resume {
-    margin-left: 0;
-    color: var(--accent);
-    border: 0.5px solid var(--accent);
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    background: transparent;
-    font-family: var(--font-sans);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.2s;
-
-    &:hover,
-    &:focus-visible {
-      background: var(--accent-subtle);
-      outline: none;
-    }
-
-    svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 1280px) {
-      padding: 7px 12px;
     }
   }
 `;
@@ -358,25 +337,12 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
-  const githubLink = socialMedia.find(s => s.name === 'GitHub');
   const resumeLink = socialMedia.find(s => s.name === 'Resume');
-  const resumeFrLink = socialMedia.find(s => s.name === 'ResumeFr');
+  const githubLink = socialMedia.find(s => s.name === 'GitHub');
   const linkedinLink = socialMedia.find(s => s.name === 'Linkedin');
 
   const HeaderButtons = (
     <div className="nav-cta-group">
-      {githubLink && (
-        <a
-          href={githubLink.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-button"
-          aria-label="GitHub"
-        >
-          <IconGitHub />
-          <span className="nav-cta-label">GitHub</span>
-        </a>
-      )}
       {resumeLink && (
         <a
           href={resumeLink.url}
@@ -386,19 +352,19 @@ const Nav = ({ isHome }) => {
           aria-label={resumeLink.ariaLabel || 'CV in English (PDF)'}
         >
           <IconResume />
-          CV EN
+          <span className="nav-label">Resume</span>
         </a>
       )}
-      {resumeFrLink && (
+      {githubLink && (
         <a
-          href={resumeFrLink.url}
+          href={githubLink.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-resume"
-          aria-label={resumeFrLink.ariaLabel || 'CV in French (PDF)'}
+          className="nav-button"
+          aria-label="GitHub"
         >
-          <IconResume />
-          CV FR
+          <IconGitHub />
+          <span className="nav-label">GitHub</span>
         </a>
       )}
       {linkedinLink && (
@@ -410,7 +376,7 @@ const Nav = ({ isHome }) => {
           aria-label="LinkedIn"
         >
           <IconLinkedin />
-          <span className="nav-cta-label">LinkedIn</span>
+          <span className="nav-label">LinkedIn</span>
         </a>
       )}
     </div>

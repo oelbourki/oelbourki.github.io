@@ -12,6 +12,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
     scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   *,
@@ -148,7 +155,8 @@ const GlobalStyle = createGlobalStyle`
   section {
     margin: 0 auto;
     padding: 100px 0;
-    max-width: 1000px;
+    max-width: 1100px;
+    width: 100%;
 
     @media (max-width: 768px) {
       padding: 80px 0;
@@ -188,6 +196,7 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     margin: 10px 0 40px;
     width: 100%;
+    scroll-margin-top: calc(var(--nav-scroll-height) + 24px);
     font-size: clamp(26px, 5vw, var(--fz-heading));
     white-space: nowrap;
 

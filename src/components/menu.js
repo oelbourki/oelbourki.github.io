@@ -1,37 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import { useLocation } from '@gatsbyjs/reach-router';
 import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
-import { useOnClickOutside } from '@hooks';
+import { IconResume, IconGitHub, IconLinkedin } from '@components/icons';
+
+const MENU_BREAKPOINT = 900;
 
 const StyledMenu = styled.div`
   display: none;
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${MENU_BREAKPOINT}px) {
     display: block;
   }
 `;
 
 const StyledHamburgerButton = styled.button`
-  display: none;
-
-  @media (max-width: 1080px) {
-    ${({ theme }) => theme.mixins.flexCenter};
-    position: relative;
-    z-index: 10;
-    margin-right: -15px;
-    padding: 15px;
-    border: 0;
-    background-color: transparent;
-    color: inherit;
-    text-transform: none;
-    transition-timing-function: linear;
-    transition-duration: 0.15s;
-    transition-property: opacity, filter;
-  }
+  ${({ theme }) => theme.mixins.flexCenter};
+  position: relative;
+  z-index: 12;
+  margin-right: -8px;
+  padding: 12px;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  text-transform: none;
+  transition-timing-function: linear;
+  transition-duration: 0.15s;
+  transition-property: opacity, filter;
 
   .ham-box {
     display: inline-block;
@@ -89,87 +88,101 @@ const StyledHamburgerButton = styled.button`
 const StyledSidebar = styled.aside`
   display: none;
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${MENU_BREAKPOINT}px) {
     ${({ theme }) => theme.mixins.flexCenter};
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
-    padding: 50px 10px;
-    width: min(75vw, 400px);
+    padding: max(80px, env(safe-area-inset-top, 0px) + 72px) 24px 40px;
+    width: min(75vw, 360px);
     height: 100vh;
+    height: 100dvh;
     outline: 0;
-    background-color: var(--light-navy);
+    background-color: var(--bg-elevated);
     box-shadow: -10px 0px 30px -15px var(--navy-shadow);
-    z-index: 9;
-    transform: translateX(${props => (props.menuOpen ? 0 : 100)}vw);
+    z-index: 10;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(${props => (props.menuOpen ? 0 : 100)}%);
     visibility: ${props => (props.menuOpen ? 'visible' : 'hidden')};
+    pointer-events: ${props => (props.menuOpen ? 'auto' : 'none')};
     transition: var(--transition);
   }
 
-  nav {
-    ${({ theme }) => theme.mixins.flexBetween};
-    width: 100%;
-    flex-direction: column;
-    color: var(--lightest-slate);
-    font-family: var(--font-mono);
-    text-align: center;
-  }
+  @media (max-width: ${MENU_BREAKPOINT}px) {
+    nav {
+      ${({ theme }) => theme.mixins.flexBetween};
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 28px;
+      color: var(--lightest-slate);
+      font-family: var(--font-mono);
+      text-align: center;
+    }
 
-  ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    width: 100%;
+    ol {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      width: 100%;
 
-    li {
-      position: relative;
-      margin: 0 auto 20px;
-      counter-increment: item 1;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
-
-      @media (max-width: 600px) {
-        margin: 0 auto 10px;
+      li {
+        position: relative;
+        margin: 0 auto 4px;
+        font-size: clamp(var(--fz-sm), 3.6vw, var(--fz-lg));
       }
 
-      &:before {
-        content: '0' counter(item) '.';
+      a {
+        ${({ theme }) => theme.mixins.link};
         display: block;
-        margin-bottom: 5px;
-        color: var(--green);
-        font-size: var(--fz-sm);
+        width: 100%;
+        padding: 10px 16px;
+        color: var(--text-primary);
       }
 
-      &.active:before {
+      li.active a {
         color: var(--accent-bright);
       }
     }
 
-    a {
-      ${({ theme }) => theme.mixins.link};
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
       width: 100%;
-      padding: 3px 20px 20px;
-    }
+      padding-top: 8px;
+      border-top: 0.5px solid var(--bg-border);
 
-    li.active a {
-      color: var(--accent);
-    }
-  }
+      a {
+        ${({ theme }) => theme.mixins.outlineNeutral};
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 42px;
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 13px;
 
-  .sidebar-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 10%;
-
-    a {
-      ${({ theme }) => theme.mixins.bigButton};
-      padding: 18px 50px;
-      width: max-content;
+        svg {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+        }
+      }
     }
   }
 `;
+
+const extraLinks = [
+  { name: 'Certifications', url: '/#certifications' },
+  { name: 'Writing', url: '/pensieve' },
+];
 
 const navLinkIsActive = (location, url) => {
   if (!url || !url.includes('#')) {
@@ -182,11 +195,13 @@ const navLinkIsActive = (location, url) => {
 const Menu = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [portalReady, setPortalReady] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen(open => !open);
 
   const buttonRef = useRef(null);
   const navRef = useRef(null);
+  const sidebarRef = useRef(null);
 
   let menuFocusables;
   let firstFocusableEl;
@@ -240,11 +255,15 @@ const Menu = () => {
     }
   };
 
-  const onResize = e => {
-    if (e.currentTarget.innerWidth > 1080) {
+  const onResize = () => {
+    if (window.innerWidth > MENU_BREAKPOINT) {
       setMenuOpen(false);
     }
   };
+
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
@@ -258,8 +277,69 @@ const Menu = () => {
     };
   }, []);
 
-  const wrapperRef = useRef();
-  useOnClickOutside(wrapperRef, () => setMenuOpen(false));
+  useEffect(() => {
+    setFocusables();
+  }, [menuOpen]);
+
+  // Close when clicking outside hamburger + drawer (drawer is portaled to body)
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const listener = event => {
+      const target = event.target;
+      if (buttonRef.current?.contains(target)) return;
+      if (sidebarRef.current?.contains(target)) return;
+      setMenuOpen(false);
+    };
+
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
+
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [menuOpen]);
+
+  const allNavLinks = [...(navLinks || []), ...extraLinks];
+
+  const sidebar =
+    portalReady &&
+    createPortal(
+      <StyledSidebar
+        ref={sidebarRef}
+        menuOpen={menuOpen}
+        aria-hidden={!menuOpen}
+        tabIndex={menuOpen ? 1 : -1}>
+        <nav ref={navRef}>
+          <ol>
+            {allNavLinks.map(({ url, name }, i) => (
+              <li key={i} className={navLinkIsActive(location, url) ? 'active' : undefined}>
+                <Link to={url} onClick={() => setMenuOpen(false)}>
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ol>
+
+          <div className="sidebar-links">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <IconResume />
+              Resume
+            </a>
+            <a href="https://github.com/oelbourki" target="_blank" rel="noopener noreferrer">
+              <IconGitHub />
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/oelbourki" target="_blank" rel="noopener noreferrer">
+              <IconLinkedin />
+              LinkedIn
+            </a>
+          </div>
+        </nav>
+      </StyledSidebar>,
+      document.body,
+    );
 
   return (
     <StyledMenu>
@@ -267,55 +347,18 @@ const Menu = () => {
         <body className={menuOpen ? 'blur' : ''} />
       </Helmet>
 
-      <div ref={wrapperRef}>
-        <StyledHamburgerButton
-          onClick={toggleMenu}
-          menuOpen={menuOpen}
-          ref={buttonRef}
-          aria-label="Menu">
-          <div className="ham-box">
-            <div className="ham-box-inner" />
-          </div>
-        </StyledHamburgerButton>
+      <StyledHamburgerButton
+        onClick={toggleMenu}
+        menuOpen={menuOpen}
+        ref={buttonRef}
+        aria-label="Menu"
+        aria-expanded={menuOpen}>
+        <div className="ham-box">
+          <div className="ham-box-inner" />
+        </div>
+      </StyledHamburgerButton>
 
-        <StyledSidebar menuOpen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
-          <nav ref={navRef}>
-            {navLinks && (
-              <ol>
-                {navLinks.map(({ url, name }, i) => (
-                  <li key={i} className={navLinkIsActive(location, url) ? 'active' : undefined}>
-                    <Link to={url} onClick={() => setMenuOpen(false)}>
-                      {name}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            )}
-
-            <div className="sidebar-links">
-              <a
-                href="https://linkedin.com/in/oelbourki"
-                target="_blank"
-                rel="noopener noreferrer">
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/oelbourki"
-                target="_blank"
-                rel="noopener noreferrer">
-                GitHub
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer">
-                CV EN
-              </a>
-              {/* CV FR — restore with config.js ResumeFr */}
-            </div>
-          </nav>
-        </StyledSidebar>
-      </div>
+      {sidebar}
     </StyledMenu>
   );
 };

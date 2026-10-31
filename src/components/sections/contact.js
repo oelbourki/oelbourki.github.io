@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { IconEmail } from '@components/icons';
-import { srConfig, email } from '@config';
+import { srConfig, email, phone } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -43,9 +43,17 @@ const StyledContactSection = styled.section`
     font-size: var(--fz-md);
   }
 
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 36px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -56,6 +64,15 @@ const StyledContactSection = styled.section`
       height: 16px;
       flex-shrink: 0;
     }
+  }
+
+  .phone-link {
+    ${({ theme }) => theme.mixins.outlineNeutral};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    font-size: 13px;
   }
 `;
 
@@ -75,16 +92,24 @@ const Contact = () => {
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 className="numbered-heading overline">What’s Next?</h2>
 
-      <h2 className="title">Let&apos;s build something.</h2>
+      <h2 className="title">Let&apos;s build something meaningful</h2>
 
       <p className="body">
-        I&apos;m currently open to full-time and freelance AI engineering roles in France and Germany. If you&apos;re working on LLM systems, multi-agent pipelines, or production ML infrastructure — let&apos;s talk.
+        I&apos;m open to full-time and freelance AI engineering roles in France (hybrid / remote).
+        Authorized to work in France; available in about one month (one week if needed). If
+        you&apos;re building LLM systems, multi-agent pipelines, or production ML infrastructure —
+        let&apos;s talk.
       </p>
 
-      <a className="email-link" href={`mailto:${email}`}>
-        <IconEmail />
-        Let&apos;s build something
-      </a>
+      <div className="cta-row">
+        <a className="email-link" href={`mailto:${email}`}>
+          <IconEmail />
+          Get in touch
+        </a>
+        <a className="phone-link" href={`tel:${phone.replace(/\s/g, '')}`}>
+          {phone}
+        </a>
+      </div>
     </StyledContactSection>
   );
 };

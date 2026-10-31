@@ -1,10 +1,11 @@
 ---
-order: 4
+order: 5
 date: '2024-11-01'
 title: 'codibox'
 cover: './cover.png'
 github: 'https://github.com/oelbourki/codibox'
 external: ''
+label: 'Open Source'
 tech:
   - Python
   - Docker

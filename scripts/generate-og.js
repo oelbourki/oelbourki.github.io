@@ -63,28 +63,33 @@ function buildSvg(width, height) {
     )
     .join('');
 
+  const barW = Math.round(width * 0.008);
+  const orangeBarW = Math.max(3, Math.round(width * 0.003));
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0d0d0d"/>
-      <stop offset="55%" stop-color="#121212"/>
-      <stop offset="100%" stop-color="#161616"/>
+      <stop offset="0%" stop-color="#02070a"/>
+      <stop offset="55%" stop-color="#0b1116"/>
+      <stop offset="100%" stop-color="#0f161c"/>
     </linearGradient>
     <radialGradient id="glow" cx="85%" cy="15%" r="45%">
-      <stop offset="0%" stop-color="#4eb5ff" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#4eb5ff" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#0297de" stop-opacity="0.16"/>
+      <stop offset="55%" stop-color="#fc734d" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0297de" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="${width}" height="${height}" fill="url(#bg)"/>
   <rect width="${width}" height="${height}" fill="url(#glow)"/>
-  <rect x="0" y="0" width="${Math.round(width * 0.008)}" height="${height}" fill="#4eb5ff"/>
+  <rect x="0" y="0" width="${barW}" height="${height}" fill="#0297de"/>
+  <rect x="${barW}" y="0" width="${orangeBarW}" height="${height}" fill="#fc734d"/>
 
-  <text x="${pad}" y="${Math.round(height * 0.18)}" fill="#4eb5ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="${labelSize}" letter-spacing="0.12em">OELBOURKI.COM</text>
+  <text x="${pad}" y="${Math.round(height * 0.18)}" fill="#0297de" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="${labelSize}" letter-spacing="0.12em">OELBOURKI.COM</text>
 
   <text x="${pad}" y="${Math.round(height * 0.34)}" fill="#f0f0f0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="${nameSize}" font-weight="700">${escapeXml(nameLine)}</text>
 
-  <text x="${pad}" y="${Math.round(height * 0.44)}" fill="#7dd8ff" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="${roleSize}" font-weight="500">${escapeXml(roleLine)}</text>
+  <text x="${pad}" y="${Math.round(height * 0.44)}" fill="#3db4f0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="${roleSize}" font-weight="500">${escapeXml(roleLine)}</text>
 
   <text x="${pad}" y="${blurbStartY}" fill="#a3a3a3" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="${bodySize}">${blurbTspans}</text>
 

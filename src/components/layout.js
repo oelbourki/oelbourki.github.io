@@ -10,7 +10,7 @@ const StyledContent = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location, title, description }) => {
   const isHome = location.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
 
@@ -48,7 +48,7 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
-      <Head />
+      <Head title={title} description={description} />
 
       <div id="root">
         <ThemeProvider theme={theme}>
@@ -81,6 +81,8 @@ const Layout = ({ children, location }) => {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default Layout;

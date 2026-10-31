@@ -1,11 +1,12 @@
 ---
-order: 3
+order: 2
 date: '2025-02-01'
 title: 'Agentic Data Analyst'
 cover: './cover.png'
 github: 'https://github.com/oelbourki/AgenticDataAnalyst'
 external: ''
 cta: '/pensieve/multi-agent-orchestration'
+label: 'Independent R&D'
 tech:
   - LangGraph
   - Python
