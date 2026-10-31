@@ -145,6 +145,7 @@ const skillCategories = [
     label: 'Agentic AI',
     skills: [
       { name: 'LangGraph', highlight: true },
+      { name: 'DeepAgents', highlight: true },
       { name: 'LangChain', highlight: true },
       { name: 'CrewAI' },
       { name: 'Google ADK' },

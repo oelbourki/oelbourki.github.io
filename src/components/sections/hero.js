@@ -15,7 +15,7 @@ const StyledHeroSection = styled.section`
   max-width: 1100px;
   margin: 0 auto;
   padding: calc(var(--nav-height) + 40px) 0 40px;
-  overflow: hidden;
+  overflow: visible;
   background: radial-gradient(
     ellipse 70% 55% at 78% 0%,
     rgba(2, 151, 222, 0.09) 0%,
@@ -192,11 +192,19 @@ const FactValue = styled.div`
   font-size: 14px;
   font-weight: 500;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.45;
 
   .proof {
     color: var(--accent-secondary);
     font-weight: 600;
+  }
+
+  .stack-line {
+    display: block;
+  }
+
+  .stack-line + .stack-line {
+    margin-top: 2px;
   }
 `;
 
@@ -266,7 +274,11 @@ const Hero = () => {
         </FactRow>
         <FactRow>
           <FactLabel>Stack</FactLabel>
-          <FactValue>Azure · GCP · AWS · MLOps</FactValue>
+          <FactValue>
+            <span className="stack-line">RAG · GraphRAG · LangGraph</span>
+            <span className="stack-line">vLLM · Evals · Fine-tuning</span>
+            <span className="stack-line">FastAPI · Azure · GCP</span>
+          </FactValue>
         </FactRow>
         <FactRow>
           <FactLabel>Community</FactLabel>
