@@ -326,12 +326,12 @@ const Nav = ({ isHome }) => {
       {isHome ? (
         <a href="/" aria-label="home">
           {logoMark}
-          <StyledLogoText>OEB</StyledLogoText>
+          <StyledLogoText>oelbourki</StyledLogoText>
         </a>
       ) : (
         <Link to="/" aria-label="home">
           {logoMark}
-          <StyledLogoText>OEB</StyledLogoText>
+          <StyledLogoText>oelbourki</StyledLogoText>
         </Link>
       )}
     </div>
