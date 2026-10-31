@@ -78,10 +78,9 @@ const Contact = () => {
       <h2 className="title">Let&apos;s build something meaningful</h2>
 
       <p className="body">
-        I&apos;m open to full-time and freelance AI engineering roles in France (hybrid / remote).
-        Based in Rabat, authorized to work in France, and available to start there in about one
-        month (one week if needed). If you&apos;re building LLM systems, multi-agent pipelines, or
-        production ML infrastructure — let&apos;s talk.
+        Although I&apos;m not currently looking for new opportunities, my inbox is always open.
+        Whether you have a question about production LLM systems or just want to say hello,
+        I&apos;ll do my best to get back to you.
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>

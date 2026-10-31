@@ -254,11 +254,11 @@ const About = () => (
         <StyledText>
           <div>
             <p>
-              Experienced AI Engineer with <strong>3 years</strong> of professional/independent
-              experience and <strong>4.5+ years</strong> in AI/ML including research — production
-              systems across retrieval, serving, orchestration, and evaluation. Built multi-agent
-              systems for finance; currently shipping AI accelerators in ALTEN&apos;s A3. Founder of
-              a <strong>300-member</strong> AI engineering community.
+              Experienced AI Engineer with <strong>3+ years</strong> in production and{' '}
+              <strong>4.5+ years</strong> in AI/ML including research — systems across retrieval,
+              serving, orchestration, and evaluation. Built multi-agent systems for finance;
+              currently shipping AI accelerators in ALTEN&apos;s A3. Founder of a{' '}
+              <strong>300-member</strong> AI engineering community.
             </p>
 
             <p>
@@ -268,16 +268,6 @@ const About = () => (
             </p>
 
             <p className="about-meta" style={{ marginTop: '1.25rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Open to</strong> hybrid / remote
-              AI/ML, MLOps, or Cloud AI roles in France
-            </p>
-
-            <p className="about-meta" style={{ marginTop: '0.65rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Availability:</strong> Based in Rabat
-              · available to start in France · ~1 month notice (1 week if needed)
-            </p>
-
-            <p className="about-meta" style={{ marginTop: '0.65rem', fontSize: 'var(--fz-sm)', color: 'var(--text-secondary)' }}>
               <strong style={{ color: 'var(--text-primary)' }}>Languages:</strong> Arabic (native) ·
               English (full professional) · French (professional working)
             </p>

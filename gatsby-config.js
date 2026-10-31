@@ -5,7 +5,7 @@ module.exports = {
     title:
       'Otmane El Bourki — AI Engineer, Production LLM & RAG, Agentic AI & Inference Optimization',
     description:
-      'AI Engineer in France (Île-de-France) specializing in production LLM systems, RAG/GraphRAG, agentic AI, inference optimization, and cloud MLOps. Open to hybrid and remote roles.',
+      'AI Engineer specializing in production LLM systems, RAG/GraphRAG, agentic AI, inference optimization, and cloud MLOps. Carrières-sous-Poissy, Île-de-France · Rabat, Morocco.',
     siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',

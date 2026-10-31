@@ -211,10 +211,7 @@ const Hero = () => {
   const inner = (
     <HeroGrid>
       <HeroCopy>
-        <HeroMeta>
-          Carrières-sous-Poissy, Île-de-France · Authorized to work in France · Open to hybrid /
-          remote
-        </HeroMeta>
+        <HeroMeta>Carrières-sous-Poissy, Île-de-France · Rabat, Morocco</HeroMeta>
         <HeroName>Otmane El Bourki</HeroName>
         <HeroRole>AI Engineer · 3+ years in production</HeroRole>
         <HeroFocus>
