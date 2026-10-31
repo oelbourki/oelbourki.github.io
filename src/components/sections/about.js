@@ -288,11 +288,11 @@ const About = () => (
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg"
+              src="../../images/me-headshot.jpg"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP']}
-              alt="Otmane El Bourki, AI Engineer"
+              alt="Professional headshot of Otmane El Bourki, AI Engineer"
             />
           </div>
         </StyledPic>

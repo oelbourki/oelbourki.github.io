@@ -43,6 +43,10 @@ module.exports = {
       url: '/#jobs',
     },
     {
+      name: 'Community',
+      url: '/#community',
+    },
+    {
       name: 'Work',
       url: '/#projects',
     },
