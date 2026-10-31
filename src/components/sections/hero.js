@@ -250,6 +250,12 @@ const Hero = () => {
             </span>
             Resume
           </BtnOutline>
+          <BtnOutline href="/resume_fr.pdf" target="_blank" rel="noreferrer">
+            <span aria-hidden="true">
+              <IconResume />
+            </span>
+            CV FR
+          </BtnOutline>
         </CtaRow>
       </HeroCopy>
 

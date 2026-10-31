@@ -302,6 +302,7 @@ const Nav = ({ isHome }) => {
   );
 
   const resumeLink = socialMedia.find(s => s.name === 'Resume');
+  const resumeFrLink = socialMedia.find(s => s.name === 'ResumeFr');
   const githubLink = socialMedia.find(s => s.name === 'GitHub');
   const linkedinLink = socialMedia.find(s => s.name === 'Linkedin');
 
@@ -317,6 +318,18 @@ const Nav = ({ isHome }) => {
         >
           <IconResume />
           <span className="nav-label">Resume</span>
+        </a>
+      )}
+      {resumeFrLink && (
+        <a
+          href={resumeFrLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-resume"
+          aria-label={resumeFrLink.ariaLabel || 'CV in French (PDF)'}
+        >
+          <IconResume />
+          <span className="nav-label">CV FR</span>
         </a>
       )}
       {githubLink && (

@@ -52,7 +52,7 @@ const Head = ({ title, description, image }) => {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Otmane El Bourki',
-    jobTitle: 'AI Engineer',
+    jobTitle: 'AI Engineer / Ingénieur IA confirmé',
     url: siteUrl,
     email: config.email,
     sameAs,
@@ -64,6 +64,8 @@ const Head = ({ title, description, image }) => {
       'LangGraph',
       'Inference Optimization',
       'MLOps',
+      'Intelligence artificielle',
+      'Ingénieur IA',
     ],
     worksFor: {
       '@type': 'Organization',
