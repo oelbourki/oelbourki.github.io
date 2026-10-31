@@ -71,7 +71,7 @@ const Head = ({ title, description, image }) => {
     },
     homeLocation: {
       '@type': 'Place',
-      name: 'Carrières-sous-Poissy, Île-de-France, France',
+      name: 'Carrières-sous-Poissy, Île-de-France · Rabat, Morocco',
     },
   };
 

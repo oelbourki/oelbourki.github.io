@@ -11,12 +11,45 @@ const links = [
   { label: 'ThinkAI', href: 'https://thinkai.ma/' },
   { label: 'HackAI', href: 'https://hackai.ma/' },
   {
-    label: 'Recap',
+    label: 'Press ’24',
+    href: 'https://fr.le360.ma/economie/ben-guerir-lancement-de-la-2eme-edition-du-think-ia-maroc-le-premier-hackathon-de-son-genre-dans-le_U74KY3Q2NVFHLEEZTWG26PPYFA/',
+  },
+  {
+    label: 'Coverage ’25',
+    href: 'https://old.ueuromed.org/actualites/activites-des-etudiants/hackai-morocco-luemf-sur-le-podium',
+  },
+  {
+    label: 'Recap ’25',
     href: 'https://www.linkedin.com/posts/1337ai_hackai-hackai2025-1337ai-activity-7341466522025955329-Z2cn',
+  },
+  { label: 'Repos ’23', href: 'https://github.com/Math-Maroc/ThinkAI' },
+  { label: 'Repos ’24', href: 'https://github.com/Math-Maroc/ThinkAI2024' },
+  {
+    label: 'Repos ’25',
+    href: 'https://github.com/1337-Artificial-Intelligence/hackai-2025',
   },
 ];
 
-const THINKAI_RECAP = 'https://www.youtube.com/watch?v=HOC9x9SLyYA';
+const videos = [
+  {
+    href: 'https://www.youtube.com/watch?v=HOC9x9SLyYA',
+    thumb: 'https://i.ytimg.com/vi/HOC9x9SLyYA/hqdefault.jpg',
+    label: 'ThinkAI 2023 recap',
+    sub: 'YouTube · event film',
+  },
+  {
+    href: 'https://www.youtube.com/watch?v=tsvqEP3mr0U',
+    thumb: 'https://i.ytimg.com/vi/tsvqEP3mr0U/hqdefault.jpg',
+    label: 'ThinkAI hackathon coverage',
+    sub: 'YouTube · Math & Maroc',
+  },
+  {
+    href: 'https://www.youtube.com/watch?v=hf7Uil542BQ',
+    thumb: 'https://i.ytimg.com/vi/hf7Uil542BQ/hqdefault.jpg',
+    label: 'ThinkAI 2024 · 2nd edition',
+    sub: 'YouTube · Math & Maroc',
+  },
+];
 
 const featured = {
   src: '/community/me.webp',
@@ -26,6 +59,30 @@ const featured = {
 };
 
 const moments = [
+  {
+    src: '/community/1337ai-booth-2022.jpg',
+    alt: 'Otmane El Bourki at the 1337 AI booth, UM6P, February 2022',
+    caption: 'Feb 2022 · 1337 AI booth',
+    position: 'center 12%',
+  },
+  {
+    src: '/community/ml-lecture-2022.jpg',
+    alt: 'Otmane El Bourki presenting Intro to Machine Learning at 1337 in 2022',
+    caption: '2022 · Intro to ML lecture',
+    position: 'center 40%',
+  },
+  {
+    src: '/community/me.webp',
+    alt: 'Otmane El Bourki as ThinkAI 2023 mentor',
+    caption: 'ThinkAI 2023 · Mentor',
+    position: 'center 18%',
+  },
+  {
+    src: '/community/thinkai-2024-mentor.jpg',
+    alt: 'Otmane El Bourki as ThinkAI 2024 mentor with mentor badge',
+    caption: 'ThinkAI 2024 · Mentor',
+    position: 'center 12%',
+  },
   {
     src: '/community/hackai-2025-mentor-backdrop.jpg',
     alt: 'Otmane El Bourki as HackAI 2025 mentor in front of the event backdrop',
@@ -37,30 +94,6 @@ const moments = [
     alt: 'Otmane El Bourki wearing a HackAI mentor badge in the 1337 lab',
     caption: 'HackAI 2025 · mentor badge',
     position: 'center 15%',
-  },
-  {
-    src: '/community/hackai-2024-mentor.jpg',
-    alt: 'Otmane El Bourki as HackAI 2024 mentor with mentor badge',
-    caption: 'HackAI 2024 · Mentor',
-    position: 'center 12%',
-  },
-  {
-    src: '/community/me.webp',
-    alt: 'Otmane El Bourki as ThinkAI 2023 mentor',
-    caption: 'ThinkAI 2023 · Mentor',
-    position: 'center 18%',
-  },
-  {
-    src: '/community/ml-lecture-2022.jpg',
-    alt: 'Otmane El Bourki presenting Intro to Machine Learning at 1337 in 2022',
-    caption: '2022 · Intro to ML lecture',
-    position: 'center 40%',
-  },
-  {
-    src: '/community/1337ai-booth-2022.jpg',
-    alt: 'Otmane El Bourki at the 1337 AI booth, UM6P, February 2022',
-    caption: 'Feb 2022 · 1337 AI booth',
-    position: 'center 12%',
   },
 ];
 
@@ -279,39 +312,48 @@ const PhotoButton = styled.button`
   }
 `;
 
-const VideoLink = styled.a`
+const VideoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const VideoCard = styled.a`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 14px;
-  max-width: 420px;
-  padding: 10px 12px;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
   text-decoration: none;
   color: inherit;
-  background: var(--bg-elevated);
-  border: 0.5px solid var(--bg-border);
-  border-radius: var(--border-radius);
-  transition: border-color 0.2s;
 
-  &:hover,
-  &:focus-visible {
+  &:hover .thumb,
+  &:focus-visible .thumb {
     border-color: var(--accent-border);
-    outline: none;
   }
 
   &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible .thumb {
     outline: 2px solid var(--accent-bright);
     outline-offset: 3px;
   }
 
   .thumb {
+    ${({ theme }) => theme.mixins.boxShadow};
     position: relative;
-    flex-shrink: 0;
-    width: 96px;
+    width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     overflow: hidden;
-    background: var(--bg-primary);
+    border: 0.5px solid var(--bg-border);
+    background: var(--bg-elevated);
+    transition: border-color 0.2s;
 
     img {
       width: 100%;
@@ -320,37 +362,48 @@ const VideoLink = styled.a`
       display: block;
     }
 
-    &::after {
-      content: '';
+    .play {
       position: absolute;
       inset: 0;
-      margin: auto;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 6px 0 6px 10px;
-      border-color: transparent transparent transparent #fff;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.28);
+      transition: background 0.2s;
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9px 0 9px 15px;
+        border-color: transparent transparent transparent #fff;
+        margin-left: 3px;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+      }
     }
   }
 
-  .meta {
-    min-width: 0;
+  &:hover .play {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .caption {
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
+    color: var(--text-tertiary);
+    line-height: 1.35;
 
     .label {
       display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-primary);
-      line-height: 1.3;
+      color: var(--text-secondary);
+      font-size: 12px;
     }
 
     .sub {
       display: block;
       margin-top: 2px;
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.3;
     }
   }
 `;
@@ -581,7 +634,7 @@ const Community = () => {
               generative AI).
             </li>
             <li>
-              Co-mentor at <strong>ThinkAI 2023</strong> and <strong>HackAI 2024–25</strong>,
+              Co-mentor at <strong>ThinkAI 2023–24</strong> and <strong>HackAI 2025</strong>,
               alongside mentors from Hugging Face and peers at those events.
             </li>
             <li>
@@ -648,25 +701,25 @@ const Community = () => {
           ))}
         </PhotoGrid>
 
-        <VideoLink
-          href={THINKAI_RECAP}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Watch ThinkAI 2023 edition recap on YouTube">
-          <span className="thumb" aria-hidden="true">
-            <img
-              src="https://i.ytimg.com/vi/HOC9x9SLyYA/hqdefault.jpg"
-              alt=""
-              width={96}
-              height={54}
-              loading="lazy"
-            />
-          </span>
-          <span className="meta">
-            <span className="label">ThinkAI 2023 recap</span>
-            <span className="sub">YouTube · event film</span>
-          </span>
-        </VideoLink>
+        <VideoGrid>
+          {videos.map(video => (
+            <VideoCard
+              key={video.href}
+              href={video.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Watch ${video.label} on YouTube`}>
+              <span className="thumb">
+                <img src={video.thumb} alt="" width={480} height={270} loading="lazy" />
+                <span className="play" aria-hidden="true" />
+              </span>
+              <span className="caption">
+                <span className="label">{video.label}</span>
+                <span className="sub">{video.sub}</span>
+              </span>
+            </VideoCard>
+          ))}
+        </VideoGrid>
       </div>
 
       {lightbox}
