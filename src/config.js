@@ -21,16 +21,11 @@ module.exports = {
       url: '/resume.pdf',
       ariaLabel: 'CV in English (PDF)',
     },
-    // Temporarily hidden — uncomment to restore French CV link (nav, footer, social rail, icon map).
-    // {
-    //   name: 'ResumeFr',
-    //   url: '/resume_fr.pdf',
-    //   ariaLabel: 'CV in French (PDF)',
-    // },
-    // {
-    //   name: 'Codepen',
-    //   url: 'https://codepen.io/oelbourki',
-    // },
+    {
+      name: 'ResumeFr',
+      url: '/resume_fr.pdf',
+      ariaLabel: 'CV in French (PDF)',
+    },
   ],
 
   navLinks: [

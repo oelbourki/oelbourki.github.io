@@ -327,6 +327,10 @@ const Menu = () => {
               <IconResume />
               Resume
             </a>
+            <a href="/resume_fr.pdf" target="_blank" rel="noopener noreferrer">
+              <IconResume />
+              CV FR
+            </a>
             <a href="https://github.com/oelbourki" target="_blank" rel="noopener noreferrer">
               <IconGitHub />
               GitHub

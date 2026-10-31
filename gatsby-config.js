@@ -3,9 +3,9 @@ const config = require('./src/config');
 module.exports = {
   siteMetadata: {
     title:
-      'Otmane El Bourki — AI Engineer, Production LLM & RAG, Agentic AI & Inference Optimization',
+      'Otmane El Bourki — AI Engineer (Ingénieur IA confirmé), Production LLM & RAG, Agentic AI',
     description:
-      'AI Engineer specializing in production LLM systems, RAG/GraphRAG, agentic AI, inference optimization, and cloud MLOps. Carrières-sous-Poissy, Île-de-France · Rabat, Morocco.',
+      'AI Engineer (ingénieur IA confirmé) specializing in production LLM systems, RAG/GraphRAG, agentic AI, inference optimization, and cloud MLOps — intelligence artificielle, Île-de-France · Rabat, Morocco.',
     siteUrl: 'https://oelbourki.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@oelbourki',

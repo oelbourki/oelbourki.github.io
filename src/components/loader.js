@@ -32,6 +32,9 @@ const StyledLoader = styled.div`
       #B {
         opacity: 0;
       }
+      polygon {
+        fill: none;
+      }
     }
   }
 `;
@@ -68,17 +71,17 @@ const Loader = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: '#logo path',
+        targets: '#logo polygon',
         delay: 40,
-        duration: 480,
+        duration: 520,
         easing: 'easeInOutQuart',
         strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
         targets: '#logo #B',
-        duration: 200,
+        duration: 220,
         easing: 'easeInOutQuart',
-        opacity: 1,
+        opacity: [0, 1],
       })
       .add({
         targets: '#logo',
@@ -99,7 +102,7 @@ const Loader = ({ finishLoading }) => {
     return () => {
       clearTimeout(mountTimeout);
       clearTimeout(failSafe);
-      anime.remove('#logo path');
+      anime.remove('#logo polygon');
       anime.remove('#logo #B');
       anime.remove('#logo');
       anime.remove('.loader');
